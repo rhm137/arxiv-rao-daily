@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv · 2026-09-18</title>
+<style>
+:root {
+    --bg:#f7f5f0; --card:#ffffff; --ink:#1c1c28; --ink2:#55566a; --muted:#8a8b99;
+    --accent:#3b4a8c; --accent-ink:#2e3a70; --accent-soft:#eceef6;
+    --border:#e4e1d6; --border-strong:#d3cfc0;
+    --must:#9e2b25; --s7:#b07c2a; --s6:#6b7c5e; --s5:#8a8b99;
+    --shadow:0 1px 2px rgba(28,28,40,.04), 0 4px 16px rgba(28,28,40,.06);
+    --shadow-hover:0 2px 4px rgba(28,28,40,.06), 0 10px 28px rgba(28,28,40,.10);
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","Fira Code","Consolas",monospace;
+}
+[data-theme="dark"] {
+    --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+    --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+    --border:#2b2f3d; --border-strong:#3a3f50;
+    --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+    --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+    --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+        --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+        --border:#2b2f3d; --border-strong:#3a3f50;
+        --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+        --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+        --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+    }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--bg); color:var(--ink);
+       line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .25s, color .25s; }
+[data-theme="dark"] body { background:#14161d; color:#e9e7de; }
+[data-theme="dark"] .card { background:#1d2029; border-color:#2b2f3d; }
+[data-theme="dark"] .topnav { background:rgba(20,22,29,.84); }
+.topnav { position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 84%, transparent); border-bottom:1px solid var(--border); }
+.nav-inner { max-width:860px; margin:0 auto; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; }
+.brand { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.nav-right { display:flex; gap:14px; align-items:center; font-size:13px; }
+.nav-right a { color:var(--accent); text-decoration:none; }
+.nav-right a:hover { text-decoration:underline; }
+#themeBtn { border:1px solid var(--border-strong); background:transparent; color:var(--ink2);
+    border-radius:999px; padding:2px 12px; font-size:12px; cursor:pointer; font-family:var(--sans); }
+#themeBtn:hover { border-color:var(--accent); color:var(--accent); }
+.cover { max-width:860px; margin:0 auto; text-align:center; padding:60px 24px 36px; }
+.kicker { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.cover h1 { font-family:var(--serif); font-size:34px; font-weight:600; margin:14px 0 8px; letter-spacing:.01em; }
+.cover .sub { font-size:14px; color:var(--ink2); }
+.stats { display:flex; justify-content:center; align-items:center; gap:26px; margin-top:30px; flex-wrap:wrap; }
+.stat { text-align:center; }
+.stat .num { display:block; font-family:var(--serif); font-size:30px; font-weight:600; color:var(--accent-ink); }
+.stat .label { display:block; font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.08em; }
+.stat-sep { width:1px; height:34px; background:var(--border-strong); }
+.cover .src { margin-top:20px; font-size:12.5px; color:var(--muted); }
+.toc { max-width:860px; margin:0 auto 8px; padding:0 24px; }
+.toc h2 { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; margin:26px 0 12px;
+    padding-bottom:8px; border-bottom:1px solid var(--border); }
+.toc h2 .en { font-weight:400; margin-left:8px; letter-spacing:.14em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list .n { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-right:6px; }
+.toc-list a { color:var(--ink); text-decoration:none; font-family:var(--serif); }
+.toc-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+.toc-list .toc-en { display:block; font-size:12px; color:var(--muted); margin-left:26px; margin-top:-2px; }
+.divider { max-width:860px; margin:36px auto -6px; padding:0 24px; display:flex; align-items:center; gap:16px; }
+.divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border-strong); }
+.divider span { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; white-space:nowrap; }
+.papers { max-width:860px; margin:0 auto; padding:0 24px 40px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0;
+    box-shadow:var(--shadow); overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.card summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto;
+    gap:16px; align-items:start; padding:20px 24px; user-select:none; }
+.card summary::-webkit-details-marker { display:none; }
+.c-kicker { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:6px; }
+.c-title-en { font-size:13.5px; color:var(--ink2); line-height:1.5; }
+.c-title-cn { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink);
+    margin:3px 0 7px; line-height:1.55; }
+.c-authors { font-size:13px; color:var(--muted); }
+.c-oneline { font-size:13.5px; color:var(--ink2); margin-top:7px; }
+.c-side { display:flex; flex-direction:column; align-items:flex-end; gap:8px; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:1px 10px; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid var(--accent); color:var(--accent); }
+.chev { font-size:16px; color:var(--muted); transition:transform .2s; line-height:1; }
+.card[open] .chev { transform:rotate(90deg); color:var(--accent); }
+.card.collision { border-left:3px solid var(--must); }
+.detail { padding:2px 24px 22px; border-top:1px dashed var(--border-strong); }
+.detail h4 { font-size:13px; letter-spacing:.06em; color:var(--accent-ink); font-weight:700; margin:18px 0 6px; }
+.detail p { font-size:14.5px; line-height:1.85; color:var(--ink); margin-bottom:10px; }
+.detail .rel-note { font-size:13px; color:var(--accent); font-weight:600; margin:14px 0 2px; }
+.detail .action-box { background:color-mix(in srgb, var(--must) 8%, var(--card));
+    border:1px solid color-mix(in srgb, var(--must) 30%, var(--border));
+    border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border-strong); border-radius:8px; padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--muted); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details p { font-size:13px; color:var(--ink2); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--muted); }
+.src-link a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.radar-note { max-width:860px; margin:0 auto 30px; padding:0 24px; font-size:13px; color:var(--muted); }
+.footer { text-align:center; padding:36px 24px 48px; font-size:12.5px; color:var(--muted); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:640px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:16px; }
+    .stat-sep { display:none; }
+    .card summary { padding:16px 18px; }
+    .detail { padding:2px 18px 18px; }
+}
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.2.5/index.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
+  startup: { ready() {
+      MathJax.startup.defaultReady();
+      document.querySelectorAll('details.card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
+        });
+      });
+  } }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+<nav class="topnav"><div class="nav-inner">
+  <span class="brand">ARXIV DAILY</span>
+  <span class="nav-right">
+    <a href="index.html">存档索引</a>
+    <button id="themeBtn" type="button">◐</button>
+  </span>
+</div></nav>
+
+<header class="cover">
+  <div class="kicker">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv · 2026年09月18日</h1>
+  <p class="sub">每日精选 · 按 Rao 的研究画像匹配</p>
+  <div class="stats">
+    <div class="stat"><span class="num">2</span><span class="label">核心精读 · ⭐0</span></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><span class="num">4</span><span class="label">领域动态</span></div>
+    
+  </div>
+  <p class="src">来源：gr-qc 19 · hep-th 29 · astro-ph.CO 10</p>
+</header>
+
+<section class="toc">
+  <h2>核心精读<span class="en">CORE</span></h2>
+  <ol class="toc-list"><li><span class="n">01</span><a href="#paper-1">3D 引力中的拓扑纠缠熵</a></li><li><span class="n">02</span><a href="#paper-2">Hawking 辐射多时间关联中的 Page 转变</a></li></ol>
+  <h2>领域动态<span class="en">FIELD RADAR</span></h2><ol class="toc-list"><li><span class="n">R1</span><a href="#radar-1">Palatini 暴胀吸引子的回归：可观测量的普适映射</a></li><li><span class="n">R2</span><a href="#radar-2">区分耦合暗物质—暗能量与运动学幽灵穿越</a></li><li><span class="n">R3</span><a href="#radar-3">AdS$_3$ 引力中的超对称边界代数：约束、Dirac 括号与非局域性</a></li><li><span class="n">R4</span><a href="#radar-4">超越慢滚的 Starobinsky 暴胀全局分析：结合 CMB-BAO 数据</a></li></ol>
+  
+</section>
+
+<div class="papers">
+<details class="card" id="paper-1">
+<summary>
+  <div>
+    <div class="c-kicker">#1 · arXiv:2609.19247 · hep-th · cond-mat.str-el · gr-qc · quant-ph</div>
+    <div class="c-title-cn">3D 引力中的拓扑纠缠熵</div>
+    <div class="c-title-en">Topological entanglement entropy in 3D gravity</div>
+    <div class="c-authors">Vijay Balasubramanian, Charlie Cummings</div>
+    <div class="c-oneline">💡 从张量网络模型导出 3D 引力满足微分同胚约束的熵公式，含物质并匹配量子极值面公式。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>📌 做了什么与评价</h4>
+  <p>作者针对近期提出的 3D 引力张量网络模型（其态满足微分同胚不变性的约束方程），在计入物质后推导出一个熵公式；通过考虑时空度规的可逆性，论证该公式在小而有限的 G_N 下与量子极值面（QES）公式一致，且不限于时间对称时空。推导走的是正则量子化路线，不依赖路径积分，并讨论了向紧致体子区域的推广。</p><p>评价：核心贡献是把张量网络/约束方程的离散结构与 QES 的连续几何公式对接，方法上避开路径积分是亮点，但“匹配 QES”的论证依赖度规可逆性与小 G_N 展开，属于渐近论证而非严格等号；物质部分如何进入约束与熵的分解需回正文核对，紧致子区域推广的边界项处理也值得警惕。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>与画像中“量子信息与引力：高斯态、相对熵、纠缠平衡、Page 曲线/islands/广义熵”模块直接相关。可学到：如何用正则量子化而非路径积分处理约束系统的纠缠熵，以及度规可逆性在熵公式中扮演的角色——这对 P3（非绝热扰动对视界熵的有限波长响应）中“视界熵如何由约束/几何分解”有方法借鉴。注意其 3D 与张量网络设定与 4D 协变相空间（Wald/Iyer–Wald）约定不同，不可直接套用。</p>
+  <h4>💡 推荐课题</h4>
+  <p>暂无。该文属全息/islands 方向，与 P1–P5 的修正引力模型无直接接口；若硬接，可考虑把“约束方程决定熵分解”的思路搬到 f(Q) 不规则联络的约束结构上，但第一步（写出该理论的约束代数）成本过高，暂不推荐。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.19247v1 Announce Type: new Abstract: We derive an entropy formula for a recently proposed tensor network model of states in 3D gravity which satisfy the constraint equations of diffeomorphism invariance, and including the effects of matter. After accounting for the invertibility of the spacetime metric, we argue that this formula matches the quantum extremal surface formula (for small but finite $G_N$), and is not restricted to time symmetric spacetimes. We derive the result via canonical quantization without relying on path integrals, and discuss an extension to compact bulk subregions.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.19247" target="_blank" rel="noopener">arXiv:2609.19247</a></p>
+</div>
+</details>
+<details class="card" id="paper-2">
+<summary>
+  <div>
+    <div class="c-kicker">#2 · arXiv:2609.20456 · hep-th</div>
+    <div class="c-title-cn">Hawking 辐射多时间关联中的 Page 转变</div>
+    <div class="c-title-en">The Page Transition in the Multi-Time Correlations of Hawking Radiation</div>
+    <div class="c-authors">Tushar Waghmare</div>
+    <div class="c-oneline">💡 把晚期辐射当作协变多时间过程张量，用 χ_island 度量 Page 转变，发现其表现为马尔可夫阶跃迁。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>📌 做了什么与评价</h4>
+  <p>作者将晚期 Hawking 辐射建模为协变多时间过程（process tensor），定义 χ_island = N_∅ − N_R 来度量当早期辐射寄存器 R 被提供时被移除的时间记忆，并把它操作化为辐射过程相对马尔可夫参考的最优可区分度变化。构造出蒸发过程：单 bin 态与所有低于有限阶 k_*≥3 的过程边缘态保持不变且与 CP-divisible 参考一致，而 χ_island 在 k_* 阶发生量级一的变化，从而把 Page 转变解释为辐射过程马尔可夫阶的转变；用 Hayden–Preskill 蒸发梳与蒸发 JT 计算实现该机制。</p><p>评价：把 Page 曲线从“熵随时间”重述为“过程张量的马尔可夫阶”，视角新颖且有可操作定义；但结论建立在特定构造的蒸发过程上，k_*≥3 的普适性、以及 χ_island 与真正 island 公式的定量对应仍需回正文核对，属概念性论证而非定理。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>对应画像“量子信息与引力：高斯态、相对熵、纠缠平衡、Page 曲线/islands/广义熵”模块。可学到 process tensor 与马尔可夫阶作为刻画信息重组的工具，以及“早期辐射足以预测晚期多时间统计”这一表述——对 P3 中把相对熵模作为非马尔可夫性度量的思路是直接的方法类比。需警惕：其 χ_island 是操作定义量，与广义熵/island 公式的 S_gen 不是同一对象，引用时勿混。</p>
+  <h4>💡 推荐课题</h4>
+  <p>可考虑与 P3 衔接：把“过程张量的马尔可夫阶”作为非绝热扰动相对熵模的离散化诊断量，第一步是在 FRW 视界热力学框架下写出扰动模的协方差矩阵并计算其马尔可夫阶随波长的变化。难度中等，但需先确认该文定义能否在玻色高斯态下解析计算。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.20456v1 Announce Type: new Abstract: The Page curve and the island formula describe a reorganization of quantum information in Hawking radiation across the Page time. We study how this reorganization appears in correlations among emissions collected at several retarded times. The late radiation is treated as a covariant multi-time process, or process tensor, and $\chi_{\mathrm{island}}=\mathcal{N}_{\varnothing}-\mathcal{N}_{R}$ measures the temporal memory removed when the early radiation register $R$ is supplied. Operationally, this quantity is the corresponding change in the optimal distinguishability of the radiation process from a Markovian reference. We exhibit evaporation processes whose single-bin states and all process marginals below a finite order $k_\ast\geq 3$ remain fixed and coincide with a CP-divisible reference, while $\chi_{\mathrm{island}}$ changes by order one at order $k_\ast$. The Page transition can therefore appear as a transition in the Markov order of the radiation process. When the interior mediates the late-time memory, entanglement-wedge reconstruction of the predictive interior from $R$ Markovianizes the late process; conversely, when the late process has a minimal predictive memory and its future-affecting information is mediated by that memory, Markovianization by $R$ supplies a simulator of its influence. A Hayden--Preskill evaporation comb and an evaporating-JT calculation realize this mechanism. The late radiation retains temporal memory across the transition, while the early radiation becomes sufficient for predicting its future multi-time statistics.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.20456" target="_blank" rel="noopener">arXiv:2609.20456</a></p>
+</div>
+</details></div>
+
+<div class="divider"><span>领域动态 · 修正引力宇宙学</span></div><div class="papers">
+<details class="card " id="radar-1">
+<summary>
+  <div>
+    <div class="c-kicker">R1 · arXiv:2609.20622 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">Palatini 暴胀吸引子的回归：可观测量的普适映射</div>
+    <div class="c-title-en">The return of Palatini inflationary attractors: Universal mapping of observables</div>
+    <div class="c-authors">Christian Dioguardi, Francesco Gianesello, Antonio Racioppi</div>
+    <div class="c-oneline">💡 Palatini 引力下非最小耦合 $\xi$-吸引子暴胀中，$e$ 折数领头阶与 $\xi$ 无关，从而给出可观测量从非最小耦合到最小耦合的普适映射。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">5.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>Palatini 引力中，标量场与曲率的非最小耦合不引入额外动力学自由度，因此暴胀预言与度规表述（metric formalism）显著不同，是修正引力暴胀的一个活跃分支。此前对 $\xi$-吸引子的研究多集中在特定 $f(\phi)$ 形式，缺少对一般 $f(\phi)$ 的可观测量系统映射，这限制了模型与 CMB 数据的快速比对。本文研究单场慢滚暴胀，取同一函数 $f(\phi)$ 同时决定非最小耦合 $1+\xi f(\phi)$ 与势 $V(\phi)=V_0 f(\phi)^2$ 的模型类。作者指出对任意 $f(\phi)$，$e$ 折数在领头阶与 $\xi$ 无关，由此建立非最小耦合情形与最小耦合情形可观测量的直接映射。在强耦合极限下，张量—标量比 $r$ 被压低，标量谱指数 $n_s$ 向更大值移动，且移动幅度只依赖于原势 $V(\phi)$ 对应的 $r$。</p>
+<h4>评价</h4><p>【创新点】把 $e$ 折数与 $\xi$ 无关这一已知性质提升为一般 $f(\phi)$ 的可观测量映射工具，使非最小耦合 Palatini $\xi$-吸引子的 $(n_s, r)$ 预言可直接由最小耦合势读出，$n_s$ 偏移量仅由原势的 $r$ 决定，形式简洁。
+【局限性】结果建立在单场慢滚与领头阶 $e$ 折数近似之上，未涉及 Palatini 表述中 $\xi$ 较大时的强耦合/紫外截断问题，也未讨论再加热阶段对 $N_*$ 的影响；摘要未给出与具体 CMB 数据的拟合。
+【对 Rao 的意义】属修正引力宇宙学现象学类，方法新意有限，但 Palatini 非最小耦合的 $e$ 折数—$\xi$ 无关性可作为联络表述（metric-affine/Palatini）中标量—张量混合的对照案例，与 P2 中 f(Q) 宇宙学对联络选择的敏感性讨论有类比价值。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.20622" target="_blank" rel="noopener">arXiv:2609.20622</a></p>
+</div>
+</details>
+<details class="card " id="radar-2">
+<summary>
+  <div>
+    <div class="c-kicker">R2 · arXiv:2609.19602 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">区分耦合暗物质—暗能量与运动学幽灵穿越</div>
+    <div class="c-title-en">Distinguishing Coupled Dark Matter Dark Energy from Kinematic Phantom Crossing</div>
+    <div class="c-authors">Samit Ganguly, Koushik Dutta, Goutam Manna</div>
+    <div class="c-oneline">💡 耦合暗物质—暗能量模型中能量交换可模拟 $w_0w_a$CDM 的幽灵穿越，但在结构增长中留下第五力与中微子质量简并 $\sum m_\nu \propto f_c^2\alpha^2$ 的可检验印记。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>近期宇宙膨胀测量重新激起对有效状态方程呈幽灵型演化、可能穿越 $w=-1$ 的暗能量模型的兴趣。这种演化并不需要基本幽灵场：在耦合暗能量—暗物质（CDEDM）模型中，正则标量场与冷暗物质之间的能量交换可以在拉格朗日层面重现与现象学 $w_0w_a$CDM 相同的有效状态方程演化。本文指出该微观相互作用在结构增长中留下独特可检验信号：形成双流体系统，只有冷暗物质感受标量介导的第五力及伴随拖曳项，重子不耦合。结合无中微子自由流，该设置产生特征性的耦合—中微子质量简并，其领头标度 $\sum m_\nu \propto f_c^2 \alpha^2$ 可由双流体增长方程解析导出。作者使用 DESI DR2 BAO、CMB 距离信息等进行约束。</p>
+<h4>评价</h4><p>【创新点】把 CDEDM 与 $w_0w_a$CDM 在背景层面的简并性明确打破到扰动层面，给出第五力只作用于冷暗物质、重子不耦合的双流体结构，并解析导出 $\sum m_\nu \propto f_c^2\alpha^2$ 的耦合—中微子质量简并标度。
+【局限性】现象学类，方法新意有限：结论依赖双流体线性增长近似与特定耦合形式，未讨论非线性尺度与第五力屏蔽；摘要未给出约束的具体数值与置信区间。
+【对 Rao 的意义】同领域参考。其背景简并、扰动破缺的思路与 Rao 在 f(Q)/NYTG 中区分不同联络分支时需借助扰动层观测量的逻辑一致，可留意其双流体增长方程的写法。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.19602" target="_blank" rel="noopener">arXiv:2609.19602</a></p>
+</div>
+</details>
+<details class="card " id="radar-3">
+<summary>
+  <div>
+    <div class="c-kicker">R3 · arXiv:2609.20112 · 宇称破缺引力</div>
+    <div class="c-title-cn">AdS$_3$ 引力中的超对称边界代数：约束、Dirac 括号与非局域性</div>
+    <div class="c-title-en">Supersymmetric boundary algebras in AdS$_3$ gravity: constraints, Dirac brackets and non-locality</div>
+    <div class="c-authors">Nabamita Banerjee, Vedant Bhutra, Suvankar Dutta, Soumava Kundu</div>
+    <div class="c-oneline">💡 把 AdS$_3$ 边界条件视为 Chern-Simons 边界相空间的约束约化，发现超对称 Kac-Moody 条件下费米子 Dirac 括号含场依赖一阶微分算子之逆而本质非局域。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>AdS$_3$ 引力的渐近对称代数（如 Virasoro 与 Kac-Moody）是理解三维引力全息对偶的核心工具，但边界条件如何作为约束系统约化出这些代数、以及约化后代数的局域性，此前讨论多限于玻色情形。本文把边界条件处理为一般 Chern-Simons 边界相空间的约束约化，聚焦约束结构如何控制约化渐近对称代数的局域性与物理场内容。对超对称 Kac-Moody 边界条件，存活的玻色流保持局域，而费米—费米 Dirac 括号包含场依赖一阶微分算子的逆，因而本质非局域。施加额外费米约束后出现进一步结构：玻色第二类约化后它变为第一类，生成费米规范冗余；一般情形剩余费米场可被规范掉，而具周期零模的特殊背景支持非平凡物理费米扇区。作者进一步用 Batalin-Fradkin-Tyutin 形式消除非局域性。</p>
+<h4>评价</h4><p>【创新点】把边界条件统一处理为 Chern-Simons 相空间的约束约化，明确指出超对称情形下费米 Dirac 括号的非局域性来源（场依赖一阶微分算子之逆），并用 BFT 形式将其转化为局域代数，同时给出周期零模背景支持物理费米扇区的判据。
+【局限性】工作限于 AdS$_3$ 与 Chern-Simons 表述，结论对高维或非 AdS 边界的推广未讨论；摘要未给出非局域性对全息关联函数的具体影响。
+【对 Rao 的意义】同领域参考。其“约束结构决定约化代数的局域性与物理场内容”这一逻辑，与 Rao 关注的联络分支/约束消元（SVT、Dirac 约束分析）在方法论上同源，BFT 处理第二类约束的手法可迁移参考。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.20112" target="_blank" rel="noopener">arXiv:2609.20112</a></p>
+</div>
+</details>
+<details class="card " id="radar-4">
+<summary>
+  <div>
+    <div class="c-kicker">R4 · arXiv:2609.19296 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">超越慢滚的 Starobinsky 暴胀全局分析：结合 CMB-BAO 数据</div>
+    <div class="c-title-en">A Global Overview of Starobinsky Inflation beyond slow-roll with CMB-BAO data</div>
+    <div class="c-authors">Tarun, Tanmoy Modak, Bj\"orn Malte Sch\"afer</div>
+    <div class="c-oneline">💡 直接求解运动方程、结合 ACT/SPT CMB 与 DESI BAO 对 Starobinsky 暴胀做全局分析，得到比慢滚近似更强的参数约束并转化为再加热温度上限。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>Starobinsky $R^2$ 暴胀是最受 CMB 数据支持的暴胀模型之一，但多数参数约束是在慢滚近似下、由基线 $\Lambda$CDM 参数 $A_s$ 与 $n_s$ 间接推出的，近似误差与先验选择的影响未被系统检验。本文对 Starobinsky 暴胀做全局分析，使用最新的 ACT 与 SPT CMB 数据以及 DESI BAO 测量，直接求解运动方程而非依赖慢滚近似。结果显示模型参数约束比慢滚近似下由 $A_s$、$n_s$ 推出的更强，作者把约束翻译为再加热温度的限制，并讨论模型参数先验选择的影响，以及模型参数与 BAO 参数 $r_d h$ 的相关性。文章还研究全局分析对六维 $R^3$ 修正 Starobinsky 模型额外参数的限制，并给出有效暴胀 Hubble 慢滚（HSR）与势慢滚（PSR）参数化的参数范围。</p>
+<h4>评价</h4><p>【创新点】用直接求解运动方程替代慢滚近似，结合 ACT/SPT 与 DESI DR2 级 BAO 数据给出更紧的 Starobinsky 参数约束，并系统报告先验依赖、$r_d h$ 相关性以及 $R^3$ 修正项的额外参数限制。
+【局限性】现象学拟合类，方法新意有限：核心是数值求解加 MCMC 参数约束，未引入新的理论结构；结论依赖所用数据集组合与先验选择，摘要未给出具体数值区间。
+【对 Rao 的意义】同领域参考。其“直接解运动方程 vs 慢滚近似”的对比提醒 Rao 在处理 f(Q)/NYTG 暴胀扰动时注意慢滚近似的适用范围；$R^3$ 高导数修正的约束方式对高导数引力热力学讨论有间接参考价值。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.19296" target="_blank" rel="noopener">arXiv:2609.19296</a></p>
+</div>
+</details></div>
+
+
+<div class="footer">
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年09月18日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+<script>
+(function(){
+  var saved = localStorage.getItem('arxiv-theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); }
+  var btn = document.getElementById('themeBtn');
+  function cur(){ return document.documentElement.getAttribute('data-theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  function label(){ btn.textContent = cur() === 'dark' ? '☾ 深色' : '☀ 浅色'; }
+  label();
+  btn.onclick = function(){
+    var t = cur() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('arxiv-theme', t); label();
+  };
+})();
+</script>
+</body>
+</html>
