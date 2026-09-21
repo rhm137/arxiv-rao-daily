@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv · 2026-09-16</title>
+<style>
+:root {
+    --bg:#f7f5f0; --card:#ffffff; --ink:#1c1c28; --ink2:#55566a; --muted:#8a8b99;
+    --accent:#3b4a8c; --accent-ink:#2e3a70; --accent-soft:#eceef6;
+    --border:#e4e1d6; --border-strong:#d3cfc0;
+    --must:#9e2b25; --s7:#b07c2a; --s6:#6b7c5e; --s5:#8a8b99;
+    --shadow:0 1px 2px rgba(28,28,40,.04), 0 4px 16px rgba(28,28,40,.06);
+    --shadow-hover:0 2px 4px rgba(28,28,40,.06), 0 10px 28px rgba(28,28,40,.10);
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","Fira Code","Consolas",monospace;
+}
+[data-theme="dark"] {
+    --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+    --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+    --border:#2b2f3d; --border-strong:#3a3f50;
+    --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+    --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+    --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+        --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+        --border:#2b2f3d; --border-strong:#3a3f50;
+        --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+        --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+        --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+    }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--bg); color:var(--ink);
+       line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .25s, color .25s; }
+[data-theme="dark"] body { background:#14161d; color:#e9e7de; }
+[data-theme="dark"] .card { background:#1d2029; border-color:#2b2f3d; }
+[data-theme="dark"] .topnav { background:rgba(20,22,29,.84); }
+.topnav { position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 84%, transparent); border-bottom:1px solid var(--border); }
+.nav-inner { max-width:860px; margin:0 auto; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; }
+.brand { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.nav-right { display:flex; gap:14px; align-items:center; font-size:13px; }
+.nav-right a { color:var(--accent); text-decoration:none; }
+.nav-right a:hover { text-decoration:underline; }
+#themeBtn { border:1px solid var(--border-strong); background:transparent; color:var(--ink2);
+    border-radius:999px; padding:2px 12px; font-size:12px; cursor:pointer; font-family:var(--sans); }
+#themeBtn:hover { border-color:var(--accent); color:var(--accent); }
+.cover { max-width:860px; margin:0 auto; text-align:center; padding:60px 24px 36px; }
+.kicker { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.cover h1 { font-family:var(--serif); font-size:34px; font-weight:600; margin:14px 0 8px; letter-spacing:.01em; }
+.cover .sub { font-size:14px; color:var(--ink2); }
+.stats { display:flex; justify-content:center; align-items:center; gap:26px; margin-top:30px; flex-wrap:wrap; }
+.stat { text-align:center; }
+.stat .num { display:block; font-family:var(--serif); font-size:30px; font-weight:600; color:var(--accent-ink); }
+.stat .label { display:block; font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.08em; }
+.stat-sep { width:1px; height:34px; background:var(--border-strong); }
+.cover .src { margin-top:20px; font-size:12.5px; color:var(--muted); }
+.toc { max-width:860px; margin:0 auto 8px; padding:0 24px; }
+.toc h2 { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; margin:26px 0 12px;
+    padding-bottom:8px; border-bottom:1px solid var(--border); }
+.toc h2 .en { font-weight:400; margin-left:8px; letter-spacing:.14em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list .n { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-right:6px; }
+.toc-list a { color:var(--ink); text-decoration:none; font-family:var(--serif); }
+.toc-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+.toc-list .toc-en { display:block; font-size:12px; color:var(--muted); margin-left:26px; margin-top:-2px; }
+.divider { max-width:860px; margin:36px auto -6px; padding:0 24px; display:flex; align-items:center; gap:16px; }
+.divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border-strong); }
+.divider span { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; white-space:nowrap; }
+.papers { max-width:860px; margin:0 auto; padding:0 24px 40px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0;
+    box-shadow:var(--shadow); overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.card summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto;
+    gap:16px; align-items:start; padding:20px 24px; user-select:none; }
+.card summary::-webkit-details-marker { display:none; }
+.c-kicker { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:6px; }
+.c-title-en { font-size:13.5px; color:var(--ink2); line-height:1.5; }
+.c-title-cn { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink);
+    margin:3px 0 7px; line-height:1.55; }
+.c-authors { font-size:13px; color:var(--muted); }
+.c-oneline { font-size:13.5px; color:var(--ink2); margin-top:7px; }
+.c-side { display:flex; flex-direction:column; align-items:flex-end; gap:8px; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:1px 10px; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid var(--accent); color:var(--accent); }
+.chev { font-size:16px; color:var(--muted); transition:transform .2s; line-height:1; }
+.card[open] .chev { transform:rotate(90deg); color:var(--accent); }
+.card.collision { border-left:3px solid var(--must); }
+.detail { padding:2px 24px 22px; border-top:1px dashed var(--border-strong); }
+.detail h4 { font-size:13px; letter-spacing:.06em; color:var(--accent-ink); font-weight:700; margin:18px 0 6px; }
+.detail p { font-size:14.5px; line-height:1.85; color:var(--ink); margin-bottom:10px; }
+.detail .rel-note { font-size:13px; color:var(--accent); font-weight:600; margin:14px 0 2px; }
+.detail .action-box { background:color-mix(in srgb, var(--must) 8%, var(--card));
+    border:1px solid color-mix(in srgb, var(--must) 30%, var(--border));
+    border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border-strong); border-radius:8px; padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--muted); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details p { font-size:13px; color:var(--ink2); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--muted); }
+.src-link a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.radar-note { max-width:860px; margin:0 auto 30px; padding:0 24px; font-size:13px; color:var(--muted); }
+.footer { text-align:center; padding:36px 24px 48px; font-size:12.5px; color:var(--muted); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:640px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:16px; }
+    .stat-sep { display:none; }
+    .card summary { padding:16px 18px; }
+    .detail { padding:2px 18px 18px; }
+}
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.2.5/index.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
+  startup: { ready() {
+      MathJax.startup.defaultReady();
+      document.querySelectorAll('details.card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
+        });
+      });
+  } }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+<nav class="topnav"><div class="nav-inner">
+  <span class="brand">ARXIV DAILY</span>
+  <span class="nav-right">
+    <a href="index.html">存档索引</a>
+    <button id="themeBtn" type="button">◐</button>
+  </span>
+</div></nav>
+
+<header class="cover">
+  <div class="kicker">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv · 2026年09月16日</h1>
+  <p class="sub">每日精选 · 按 Rao 的研究画像匹配</p>
+  <div class="stats">
+    <div class="stat"><span class="num">2</span><span class="label">核心精读 · ⭐1</span></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><span class="num">5</span><span class="label">领域动态</span></div>
+    <div class="stat-sep"></div><div class="stat"><span class="num">2</span><span class="label">名词推荐</span></div>
+  </div>
+  <p class="src">来源：gr-qc 25 · hep-th 33 · astro-ph.CO 10</p>
+</header>
+
+<section class="toc">
+  <h2>核心精读<span class="en">CORE</span></h2>
+  <ol class="toc-list"><li><span class="n">01</span><a href="#paper-1">黑洞第一定律与视界约束：一个微分秩判据</a></li><li><span class="n">02</span><a href="#paper-2">高曲率标量–张量引力中任意维度的精确黑膜</a></li></ol>
+  <h2>领域动态<span class="en">FIELD RADAR</span></h2><ol class="toc-list"><li><span class="n">R1</span><a href="#radar-1">高阶导数非形变变换下 Klein-Gordon 方程的对称性</a></li><li><span class="n">R2</span><a href="#radar-2">Carrollian 共形动力学与平直空间全息</a></li><li><span class="n">R3</span><a href="#radar-3">膜世界扰动的伪谱分析</a></li><li><span class="n">R4</span><a href="#radar-4">Kalb-Ramond 黑洞中零测地线及其稳定性研究</a></li><li><span class="n">R5</span><a href="#radar-5">DESI 数据下暗部门的等效原理</a></li></ol>
+  <h2>名词推荐<span class="en">KEYWORD PICKS</span></h2><ol class="toc-list"><li><span class="n">K1</span><a href="#kw-1">以红移为标记的跑动哈勃常数作为演化暗能量的标志</a></li><li><span class="n">K2</span><a href="#kw-2">$Λ$CDM 的法庭审判</a></li></ol>
+</section>
+
+<div class="papers">
+<details class="card" id="paper-1">
+<summary>
+  <div>
+    <div class="c-kicker">#1 · arXiv:2609.16571 · gr-qc</div>
+    <div class="c-title-cn">黑洞第一定律与视界约束：一个微分秩判据</div>
+    <div class="c-title-en">Black-Hole First Laws and Horizon Constraints: A Differential Rank Criterion</div>
+    <div class="c-authors">Gunn Kim</div>
+    <div class="c-oneline">💡 用微分秩判据区分第一定律的逐点可表示性与邻域恒等式，并检验 Kerr–Newman、BTZ 与 NMG 黑洞。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s8">8.0</span>
+    <span class="must">必读</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>📌 做了什么与评价</h4>
+  <p>作者把"视界方程的热力学改写"形式化为：给定稳态度规族、独立标记的径向面、由度规参数决定的物理荷，以及视界热力学量的指定延拓，第一定律余向量能否被所选约束逐点表示，取决于它是否落在这些约束微分的张成空间内。文章区分了逐点可表示（代数条件）与邻域光滑恒等式（额外依赖延拓选择），并指出若正则约束已定义完整物理族，则逐点可表示性由第一定律本身推出。对 Kerr–Newman、新 massive gravity 中的旋转 BTZ 及 new-type NMG 黑洞，在显式约定下均与视界约束精确对齐；同时给出熵–体积比较与固定系综数据在自由能变分中的作用。</p><p>评价：核心贡献是把"第一定律是否被约束蕴含"这一常被含糊处理的问题变成可计算的秩条件，逻辑上干净。但结论的强度受限于"指定延拓"这一人为输入——邻域恒等式部分本质上是约定依赖的，作者自己也承认；此外所有显式检验都在稳态、高对称背景上完成，未涉及动态视界或非平衡情形。"把精确度规族代入场方程分量会湮灭残差"这一观察值得注意，但更像方法学警告而非定理。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>对 Rao 的引力热力学模块（Wald 熵、Iyer–Wald 荷、统一第一定律）直接有用：它提供了一个判断"哪些视界关系是独立约束、哪些只是第一定律的推论"的代数工具，可用来审计 FRW 表观视界统一第一定律中各约束的独立性。需警惕的约定差异：作者把"径向面"独立标记而非由度规自动给出，这与 Misner–Sharp/Kodama 框架中视界由几何自动定义的做法不同，迁移时须重新核对微分基的选择。熵–体积比较部分可与 P-V 临界（P2）的自由能变分对照。</p>
+  <h4>💡 推荐课题</h4>
+  <p>1) 把该秩判据搬到 f(Q) 宇宙学：对 P2 的 P-V 临界点，检验视界第一定律余向量是否落在 {f_Q, 联络约束, 能量守恒} 微分张成空间内，第一步是写出规则/不规则联络分支下约束微分的显式矩阵并算秩。2) 与 P5 衔接：用"逐点可表示 vs 邻域恒等式"的区分，检验动态热流情形下协变荷通量关系是否只是逐点成立，第一步在球对称动态背景上构造约束集合并计算其微分秩。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.16571v1 Announce Type: new Abstract: Thermodynamic rewritings of horizon equations depend on which relations are varied and which have already been imposed. We formulate a differential rank criterion that makes these choices explicit. The construction uses a stationary metric family together with an independently marked radial surface, physical charges determined by the metric parameters, and specified extensions of the horizon thermodynamic quantities. A first-law covector is pointwise representable by selected constraints precisely when it lies in the span of their differentials. We distinguish this algebraic condition from a smooth identity in a neighborhood. If regular constraints already define the complete physical family, pointwise representability follows from the first law itself; a neighborhood identity additionally depends on the chosen extensions. With explicit prescriptions, Kerr--Newman, rotating BTZ black holes in new massive gravity, and the new-type NMG black hole all exhibit exact alignment with their horizon constraints. By contrast, substituting an exact metric family into a field-equation component can annihilate that residual before any horizon condition is tested. We also give an explicit entropy--volume comparison and specify the role of fixed ensemble data in free-energy variations. The framework separates consequences of the established first law from additional claims about selected constraints and their extensions.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.16571" target="_blank" rel="noopener">arXiv:2609.16571</a></p>
+</div>
+</details>
+<details class="card" id="paper-2">
+<summary>
+  <div>
+    <div class="c-kicker">#2 · arXiv:2609.17528 · hep-th</div>
+    <div class="c-title-cn">高曲率标量–张量引力中任意维度的精确黑膜</div>
+    <div class="c-title-en">Exact Black Branes in General Dimensions in Higher-Curvature Scalar-Tensor Gravity</div>
+    <div class="c-authors">Tianhao Wu</div>
+    <div class="c-oneline">💡 在无势 dilaton–Lovelock–Horndeski 理论中得到两族平面黑膜，标量零模下 Wald 熵恒定而视界半径与温度变化。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>📌 做了什么与评价</h4>
+  <p>作者在无势、dilaton 耦合的 Lovelock–Horndeski 理论中构造了两族中性平面黑膜，动机来自异弦紧化中高维曲率与标量动力学的联系。固定标量零模时，视界半径与温度随参数变化，但完整的稳态 Wald 熵保持常数且为正；视界处的指数标量因子恰好补偿面积增长，作者给出这一行为的几何解释。通过精确系数分析确定两个四维分支及其向任意高维的闭式耦合关系延续：线性族共形平坦、固定耦合下 AdS 标度自由；分数族 Weyl 弯曲、固定该标度。共同的动能关系还排除了它们由实单标量平环紧化的度规–dilaton 母理论实现。</p><p>评价：精确解加闭式系数关系是扎实的，熵恒定—面积补偿的几何机制也讲得清楚。但"无势"假设是强限制，且只处理中性平面膜、标量零模，未触及标量激发与稳定性（无 ghost/无快子条件未系统讨论）；排除平环紧化实现的论证依赖特定动能关系，需回正文核对是否覆盖所有符号约定。结论对宇宙学直接应用有限。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>对 Rao 的 Wald 熵与高导数引力热力学模块有直接价值："熵恒定而 T、r_h 变化"是一个很好的反例，提醒在修正引力中不能把面积律直觉直接搬到 Wald 熵上，尤其当标量在视界非平凡时。Lovelock–Horndeski 的系数匹配方法可借鉴到 f(Q)/标量–张量联络分支的精确解构造。需警惕：dilaton 耦合与 Rao 常用的 f(Q) 非度规框架在变量集上不同，Wald 熵公式中的有效引力耦合需重新推导。</p>
+  <h4>💡 推荐课题</h4>
+  <p>1) 与 P1 衔接：在 NYTG 不规则联络宇宙学中，检验是否存在类似的"标量因子补偿面积"机制使某类视界熵在标量零模下恒定，第一步是在平/开 FRW 分支上写出有效 Wald 熵并检查其对标量零模的显式依赖。2) 与 Q1 衔接：把该文的系数匹配方法用于标准 NYTG 静态球对称分支，审计无毛条件是否也依赖类似的动能关系，第一步是列出 Lovelock–Horndeski 型作用量在 NYTG 变量下的系数约束方程。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.17528v1 Announce Type: new Abstract: We obtain two families of neutral planar black branes in a potential-free dilaton-coupled Lovelock--Horndeski theory. Heterotic compactification relates higher-dimensional curvature to scalar dynamics and motivates the interaction structure. At fixed scalar zero mode, the horizon radius and temperature vary while the complete stationary Wald entropy remains constant and positive. The exponential scalar factor at the horizon exactly compensates the area growth, giving this behavior a direct geometric explanation. An exact coefficient analysis determines the two four-dimensional branches and their continuation to every higher dimension through closed coupling relations. The linear family is conformally flat and leaves the AdS scale free at fixed couplings; the fractional family is Weyl curved and fixes that scale. The common kinetic relation also excludes their realization through a real one-scalar flat-torus reduction of a metric--dilaton parent.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.17528" target="_blank" rel="noopener">arXiv:2609.17528</a></p>
+</div>
+</details></div>
+
+<div class="divider"><span>领域动态 · 修正引力宇宙学</span></div><div class="papers">
+<details class="card " id="radar-1">
+<summary>
+  <div>
+    <div class="c-kicker">R1 · arXiv:2609.17462 · mimetic/标量-张量/修正引力宇宙学一般项</div>
+    <div class="c-title-cn">高阶导数非形变变换下 Klein-Gordon 方程的对称性</div>
+    <div class="c-title-en">Symmetry of the Klein-Gordon Equation under Disformal Transformations with Higher-Order Derivatives</div>
+    <div class="c-authors">Yurev Ivan Ross B. Carag, Allan L. Alinea</div>
+    <div class="c-oneline">💡 用 Takahashi-Motohashi-Minamitsuji 高阶非形变变换，求出标量场 Klein-Gordon 方程保持形式不变的最一般条件，并给出二阶情形下等价度规族。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-neighbor">近邻</span>
+    <span class="score s6">6.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>标量-张量理论中，非形变变换（disformal transformation）是连接不同无鬼高阶标量-张量理论的工具，Takahashi 等人构造的含标量场任意高阶导数的变换可把两个无鬼理论互相映射。但变换下物质/标量场方程本身是否保持形式不变，此前没有系统回答，而这直接关系到变换前后物理等价性的判据。本文把该高阶非形变变换作用于标量场的 Klein-Gordon 方程，推导其形式不变（form-invariance）的最一般条件。二阶情形下，作者找到一族彼此非形变相关的度规，它们给出相同的传播解；高阶情形则表明，在满足理论自洽性与现象学约束的同时仍可实现 KG 不变性。最后作者把非形变变换解释为时空流形的“形变”，讨论其对几何结构的含义。</p>
+<h4>评价</h4><p>【创新点】把非形变变换的讨论从作用量层面推进到运动方程层面，给出 KG 方程形式不变的一般条件，并明确二阶情形下存在一族等价度规，这是此前文献未系统给出的结果。
+【局限性】摘要只给出条件与等价类，未说明高阶情形下这些条件是否与无鬼性、Ostrogradsky 稳定性同时可满足的具体参数范围；也未涉及背景宇宙学解或扰动层面的检验，结论停留在方程层面。
+【对 Rao 的意义】与 mimetic/标量-张量这条雷达线相关，非形变变换是 mimetic 引力与 DHOST 之间建立等价性的常用桥梁；若 Rao 后续要论证某个标量-张量模型与 mimetic 形式的等价性，本文的 KG 不变性条件可作为变换合法性的检查清单。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.17462" target="_blank" rel="noopener">arXiv:2609.17462</a></p>
+</div>
+</details>
+<details class="card " id="radar-2">
+<summary>
+  <div>
+    <div class="c-kicker">R2 · arXiv:2609.17086 · f(Q)/STG/高维统一/修正引力宇宙学一般项</div>
+    <div class="c-title-cn">Carrollian 共形动力学与平直空间全息</div>
+    <div class="c-title-en">Carrollian Conformal Dynamics and Flat-Space Holography</div>
+    <div class="c-authors">Simon Pekar</div>
+    <div class="c-oneline">💡 为渐近平直时空的零无穷远建立 metric-affine 的 Carrollian 共形动力学，用 hypermomentum 追踪联络自由度，并证明其未定横向对称部分正是 Bondi shear。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s6">6.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>渐近平直时空的共形边界是零曲面，其几何是 Carrollian 而非 Lorentzian，这使对称性、变分原理与演化方程之间的关系发生本质变化：与 Lorentzian Levi-Civita 联络不同，与共形结构相容的无挠 Carrollian 联络含有真正独立的自由度。本文发展了一套 metric-affine 的共形动力学表述，通过 hypermomentum 显式追踪这些联络自由度，并由局域 Carroll boost、转动、Weyl 变换与微分同胚导出协变演化方程。作者将其应用于四维渐近平直时空的 Einstein 引力：Penrose 共形紧化把零无穷远识别为共形 Carrollian 流形，其相容联络中未定的横向对称部分恰好就是渐近 Bondi shear；在固定 BMS 规范后，Carrollian 数据与 Bondi 数据对应起来。</p>
+<h4>评价</h4><p>【创新点】把 Carrollian 联络的独立自由度（hypermomentum）与 Bondi shear 这一具体渐近数据对应起来，为平直空间全息提供了一个 metric-affine 的变分框架，而非仅做对称性代数分析。
+【局限性】摘要未给出任何可观测量的计算或与已知 Bondi 质量损失公式的定量比对，框架的物理内容仍待填充；且只处理 Einstein 引力，未涉及高导数或修正引力。
+【对 Rao 的意义】与 Rao 的协变相空间/边界歧义这条线（Wald 熵、辛势）在方法上同源——都是把边界上的联络/度规自由度显式保留下来再谈变分。若 Rao 想处理零边界上的热力学量定义，本文的 hypermomentum 记账方式可作参考。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.17086" target="_blank" rel="noopener">arXiv:2609.17086</a></p>
+</div>
+</details>
+<details class="card " id="radar-3">
+<summary>
+  <div>
+    <div class="c-kicker">R3 · arXiv:2609.17077 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">膜世界扰动的伪谱分析</div>
+    <div class="c-title-en">Pseudospectrum of Braneworld Perturbations</div>
+    <div class="c-authors">Hai-Long Jia, Wen-Di Guo, Yun-Tao Gu, Yu-Xiao Liu</div>
+    <div class="c-oneline">💡 首次为厚膜张量扰动构造 hyperboloidal 表述与高度函数规范，用伪谱与条件数分析局域引力子零模和准正规模谱的谱稳定性。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">5.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>伪谱分析用于探测非自伴算子的谱稳定性，已在黑洞物理中广泛使用，但尚未用于膜世界场景。本文把该方法应用于标量场生成的厚膜背景中的张量引力扰动，给出据作者所知首个膜世界扰动的 hyperboloidal 表述，并提出适配翘曲几何的高度函数规范。该构造把准正规模的出射边界条件转化为有限紧致化边界上的正则性条件，并把扰动方程改写为由非自伴 hyperboloidal 演化算子生成的一阶系统。配合相应的能量范数，作者计算了局域引力子零模与准正规模谱的条件数和伪谱，发现条件数沿 overtone 序列迅速增长。</p>
+<h4>评价</h4><p>【创新点】把 hyperboloidal 方法与伪谱分析引入膜世界扰动，解决了出射边界条件在数值上的处理困难，并首次给出厚膜准正规模的谱稳定性定量刻画（条件数随 overtone 快速增长）。
+【局限性】只处理张量扇区，未涉及标量/矢量扰动与膜上物质耦合；伪谱结论依赖所选能量范数与高度函数规范，规范依赖性未在摘要中讨论。
+【对 Rao 的意义】属现象学/数值方法类，方法新意在于 hyperboloidal 紧致化与伪谱工具，与 Rao 的修正引力扰动稳定性主线（SVT 分解、约束消元）不直接对接；若 Rao 需要处理出射边界条件下的谱问题可参考其紧致化技巧。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.17077" target="_blank" rel="noopener">arXiv:2609.17077</a></p>
+</div>
+</details>
+<details class="card " id="radar-4">
+<summary>
+  <div>
+    <div class="c-kicker">R4 · arXiv:2609.16471 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">Kalb-Ramond 黑洞中零测地线及其稳定性研究</div>
+    <div class="c-title-en">Study of Null Geodesics and their Stability in Kalb-Ramond Black Holes</div>
+    <div class="c-authors">P. A. Gonz\'{a}lez, Marco Olivares, Eleftherios Papantonopoulos, Yerko V\'{a}squez</div>
+    <div class="c-oneline">💡 在含宇宙学常数的带电 Kalb-Ramond 黑洞中解析求出光子球半径、临界碰撞参数、捕获截面与偏折轨迹，并计算不稳定圆轨道的 Lyapunov 指数。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>Kalb-Ramond 背景反对称张量的非零真空期望值会自发破缺 Lorentz 对称性，用一个无量纲参数 $l$ 刻画，并使 Reissner-Nordström-(A)dS 几何发生形变。本文研究四维带电 Kalb-Ramond 黑洞（含宇宙学常数）中的零测地线及其稳定性：推导无质量粒子的有效势，给出光子球半径、临界碰撞参数、捕获截面与偏折轨迹的解析表达式。$l\to0$ 时回到 RN、RN-dS、RN-AdS 的测地线结构；有限 $l$ 会移动转折点、改变光线弯曲，并形变第一类与第二类光子轨迹。在 AdS 分支中作者发现一种特殊的 limacon 型零测地线，其角结构受 Kalb-Ramond 参数修正；同时计算了不稳定圆轨道的 Lyapunov 指数，并说明宇宙学常数的影响。</p>
+<h4>评价</h4><p>【创新点】给出 Kalb-Ramond 形变下光子球、捕获截面与偏折的完整解析表达式，并指出 AdS 分支中 limacon 型零测地线这一新结构，比此前仅做数值阴影图的工作更系统。
+【局限性】纯几何/测地线层面，未与任何观测（阴影、EHT、吸积谱）比对，也未讨论该解本身的稳定性与参数允许范围；Lorentz 破缺参数 $l$ 的物理约束未涉及。
+【对 Rao 的意义】现象学类，方法新意有限，属修正引力黑洞阴影方向的常规扩展；与 Rao 的引力热力学主线无直接接口，仅作领域动态了解。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.16471" target="_blank" rel="noopener">arXiv:2609.16471</a></p>
+</div>
+</details>
+<details class="card " id="radar-5">
+<summary>
+  <div>
+    <div class="c-kicker">R5 · arXiv:2609.17423 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">DESI 数据下暗部门的等效原理</div>
+    <div class="c-title-en">The Equivalence Principle in the Dark Sector in light of DESI</div>
+    <div class="c-authors">Andrea Clini, Pierre Zhang, Emanuele Castorina, Maria Archidiacono</div>
+    <div class="c-oneline">💡 假设暗物质惯性质量与引力质量不同，用 DESI DR1/DR2 的 BAO 与 Full Shape 数据拟合出暗部门长程力强度约 $\beta\sim0.5\%$，显著性约 $2.5\sigma$。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>DESI 测量的星系分布与由 CMB 各向异性外推到低红移的标准 $\Lambda$CDM 模型存在轻微张力，已有多种新物理方案试图解释，尤其是暗部门中的新动力学。本文提出一种解决途径：假设暗物质粒子的惯性质量与引力质量不相等，从而在暗部门中引入一个长程力。作者对 CMB 数据分别联合 DESI DR1 的 BAO 与 Full Shape 数据、或单独联合 BAO DR2 数据进行拟合，最佳拟合给出暗部门长程力强度 $\beta\sim0.5\%$（相对于引力），显著性约 $2.5\sigma$。初步联合 FS DR1 与 BAO DR2 的分析确认了 DR2 的统计能力，并把暗力的证据进一步提高。</p>
+<h4>评价</h4><p>【创新点】把暗物质惯性/引力质量不等这一等效原理破缺假设直接放到 DESI DR1/DR2 的 BAO 与 Full Shape 数据上做拟合，给出 $\beta\sim0.5\%$、$\sim2.5\sigma$ 的定量约束，并显示 DR2 相对 DR1 的统计增益。
+【局限性】显著性仅约 $2.5\sigma$，尚不足以宣称探测；摘要未说明该长程力是否与第五力/太阳系 PPN 约束相容，也未讨论其对结构增长与 CMB 透镜的连带影响。
+【对 Rao 的意义】现象学类，方法新意有限，属暗部门等效原理破缺的拟合工作；与 Rao 的修正引力宇宙学雷达线相关，可作为 DESI 张力下新物理方案的动态跟踪，与课题卡无直接接口。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.17423" target="_blank" rel="noopener">arXiv:2609.17423</a></p>
+</div>
+</details></div>
+<div class="divider"><span>名词推荐 · 暗能量</span></div><div class="papers">
+<details class="card" id="kw-1">
+<summary>
+  <div>
+    <div class="c-kicker">K1 · arXiv:2609.17393 · astro-ph.CO</div>
+    <div class="c-title-cn">以红移为标记的跑动哈勃常数作为演化暗能量的标志</div>
+    <div class="c-title-en">Running Hubble Constant with the Redshift as a Marker of Evolutionary Dark Energy</div>
+    <div class="c-authors">Nakia Carlevaro, Giovanni Montani, Maria Giovanna Dainotti</div>
+    <div class="c-oneline">💡 在物质与暗能量不直接耦合的假设下，把观测到的跑动哈勃常数 $H_0(z)$ 重新解释为幻影型演化暗能量，并用分箱 Pantheon Ia 超新星样本检验幂律与优化拟合两种形式。</div>
+  </div>
+  <div class="c-side">
+    <span class="kw">关键词：暗能量</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>宇宙学中一个反复出现的观测疑点是：用不同红移区间的数据拟合出的哈勃常数 $H_0$ 似乎随红移变化（即"跑动 $H_0$"）。若这一效应为真，它可能暗示 $\Lambda$CDM 的常数暗能量图像需要修正；但也可能只是数据分箱、系统误差或拟合方法造成的假象。厘清"跑动 $H_0$"能否被一个自洽的物理模型承载，是判断其是否值得当作新物理信号的关键一步。
+
+本文在保持 $\Lambda$CDM 中物质与暗能量不直接相互作用的假设下，论证宇宙动力学的物理内容总可以等价地用一个"演化暗能量"范式来表示。作者分别讨论幂律形式的跑动哈勃常数和一个优化拟合模型，两者都用分箱的 Pantheon Ia 超新星样本数据进行分析。结果显示，这两种情形都对应一种类幻影（phantom-like）的演化暗能量，即有效状态方程参数跨越 $-1$ 的幻影一侧。论文并未给出对跑动 $H_0$ 显著性的独立统计判决，而是聚焦于其可能的物理诠释。</p>
+<h4>评价</h4><p>【创新点】把"跑动 $H_0$"这一通常被视为系统误差或拟合假象的现象，在物质—暗能量不耦合的前提下映射为一个自洽的演化暗能量描述，并指出幂律与优化拟合两种参数化都落在幻影型暗能量上，给出了该现象的物理诠释框架。
+
+【局限性】论证依赖"物质与暗能量不直接相互作用"这一强假设，且只用了分箱 Pantheon Ia 超新星单一探针，未联合 CMB/BAO 做交叉检验；摘要未说明跑动 $H_0$ 本身的统计显著性，因此"演化暗能量"的结论可能只是对同一数据的重新参数化，而非独立证据。
+
+【对 Rao 的意义】现象学类，方法新意有限，属修正引力宇宙学一般项的风向参考。与 Rao 的 P2（f(Q) 宇宙学 P-V 临界点）无直接方法重叠，但若 Rao 后续考虑用视界热力学或有效状态方程参数化描述暗能量演化，此文提供了一个"跑动 $H_0$ ↔ 幻影暗能量"的对应关系可作对照。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.17393" target="_blank" rel="noopener">arXiv:2609.17393</a></p>
+</div>
+</details>
+<details class="card" id="kw-2">
+<summary>
+  <div>
+    <div class="c-kicker">K2 · arXiv:2609.16097 · astro-ph.CO</div>
+    <div class="c-title-cn">$Λ$CDM 的法庭审判</div>
+    <div class="c-title-en">$\Lambda$CDM in a courtroom</div>
+    <div class="c-authors">Ofer Lahav, Paul Shah</div>
+    <div class="c-oneline">💡 以"庭审"视角综述近期星系成团、Ia 超新星与 CMB 测量对常数 $Λ$ 的挑战，评估常数暗能量与动力学暗能量（DDE）各自的证据强度及未来检验前景。</div>
+  </div>
+  <div class="c-side">
+    <span class="kw">关键词：暗能量</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>宇宙学常数 $Λ$（及其推广形式暗能量）约占当前宇宙能量的 70%，$Λ$CDM 范式已主导宇宙学超过四分之一世纪。然而近期星系成团、Ia 超新星和 CMB 的测量结果对常数 $Λ$ 提出了挑战，使得"暗能量是否随时间演化"重新成为焦点问题。判断这些张力是系统误差还是新物理信号，直接决定未来十年宇宙学观测的方向。
+
+本文是一篇 Perspective 综述，作者以"法庭审判"为框架，系统评估支持常数 $Λ$ 与支持动力学暗能量（DDE）两方的证据强度。文章梳理了近期各项观测发展对 $Λ$CDM 的压力，并讨论了这些张力在统计上的可靠程度。最后，作者展望了未来观测对"我们宇宙"以及"我们对这一最神秘组分的理解"可能带来的走向。摘要未给出具体数值约束或置信区间，属于观点性综述而非新数据分析。</p>
+<h4>评价</h4><p>【创新点】以对抗式"庭审"结构组织常数 $Λ$ 与 DDE 的证据对比，把分散在不同探针上的张力集中呈现，便于读者快速把握当前暗能量争论的格局；作为 Perspective 类文章，其价值在于框架而非新结果。
+
+【局限性】属观点综述，摘要未给出任何定量约束、置信度或样本量，也未说明对各项张力的系统误差评估细节；"庭审"框架本身可能强化二元对立，掩盖了常数 $Λ$ 与 DDE 之间连续过渡的可能性。
+
+【对 Rao 的意义】现象学/综述类，方法新意有限，属修正引力宇宙学一般项的风向参考。对 Rao 的 P2（f(Q) 宇宙学 P-V 临界点）而言，此文可作为"当前暗能量观测张力"的背景索引，帮助判断 f(Q) 类模型需要面对哪些观测约束，但不提供可直接迁移的技术工具。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.16097" target="_blank" rel="noopener">arXiv:2609.16097</a></p>
+</div>
+</details></div>
+
+<div class="footer">
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年09月16日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+<script>
+(function(){
+  var saved = localStorage.getItem('arxiv-theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); }
+  var btn = document.getElementById('themeBtn');
+  function cur(){ return document.documentElement.getAttribute('data-theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  function label(){ btn.textContent = cur() === 'dark' ? '☾ 深色' : '☀ 浅色'; }
+  label();
+  btn.onclick = function(){
+    var t = cur() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('arxiv-theme', t); label();
+  };
+})();
+</script>
+</body>
+</html>
