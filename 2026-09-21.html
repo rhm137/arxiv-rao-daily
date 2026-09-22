@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv · 2026-09-21</title>
+<style>
+:root {
+    --bg:#f7f5f0; --card:#ffffff; --ink:#1c1c28; --ink2:#55566a; --muted:#8a8b99;
+    --accent:#3b4a8c; --accent-ink:#2e3a70; --accent-soft:#eceef6;
+    --border:#e4e1d6; --border-strong:#d3cfc0;
+    --must:#9e2b25; --s7:#b07c2a; --s6:#6b7c5e; --s5:#8a8b99;
+    --shadow:0 1px 2px rgba(28,28,40,.04), 0 4px 16px rgba(28,28,40,.06);
+    --shadow-hover:0 2px 4px rgba(28,28,40,.06), 0 10px 28px rgba(28,28,40,.10);
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","Fira Code","Consolas",monospace;
+}
+[data-theme="dark"] {
+    --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+    --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+    --border:#2b2f3d; --border-strong:#3a3f50;
+    --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+    --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+    --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+        --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+        --border:#2b2f3d; --border-strong:#3a3f50;
+        --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+        --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+        --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+    }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--bg); color:var(--ink);
+       line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .25s, color .25s; }
+[data-theme="dark"] body { background:#14161d; color:#e9e7de; }
+[data-theme="dark"] .card { background:#1d2029; border-color:#2b2f3d; }
+[data-theme="dark"] .topnav { background:rgba(20,22,29,.84); }
+.topnav { position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 84%, transparent); border-bottom:1px solid var(--border); }
+.nav-inner { max-width:860px; margin:0 auto; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; }
+.brand { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.nav-right { display:flex; gap:14px; align-items:center; font-size:13px; }
+.nav-right a { color:var(--accent); text-decoration:none; }
+.nav-right a:hover { text-decoration:underline; }
+#themeBtn { border:1px solid var(--border-strong); background:transparent; color:var(--ink2);
+    border-radius:999px; padding:2px 12px; font-size:12px; cursor:pointer; font-family:var(--sans); }
+#themeBtn:hover { border-color:var(--accent); color:var(--accent); }
+.cover { max-width:860px; margin:0 auto; text-align:center; padding:60px 24px 36px; }
+.kicker { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.cover h1 { font-family:var(--serif); font-size:34px; font-weight:600; margin:14px 0 8px; letter-spacing:.01em; }
+.cover .sub { font-size:14px; color:var(--ink2); }
+.stats { display:flex; justify-content:center; align-items:center; gap:26px; margin-top:30px; flex-wrap:wrap; }
+.stat { text-align:center; }
+.stat .num { display:block; font-family:var(--serif); font-size:30px; font-weight:600; color:var(--accent-ink); }
+.stat .label { display:block; font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.08em; }
+.stat-sep { width:1px; height:34px; background:var(--border-strong); }
+.cover .src { margin-top:20px; font-size:12.5px; color:var(--muted); }
+.toc { max-width:860px; margin:0 auto 8px; padding:0 24px; }
+.toc h2 { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; margin:26px 0 12px;
+    padding-bottom:8px; border-bottom:1px solid var(--border); }
+.toc h2 .en { font-weight:400; margin-left:8px; letter-spacing:.14em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list .n { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-right:6px; }
+.toc-list a { color:var(--ink); text-decoration:none; font-family:var(--serif); }
+.toc-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+.toc-list .toc-en { display:block; font-size:12px; color:var(--muted); margin-left:26px; margin-top:-2px; }
+.divider { max-width:860px; margin:36px auto -6px; padding:0 24px; display:flex; align-items:center; gap:16px; }
+.divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border-strong); }
+.divider span { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; white-space:nowrap; }
+.papers { max-width:860px; margin:0 auto; padding:0 24px 40px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0;
+    box-shadow:var(--shadow); overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.card summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto;
+    gap:16px; align-items:start; padding:20px 24px; user-select:none; }
+.card summary::-webkit-details-marker { display:none; }
+.c-kicker { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:6px; }
+.c-title-en { font-size:13.5px; color:var(--ink2); line-height:1.5; }
+.c-title-cn { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink);
+    margin:3px 0 7px; line-height:1.55; }
+.c-authors { font-size:13px; color:var(--muted); }
+.c-oneline { font-size:13.5px; color:var(--ink2); margin-top:7px; }
+.c-side { display:flex; flex-direction:column; align-items:flex-end; gap:8px; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:1px 10px; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid var(--accent); color:var(--accent); }
+.chev { font-size:16px; color:var(--muted); transition:transform .2s; line-height:1; }
+.card[open] .chev { transform:rotate(90deg); color:var(--accent); }
+.card.collision { border-left:3px solid var(--must); }
+.detail { padding:2px 24px 22px; border-top:1px dashed var(--border-strong); }
+.detail h4 { font-size:13px; letter-spacing:.06em; color:var(--accent-ink); font-weight:700; margin:18px 0 6px; }
+.detail p { font-size:14.5px; line-height:1.85; color:var(--ink); margin-bottom:10px; }
+.detail .rel-note { font-size:13px; color:var(--accent); font-weight:600; margin:14px 0 2px; }
+.detail .action-box { background:color-mix(in srgb, var(--must) 8%, var(--card));
+    border:1px solid color-mix(in srgb, var(--must) 30%, var(--border));
+    border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border-strong); border-radius:8px; padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--muted); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details p { font-size:13px; color:var(--ink2); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--muted); }
+.src-link a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.radar-note { max-width:860px; margin:0 auto 30px; padding:0 24px; font-size:13px; color:var(--muted); }
+.footer { text-align:center; padding:36px 24px 48px; font-size:12.5px; color:var(--muted); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:640px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:16px; }
+    .stat-sep { display:none; }
+    .card summary { padding:16px 18px; }
+    .detail { padding:2px 18px 18px; }
+}
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.2.5/index.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
+  startup: { ready() {
+      MathJax.startup.defaultReady();
+      document.querySelectorAll('details.card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
+        });
+      });
+  } }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+<nav class="topnav"><div class="nav-inner">
+  <span class="brand">ARXIV DAILY</span>
+  <span class="nav-right">
+    <a href="index.html">存档索引</a>
+    <button id="themeBtn" type="button">◐</button>
+  </span>
+</div></nav>
+
+<header class="cover">
+  <div class="kicker">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv · 2026年09月21日</h1>
+  <p class="sub">每日精选 · 按 Rao 的研究画像匹配</p>
+  <div class="stats">
+    <div class="stat"><span class="num">2</span><span class="label">核心精读 · ⭐0</span></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><span class="num">6</span><span class="label">领域动态</span></div>
+    <div class="stat-sep"></div><div class="stat"><span class="num">1</span><span class="label">名词推荐</span></div>
+  </div>
+  <p class="src">来源：gr-qc 15 · hep-th 18 · astro-ph.CO 10</p>
+</header>
+
+<section class="toc">
+  <h2>核心精读<span class="en">CORE</span></h2>
+  <ol class="toc-list"><li><span class="n">01</span><a href="#paper-1">部分纠缠熵的微分形式描述：在协变相空间中检验 Killing 矢量构造</a></li><li><span class="n">02</span><a href="#paper-2">磁性 GMGHS 黑洞的热力学拓扑：W̄^{1-} 子类</a></li></ol>
+  <h2>领域动态<span class="en">FIELD RADAR</span></h2><ol class="toc-list"><li><span class="n">R1</span><a href="#radar-1">对数暗流体作为幺模引力中的能量扩散</a></li><li><span class="n">R2</span><a href="#radar-2">关于 oscillon 的一点注记：预加热期间不可忽略的度规涨落</a></li><li><span class="n">R3</span><a href="#radar-3">从增长数据看修正引力：拟合优度与引力耦合</a></li><li><span class="n">R4</span><a href="#radar-4">无需可分离性的矢量超辐射：来自世界线有效理论的失稳率</a></li><li><span class="n">R5</span><a href="#radar-5">复标量场厚膜：线性微扰稳定性与耦合引力的标量 Kaluza-Klein 模演化</a></li><li><span class="n">R6</span><a href="#radar-6">Einstein-Æther 量子宇宙学中的量子隧穿与经典时空的涌现</a></li></ol>
+  <h2>名词推荐<span class="en">KEYWORD PICKS</span></h2><ol class="toc-list"><li><span class="n">K1</span><a href="#kw-1">暗能量混合中子星的结构与天体物理性质</a></li></ol>
+</section>
+
+<div class="papers">
+<details class="card" id="paper-1">
+<summary>
+  <div>
+    <div class="c-kicker">#1 · arXiv:2609.21398 · hep-th</div>
+    <div class="c-title-cn">部分纠缠熵的微分形式描述：在协变相空间中检验 Killing 矢量构造</div>
+    <div class="c-title-en">A Differential Form Description of Partial Entanglement Entropy: Testing a Killing Vector Construction in Covariant Phase Space</div>
+    <div class="c-authors">Chuanjia Zhu, Dong-Hui Du, Wen-Cong Gan, Fu-Wen Shu</div>
+    <div class="c-oneline">💡 作者用微分形式刻画 PEE 线程流，并在 Rindler-AdS₃ 中检验 Iyer-Wald 面荷能否重构中心 PEE 流，结果是否定的。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>全息纠缠熵的 bit thread 图像把熵写成边界区域间的流线，而部分纠缠熵（PEE）与 PEE 线程进一步把这一结构分解到每个边界点。已知 PEE 线程流可以叠加重构出常规 bit thread 流，但 PEE 流本身缺少一个协变、几何化的场论描述，尤其是它与协变相空间（CPS）荷构造之间是否存在联系尚不清楚，这正是本文的动机。
+作者为 PEE 线程流引入微分形式描述：在真空 AdS₃/CFT₂ 的单个区间上，证明该形式的通量复现已知的纠缠轮廓，作为自洽性检验。随后检验该 PEE 形式能否（至多相差恰当形式改进）与 CPS 形式构造的流对应：以 Rindler-AdS₃ 中的精确 Killing 矢量作为首个测试，Rindler 参数 a 标记一族背景，把每个 a 对应的 Killing 矢量代入 Iyer-Wald 面荷形式并保留完整的 a 依赖，再对 a 积分定义有限候选流。对中心边界点 r₀=0 发出的反射对称 PEE 流，变换到 Poincaré-AdS₃ 后，没有任何 Killing 参数选择能同时复现已知 PEE 流的两个分量，说明该直接 Killing 矢量 CPS 构造不足以重构中心 PEE 流。</p>
+  <h4>评价</h4>
+  <p>【创新点】首次把 PEE 线程流写成微分形式并验证其通量给出纠缠轮廓，同时给出一个明确的否定性结果：在 Rindler-AdS₃ 中直接代入 Iyer-Wald 面荷并对 Rindler 参数积分，无法同时匹配中心 PEE 流的两个分量，这为“PEE 流是否来自协变相空间荷”划出了反例边界。
+【局限性】检验只限于真空 AdS₃/CFT₂ 单区间、Rindler-AdS₃ 的精确 Killing 矢量与中心点 r₀=0 的反射对称流；作者自己也承认结论只针对“直接 Killing 矢量 CPS 构造”，恰当形式改进、其他 CPS 流或更一般的生成元都未排除，因此是必要条件式的否定而非普遍不可能性证明。
+【对 Rao 的意义】与 Rao 引力热力学主线中的 Wald 熵、Iyer-Wald Noether 荷、辛势与边界歧义直接相关：文中“面荷形式对参数积分得到有限流”的做法，与协变荷的有限性/可积性讨论同源，可作为检验协变相空间荷定义歧义的一个具体玩具模型。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可学到 Iyer-Wald 面荷形式在具体背景（Rindler-AdS₃）中的显式代入与对参数 a 积分获得有限量的操作；注意其“至多相差恰当形式改进”的表述，正对应协变相空间中辛势的边界项歧义——Rao 在整理 Wald 熵与 Noether 荷时需区分“面荷形式本身”与“其积分/改进后的有限荷”，避免把坐标依赖的流误当作物理量。</p>
+  <h4>💡 推荐课题</h4>
+  <p>暂无</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.21398v1 Announce Type: new Abstract: The bit thread formulation provides a geometric description of holographic entanglement entropy, while partial entanglement entropy (PEE) and PEE threads resolve this structure with respect to individual boundary points. Motivated by the fact that PEE thread flows can be superposed to reconstruct conventional bit thread flows, we introduce a differential form description of PEE thread flow. For an interval in the vacuum AdS$_3$/CFT$_2$ setup, we show that the flux of the resulting form reproduces the known entanglement contour, providing a consistency check of the proposed description. We then investigate whether the PEE form can be related, possibly up to an exact form improvement, to a current constructed from the covariant phase space (CPS) formalism. As a first test, we consider exact Killing vectors in Rindler-AdS$_3$. The Rindler parameter $a$ parametrizes a one-parameter family of backgrounds. At each value of $a$, the Killing vector of the corresponding background is substituted into the Iyer-Wald surface charge form, and the full $a$-dependence of the resulting form is retained. We define a finite candidate current by integrating this surface charge form over $a$. For the reflection-symmetric PEE flow sourced at the central boundary point $r_0=0$, we find that no choice of the Killing parameters reproduces both components of the known PEE flow after transforming to Poincar\'e-AdS$_3$. This result shows that the direct Killing vector CPS construction considered here is not sufficient to reproduce the central PEE flow. Possible extensions include an exact form improvement, a different CPS current, or a more general choice of generator.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.21398" target="_blank" rel="noopener">arXiv:2609.21398</a></p>
+</div>
+</details>
+<details class="card" id="paper-2">
+<summary>
+  <div>
+    <div class="c-kicker">#2 · arXiv:2609.20898 · gr-qc</div>
+    <div class="c-title-cn">磁性 GMGHS 黑洞的热力学拓扑：W̄^{1-} 子类</div>
+    <div class="c-title-en">Thermodynamic topology of magnetic GMGHS black holes: the $\overline {W}^{1-}$ subclass</div>
+    <div class="c-authors">Dejiang Yin, Qi-Qi Liang, Yu-Die Wan, Li-Yun Zhang</div>
+    <div class="c-oneline">💡 作者对四维 Einstein-Maxwell-dilaton 磁性 GMGHS 黑洞做解析热力学拓扑分类，发现 a=1 时实现 W̄^{1-} 子类，表明全局拓扑数 W 不足以完全刻画热力学拓扑。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s6">6.0</span>
+    
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>热力学拓扑把黑洞状态及其在热力学参数空间中的分支结构做拓扑分类，通常用绕度（winding）给出的全局拓扑数 W 来标记。此前提出的 W̄^{1-} 子类是否能在渐近平直、有明确弦论来源的解中实现，以及 W 是否足以区分所有子类，仍缺少具体例子。
+本文研究四维渐近平直 Einstein-Maxwell-dilaton 引力中带电非极端磁性 Gibbons-Maeda 族，重点是 dilaton 耦合 a=1 的弦论成员 GMGHS 黑洞。作者在正则外视界的完整定义域上做解析分类，发现 dilaton 耦合把该族分成三类逆 Hawking 温度极限结构：在 a=1 时，GMGHS 缺陷曲线趋近一个非零的下限逆温度端点，并只包含一个不稳定分支。由此，磁性 GMGHS 黑洞成为此前提出的 W̄^{1-} 热力学拓扑子类在渐近平直 Einstein-Maxwell-dilaton 解中的一个显式实现，说明仅靠全局拓扑数 W 不能完全刻画黑洞热力学拓扑，还需要逆 Hawking 温度在物理视界域边界附近的渐近行为作为附加判据。</p>
+  <h4>评价</h4>
+  <p>【创新点】把 W̄^{1-} 子类从抽象分类落到一个有弦论背景的渐近平直解（a=1 的磁性 GMGHS），并给出完整视界域上的解析分类，明确指出 W 相同但逆温度边界行为不同可区分不同子类，这是对“W 是否完备”这一问题的具体反例。
+【局限性】工作限于四维渐近平直 Einstein-Maxwell-dilaton 的磁性非极端分支，未涉及转动、宇宙学常数或非渐近平直背景；分类基于逆 Hawking 温度与缺陷曲线的解析行为，未讨论热力学稳定性与相变的动力学含义，也未与观测或具体物理过程挂钩。
+【对 Rao 的意义】属于黑洞热力学分支结构/相变分类的现象学式推广，与 Rao 黑洞热力学模块（P-V 临界、系综与稳定性）相邻但方法迁移性有限；可作为“热力学拓扑分类不完备”的一个具体案例，提醒在讨论黑洞化学与临界点时，全局拓扑数之外还需检查温度边界行为。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可了解 dilaton 耦合 a 如何把逆 Hawking 温度曲线分成不同极限结构，以及“缺陷曲线端点是否为零”这一判据；对 Rao 在 f(Q)/修正引力中做 P-V 临界与分支分析时，可借鉴其“在完整视界域上解析分类 + 边界渐近行为”的检查清单，避免只报告临界点而忽略分支端点结构。</p>
+  <h4>💡 推荐课题</h4>
+  <p>暂无</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.20898v1 Announce Type: new Abstract: Thermodynamic topology provides a topological classification of black hole states and their branch structures in thermodynamic parameter space. We investigate the thermodynamic topology of the charged nonextremal magnetic Gibbons--Maeda family in four-dimensional asymptotically flat Einstein--Maxwell--dilaton gravity, with particular emphasis on its string-theory member at the dilaton coupling $a=1$, the Gibbons--Maeda--Garfinkle--Horowitz--Strominger (GMGHS) black hole. An analytic classification over the complete domain of regular outer horizons shows that the dilaton coupling separates the family into three limiting structures of the inverse Hawking temperature. At $a=1$, the GMGHS defect curve approaches a nonzero lower inverse temperature endpoint and contains a single unstable branch. In particular, the magnetic GMGHS black hole provides an explicit realization of the previously proposed $\overline W^{1-}$ thermodynamic topological subclass within an asymptotically flat Einstein--Maxwell--dilaton solution. This result demonstrates that the global topological number $W$ alone does not completely characterize black hole thermodynamic topology. The asymptotic behavior of the inverse Hawking temperature near the boundaries of the physical horizon domain provides an additional criterion for distinguishing thermodynamic topological subclasses with the same $W$.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.20898" target="_blank" rel="noopener">arXiv:2609.20898</a></p>
+</div>
+</details></div>
+
+<div class="divider"><span>领域动态 · 修正引力宇宙学</span></div><div class="papers">
+<details class="card " id="radar-1">
+<summary>
+  <div>
+    <div class="c-kicker">R1 · arXiv:2609.21006 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">对数暗流体作为幺模引力中的能量扩散</div>
+    <div class="c-title-en">The logotropic dark fluid as an energy diffusion in unimodular gravity</div>
+    <div class="c-authors">Miguel Cruz, Samuel Lepe</div>
+    <div class="c-oneline">💡 该文证明对数暗流体精确等价于含无压物质与对数扩散函数 $Q(a)=3A\ln a+Q_c$ 的耗散幺模引力，并把对数温度 $A$ 解释为能量由物质向几何扇区的扩散率。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">5.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>对数暗流体（logotropic dark fluid）原被提出为用单一流体统一暗物质与暗能量，其状态方程含对数项，但其中的"对数温度"参数 $A$ 的物理起源一直悬空，且该模型在某个尺度因子处会进入 phantom 区，机制缺乏动力学解释。幺模引力（unimodular gravity）因固定行列式而只保留无迹场方程，天然允许能量在物质与几何扇区之间非守恒地流动，是给这类现象学模型寻找动力学基础的合适框架。本文在均匀背景层面建立精确对应：对数暗流体等价于含无压物质、扩散函数 $Q(a)=3A\ln a+Q_c$ 的耗散幺模引力，对应是精确的而非渐近的，且不引入任何超出两套描述已有参数的新参数。由此 $A$ 获得动力学含义——除膨胀率外，$A$ 就是能量从物质扩散到几何扇区的速率，$\dot Q=3AH$；有效流体的绝热声速为 $c_s^2=A/\rho$（$\rho$ 为幺模物质能量密度），在 $a_s=a_M/2^{1/3}$ 处达到光速，物质能量密度在 $a_M$ 处为零并变号，而 $a_M$ 正是该模型已知进入 phantom 行为的尺度因子。</p>
+<h4>评价</h4><p>【创新点】把对数暗流体从"唯象拟合的单一流体"重写为耗散幺模引力的精确背景解，且对应关系不引入新参数，使原本自由的对数温度 $A$ 变成可解释的能量扩散率 $\dot Q=3AH$；同时给出 $c_s^2=A/\rho$ 与 $a_s=a_M/2^{1/3}$ 的解析关系，把 phantom 转变点 $a_M$ 与声速发散、密度变号联系起来，比原提案多了一层动力学自洽性。
+【局限性】对应只在均匀背景层面成立，摘要未给出扰动层面的映射，因此 $c_s^2$ 是有效流体的绝热声速而非由完整微扰作用量导出的传播速度，$c_s^2>1$ 的区间是否意味着因果性问题也未讨论；此外幺模引力中能量非守恒的具体微观机制仍属假设。
+【对 Rao 的意义】现象学类，方法新意有限，但"能量在物质与几何扇区之间扩散"的表述与 Rao 的 P5（动态热流与协变荷通量的关系）在概念上同构，可作为非守恒引力中扩散函数 $Q$ 与视界热力学第一定律非平衡项如何对应的一个具体玩具模型参考。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.21006" target="_blank" rel="noopener">arXiv:2609.21006</a></p>
+</div>
+</details>
+<details class="card " id="radar-2">
+<summary>
+  <div>
+    <div class="c-kicker">R2 · arXiv:2609.21578 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">关于 oscillon 的一点注记：预加热期间不可忽略的度规涨落</div>
+    <div class="c-title-en">A note on oscillons: non-negligible metric fluctuations during preheating</div>
+    <div class="c-authors">Daniel del-Corral, Paolo Gondolo, K. Sravan Kumar, Jo\~ao Marto</div>
+    <div class="c-oneline">💡 该文指出预加热 lattice 模拟惯用的固定 FLRW 背景加体积平均能量密度做法在 GR 下不自洽：慢滚结束后 Bardeen 势不再被压低，度规涨落与暴胀子涨落同阶，且体积平均后的 ADM 哈密顿约束并不约化为模拟所用的 Friedmann 方程。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">5.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>后暴胀预加热与 oscillon 形成的主流 lattice 做法，是在空间均匀的 FLRW 背景上演化非均匀暴胀子场，背景膨胀由体积平均能量密度驱动，而度规扰动被整体忽略。这一近似在慢滚暴胀期间有正当理由——Bardeen 势被慢滚参数压低——但预加热阶段暴胀子剧烈振荡、密度对比度可达 $O(1)$，该压低机制是否仍然成立此前未被系统检验。本文用线性化 Einstein 约束方程做一致性分析：一旦第一慢滚参数变为 $O(1)$，度规涨落与暴胀子涨落进入同一微扰阶，Bardeen 势的压低消失；固定 FLRW 处方下演化的标量场方程遗漏了由度规涨落产生的领头阶贡献。作者进一步推导 ADM 哈密顿约束的固有体积平均，发现它并不约化为 lattice 模拟使用的 Friedmann 方程，精确的平均约束含有额外的修正项，因此现有 lattice 结果在预加热阶段的定量可靠性需要重新评估。</p>
+<h4>评价</h4><p>【创新点】把"lattice 模拟忽略度规扰动"这一长期默认做法当作可检验的近似来审计，明确指出压低 Bardeen 势的慢滚条件在预加热阶段失效，并给出体积平均 ADM 哈密顿约束与模拟所用 Friedmann 方程之间的显式差异，属于对既有数值范式的基础性修正。
+【局限性】分析限于线性化 Einstein 约束与均匀背景上的平均，未给出非线性 lattice 中修正项的量级估计或数值实现，因此"现有结果偏差多大"仍无定量答案；也未讨论该修正对具体 oscillon 寿命、引力波谱的影响。
+【对 Rao 的意义】同领域参考。Rao 的 P3（非绝热扰动对视界熵的有限波长响应）同样关心"背景平均 + 微扰"处方在何种条件下失效，本文关于慢滚参数变为 $O(1)$ 时度规与物质涨落同阶的判据，可作为判断何时不能把扰动当作背景上的小修正的一个具体反例。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.21578" target="_blank" rel="noopener">arXiv:2609.21578</a></p>
+</div>
+</details>
+<details class="card " id="radar-3">
+<summary>
+  <div>
+    <div class="c-kicker">R3 · arXiv:2609.21912 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">从增长数据看修正引力：拟合优度与引力耦合</div>
+    <div class="c-title-en">Modified Gravity from growth data: goodness-of-fit and gravitational coupling</div>
+    <div class="c-authors">Manoel V. S. Filho, Fernanda Oliveira, Wiliam S. Hip\'olito-Ricaldi, Felipe Avila, Armando Bernui</div>
+    <div class="c-oneline">💡 该文用 $f(z)$ 与 $\sigma_8(z)$ 增长数据约束 Starobinsky、Hu-Sawicki 与 $R^2$ 修正 Appleby-Battye 三个 $F(R)$ 模型，发现 AIC/BIC 无法区分它们，转而从 MCMC 后验重构有效引力耦合 $\mu(z)$ 作为判别诊断。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">5.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>背景膨胀数据（SNe、BAO、CMB 距离）对众多宇宙学模型高度退化，无法区分 GR 与修正引力；大尺度结构增长率 $f(z)$ 与物质涨落幅度 $\sigma_8(z)$ 直接探测引力理论本身，原则上提供了打破退化的途径，但不同 $F(R)$ 模型在增长数据上的可分辨性此前缺乏系统比较。本文选取三个代表性 $F(R)$ 模型——Starobinsky、Hu-Sawicki 与带 $R^2$ 修正的 Appleby-Battye——用 $f(z)$ 和 $\sigma_8(z)$ 测量做约束，方法上结合 MCMC 参数估计、Gaussian Process 重建以及 AIC/BIC 拟合优度统计。结果显示三个模型对当前增长数据的拟合在统计上可比，信息判据之差小到无法确立对任一情景的偏好。为突破这一退化，作者从 MCMC 后验样本重构有效引力耦合 $\mu(z)$，把它作为物理动机明确的判别诊断量，用以区分各模型在增长数据上无法分辨的差异。</p>
+<h4>评价</h4><p>【创新点】不满足于"AIC/BIC 分不开"的结论，而是把后验样本转成 $\mu(z)$ 这一物理量做模型判别，使统计上退化的模型在有效引力耦合的红移演化上显出结构差异，方法上比单纯比较信息判据更有针对性。
+【局限性】现象学类，方法新意有限：结论完全依赖现有 $f\sigma_8$ 数据的精度与协方差假设，$\mu(z)$ 的重构也继承 MCMC 先验与 GP 核选择的影响；三个模型均属 $F(R)$ 子类，未涉及 teleparallel、f(Q) 或一般 Horndeski 的 $\mu$、$\Sigma$ 结构。
+【对 Rao 的意义】同领域参考。Rao 的 P2 涉及 f(Q) 宇宙学参数允许性，本文"用 $\mu(z)$ 重构替代信息判据做模型判别"的思路可迁移到 f(Q) 与 $F(R)$ 的对比上，但需注意 $F(R)$ 中 $\mu$ 的构造依赖准静态与次视界近似，不能直接照搬到非度规几何。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.21912" target="_blank" rel="noopener">arXiv:2609.21912</a></p>
+</div>
+</details>
+<details class="card " id="radar-4">
+<summary>
+  <div>
+    <div class="c-kicker">R4 · arXiv:2609.20960 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">无需可分离性的矢量超辐射：来自世界线有效理论的失稳率</div>
+    <div class="c-title-en">Vector Superradiance without Separability: Instability Rates from the Worldline Effective Theory</div>
+    <div class="c-authors">Keegan Cove, Jingping Li, Riccardo Penco</div>
+    <div class="c-oneline">💡 该文用点粒子有效场论重算缓慢转动黑洞周围超轻矢量场的超辐射失稳率，指出此前报告的 $O(1)$ 偏差源于简并 $\{\ell=0,\ell=2\}$ 子空间中领头阶态识别错误，正确识别后与 Proca 方程结果完全一致且不依赖 FKKS 拟设。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">5.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>超辐射失稳率的计算长期依赖在固定黑洞背景上求解 Proca 方程，而这类计算通常需要 FKKS 可分离拟设，该拟设只在具有隐藏对称性的 Kerr 类背景上成立，限制了方法向一般转动背景或无隐藏对称性天体的推广。此前的有效理论处理（把黑洞当作点粒子、把矢量场当作世界线上的自由度）在 $j=1$、$\ell=2$ 模式上报告了与全理论求解约 $O(1)$ 的偏差，令人怀疑有效理论框架本身是否可靠。本文指出该偏差并不存在：问题出在简并的 $\{\ell=0,\ell=2\}$ 子空间中领头阶态的识别，正确识别后，把引力子精确积掉、之后再按 $\alpha$ 展开的有效理论精确重现了全部 $j=1$ 的 Proca 失稳率，且全程不调用 FKKS 拟设。由于不依赖可分离性，该方法原则上可推广到缺乏隐藏对称性的转动背景与天体；除远区外唯一额外输入是一个守恒的世界线量。</p>
+<h4>评价</h4><p>【创新点】把有效理论与全理论之间所谓的 $O(1)$ 矛盾归因于简并子空间中态的错误识别，而非有效理论失效，并给出一个不依赖 FKKS 可分离性的计算路径，使超辐射失稳率计算原则上可脱离 Kerr 的隐藏对称性。
+【局限性】分析限于缓慢转动黑洞与 $j=1$ 矢量模式，未给出快速转动或高 $j$ 情形的收敛性证据；"引力子精确积掉后再展开 $\alpha$"的操作在更高阶是否仍能系统组织，摘要未说明。
+【对 Rao 的意义】同领域参考。Rao 的 P4（Elko 在 FLRW 的粒子产生与约化态）与本文同属"在弯曲背景上处理场自由度"的技术族，其中"先精确积掉度规自由度、再按小参数展开"的顺序问题，与 Rao 在 SVT 分解中处理约束消元时需警惕的展开次序问题相通。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.20960" target="_blank" rel="noopener">arXiv:2609.20960</a></p>
+</div>
+</details>
+<details class="card " id="radar-5">
+<summary>
+  <div>
+    <div class="c-kicker">R5 · arXiv:2609.21421 · 高维统一/修正引力宇宙学一般项</div>
+    <div class="c-title-cn">复标量场厚膜：线性微扰稳定性与耦合引力的标量 Kaluza-Klein 模演化</div>
+    <div class="c-title-en">Complex scalar field thick branes: stability of linear perturbation and evolution of scalar Kaluza-Klein modes coupled with gravity</div>
+    <div class="c-authors">Wang-Long Dong, Heng Guo, Qun Wei, Yong-Tao Lu</div>
+    <div class="c-oneline">💡 该文研究复标量场生成的 Minkowski、dS、AdS 厚膜，发现标量与矢量扇区无失稳、张量扇区无快子模，引力子零模在 Minkowski 与 dS 膜上局域化而在 AdS 膜上不可归一，标量零模在 Minkowski 与 dS 膜上总可局域化且 KK 谱连续无隙。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>厚膜模型用标量场的 kink 解把我们的四维世界实现为五维时空中的一个畴壁，其吸引力在于能自然给出引力局域化并解释额外维为何不可见；但多数工作只用实标量场，复标量场因含额外相位自由度，其微扰稳定性与 KK 模局域化性质尚不清楚，尤其是自相互作用势中温度参数接近临界值时膜结构如何变化。本文研究由复标量场 $\Phi$ 生成的 Minkowski、dS 与 AdS 厚膜，其自相互作用势含温度参数 $a$；当 $a$ 趋近临界值时，$\Phi$ 的虚部变成双 kink 结构、能量密度分裂为双峰，形成两个子膜。作者对线性标量、矢量、张量微扰做完整分析：标量与矢量扇区无失稳迹象，张量微扰方程可因式分解从而排除快子张量模；引力子零模在 Minkowski 与 dS 膜上局域化，在 AdS 膜上不可归一。随后引入与曲率耦合的实检验标量场 $\Psi$（动能项与 $F(R)$ 耦合），发现标量零模在 Minkowski 与 dS 膜上总能局域化，标量 KK 谱连续且无隙。</p>
+<h4>评价</h4><p>【创新点】把厚膜稳定性分析从实标量场推广到复标量场，并给出温度参数临界值处虚部双 kink、能量密度双峰形成子膜的具体图像；同时用张量微扰方程的因式分解排除快子模，比逐模数值检验更干净。
+【局限性】分析限于线性微扰与三种最大对称膜背景，未涉及非线性稳定性或子膜形成后的动力学演化；$F(R)$ 耦合只作为检验场的动能耦合引入，未讨论该耦合对背景解本身的反作用。
+【对 Rao 的意义】同领域参考。Rao 的 Q1 涉及静态球对称分支与无毛条件审计，本文"对每个扇区分别做微扰分解、用因式分解排除快子模"的流程，可作为审计高维或标量-张量解稳定性时的模板；其 AdS 膜上引力子零模不可归一的结论也提醒局域化并非自动成立。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.21421" target="_blank" rel="noopener">arXiv:2609.21421</a></p>
+</div>
+</details>
+<details class="card " id="radar-6">
+<summary>
+  <div>
+    <div class="c-kicker">R6 · arXiv:2609.21814 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">Einstein-Æther 量子宇宙学中的量子隧穿与经典时空的涌现</div>
+    <div class="c-title-en">Quantum Tunneling and the Emergence of Classical Spacetime in Einstein-{\AE}ther Quantum Cosmology</div>
+    <div class="c-authors">Germano A. Monerat, Alessandro O. Castro Junior, Eduardo V. Corr\^ea Silva, Gil O. Neto</div>
+    <div class="c-oneline">💡 在正曲率 FLRW + 尘埃 + Λ 的 Einstein-Æther 量子宇宙学中求解 Wheeler-DeWitt 方程，用 WKB 隧穿概率与多世界期望值刻画经典时空涌现。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>量子宇宙学试图用宇宙波函数替代奇点处的经典演化，标准做法是在 Schutz 变分形式下把尘埃作为时间变量、对尺度因子量子化并解 Wheeler-DeWitt 方程。此前这类分析多集中在 GR 或标量-张量框架，而 Einstein-Æther 理论（含单位类时矢量场、显式破坏洛伦兹对称）的量子宇宙学版本尚少，其量子隧穿与经典化过程是否与 GR 定性一致并不清楚，这正是本文的动机。作者先做经典哈密顿分析，构造相空间并导出尺度因子动力学，发现存在能给出暴胀式膨胀的特定初始条件，且这些条件可直接从量子动力学中读出；随后按 Dirac 形式量子化，得到宇宙波函数的 Wheeler-DeWitt 方程并数值求解，再用 WKB 近似计算隧穿概率 $TP_{WKB}$ 与积分隧穿概率 $TP_{int}$，并给出多世界诠释下尺度因子的期望值。摘要未给出具体数值结果，仅说明上述量随 Æther 参数的变化趋势被考察。</p>
+<h4>评价</h4><p>【创新点】把 Schutz 尘埃时间 + Dirac 量子化 + WKB 隧穿这一套标准量子宇宙学流程搬到 Einstein-Æther 引力中，并指出暴胀初始条件可由量子解直接提取，这在 Æther 框架下此前少见。【局限性】模型限制在正曲率 FLRW 与单一尘埃加 Λ 的高度对称背景，未做矢量场扰动的自由度与稳定性分析；摘要未给出隧穿概率的具体数值或与 GR 极限的定量对比，结论的判别力有限。【对 Rao 的意义】现象学类，方法新意有限，但 Schutz 变分把尘埃作为内禀时间、以及 WKB 隧穿概率的算法，可作为 Rao 在 FRW 视界热力学与量子宇宙学交叉处的工具参考；Æther 矢量场与 Rao 关注的联络/挠率类修正引力属不同几何表述，仅作同领域参考。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.21814" target="_blank" rel="noopener">arXiv:2609.21814</a></p>
+</div>
+</details></div>
+<div class="divider"><span>名词推荐 · 暗能量</span></div><div class="papers">
+<details class="card" id="kw-1">
+<summary>
+  <div>
+    <div class="c-kicker">K1 · arXiv:2609.21891 · gr-qc · astro-ph.HE · nucl-th</div>
+    <div class="c-title-cn">暗能量混合中子星的结构与天体物理性质</div>
+    <div class="c-title-en">Structure and astrophysical properties of dark energy admixed neutron stars</div>
+    <div class="c-authors">Juan M. Z. Pretel, Sergio B. Duarte, Mariana Dutra, Odilon Louren\c{c}o</div>
+    <div class="c-oneline">💡 构建核物质与 Chaplygin 暗能量流体的混合状态方程，发现暗能量占比 f 增大使 EoS 变软并改善因果性，可解释 HESS J1731-347 中心致密天体。</div>
+  </div>
+  <div class="c-side">
+    <span class="kw">关键词：暗能量</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>中子星内部是否存在暗能量（DE）成分是近年致密星物理的一个开放问题。此前工作多考虑纯 DE 核心（Chaplygin 暗流体）对中子星可观测量的影响，但核物质与 DE 均匀混合的情形研究较少，而这类混合会直接改变状态方程（EoS）的软硬程度，从而影响质量—半径关系、因果性条件以及引力红移等观测量，因此值得系统考察。本文提出一个同时包含普通核物质与 DE 的 EoS，引入自由参数 $f$ 表示 DE 密度占总能量密度的比例，$f\to 0$ 时回到纯核物质结果。计算表明：增大 $f$ 使 EoS 变软，并显著有利于满足因果性条件；在质量—半径结果上，HESS J1731-347 的中心致密天体可被满意地描述为 DE 混合中子星；对足够高的恒星质量，引力红移与基本非径向振荡频率都随 $f$ 显著增大。</p>
+<h4>评价</h4><p>【创新点】与以往把 DE 作为独立核心（core）处理的做法不同，本文用单一参数 $f$ 把 DE 密度按比例混入核物质 EoS，并给出 $f\to0$ 的连续退化极限，同时把因果性条件的满足程度与 $f$ 直接挂钩，并首次将该混合模型用于拟合 HESS J1731-347 的低质量致密天体。
+【局限性】DE 与核物质按固定比例均匀混合的假设缺乏微观物理动机，$f$ 是纯现象学参数；摘要未说明是否检验了潮汐形变、转动或双星并合约束，也未讨论混合界面的稳定性与相变问题。
+【对 Rao 的意义】属修正引力宇宙学之外的致密星现象学，与 Rao 的引力热力学、f(Q)/teleparallel 主线无直接接口；仅可作为“暗能量与致密天体耦合”这一邻域动态了解，现象学类，方法新意有限。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.21891" target="_blank" rel="noopener">arXiv:2609.21891</a></p>
+</div>
+</details></div>
+
+<div class="footer">
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年09月21日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+<script>
+(function(){
+  var saved = localStorage.getItem('arxiv-theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); }
+  var btn = document.getElementById('themeBtn');
+  function cur(){ return document.documentElement.getAttribute('data-theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  function label(){ btn.textContent = cur() === 'dark' ? '☾ 深色' : '☀ 浅色'; }
+  label();
+  btn.onclick = function(){
+    var t = cur() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('arxiv-theme', t); label();
+  };
+})();
+</script>
+</body>
+</html>
