@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv · 2026-09-24</title>
+<style>
+:root {
+    --bg:#f7f5f0; --card:#ffffff; --ink:#1c1c28; --ink2:#55566a; --muted:#8a8b99;
+    --accent:#3b4a8c; --accent-ink:#2e3a70; --accent-soft:#eceef6;
+    --border:#e4e1d6; --border-strong:#d3cfc0;
+    --must:#9e2b25; --s7:#b07c2a; --s6:#6b7c5e; --s5:#8a8b99;
+    --shadow:0 1px 2px rgba(28,28,40,.04), 0 4px 16px rgba(28,28,40,.06);
+    --shadow-hover:0 2px 4px rgba(28,28,40,.06), 0 10px 28px rgba(28,28,40,.10);
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","Fira Code","Consolas",monospace;
+}
+[data-theme="dark"] {
+    --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+    --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+    --border:#2b2f3d; --border-strong:#3a3f50;
+    --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+    --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+    --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+        --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+        --border:#2b2f3d; --border-strong:#3a3f50;
+        --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+        --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+        --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+    }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--bg); color:var(--ink);
+       line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .25s, color .25s; }
+[data-theme="dark"] body { background:#14161d; color:#e9e7de; }
+[data-theme="dark"] .card { background:#1d2029; border-color:#2b2f3d; }
+[data-theme="dark"] .topnav { background:rgba(20,22,29,.84); }
+.topnav { position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 84%, transparent); border-bottom:1px solid var(--border); }
+.nav-inner { max-width:860px; margin:0 auto; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; }
+.brand { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.nav-right { display:flex; gap:14px; align-items:center; font-size:13px; }
+.nav-right a { color:var(--accent); text-decoration:none; }
+.nav-right a:hover { text-decoration:underline; }
+#themeBtn { border:1px solid var(--border-strong); background:transparent; color:var(--ink2);
+    border-radius:999px; padding:2px 12px; font-size:12px; cursor:pointer; font-family:var(--sans); }
+#themeBtn:hover { border-color:var(--accent); color:var(--accent); }
+.cover { max-width:860px; margin:0 auto; text-align:center; padding:60px 24px 36px; }
+.kicker { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.cover h1 { font-family:var(--serif); font-size:34px; font-weight:600; margin:14px 0 8px; letter-spacing:.01em; }
+.cover .sub { font-size:14px; color:var(--ink2); }
+.stats { display:flex; justify-content:center; align-items:center; gap:26px; margin-top:30px; flex-wrap:wrap; }
+.stat { text-align:center; }
+.stat .num { display:block; font-family:var(--serif); font-size:30px; font-weight:600; color:var(--accent-ink); }
+.stat .label { display:block; font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.08em; }
+.stat-sep { width:1px; height:34px; background:var(--border-strong); }
+.cover .src { margin-top:20px; font-size:12.5px; color:var(--muted); }
+.toc { max-width:860px; margin:0 auto 8px; padding:0 24px; }
+.toc h2 { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; margin:26px 0 12px;
+    padding-bottom:8px; border-bottom:1px solid var(--border); }
+.toc h2 .en { font-weight:400; margin-left:8px; letter-spacing:.14em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list .n { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-right:6px; }
+.toc-list a { color:var(--ink); text-decoration:none; font-family:var(--serif); }
+.toc-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+.toc-list .toc-en { display:block; font-size:12px; color:var(--muted); margin-left:26px; margin-top:-2px; }
+.divider { max-width:860px; margin:36px auto -6px; padding:0 24px; display:flex; align-items:center; gap:16px; }
+.divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border-strong); }
+.divider span { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; white-space:nowrap; }
+.papers { max-width:860px; margin:0 auto; padding:0 24px 40px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0;
+    box-shadow:var(--shadow); overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.card summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto;
+    gap:16px; align-items:start; padding:20px 24px; user-select:none; }
+.card summary::-webkit-details-marker { display:none; }
+.c-kicker { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:6px; }
+.c-title-en { font-size:13.5px; color:var(--ink2); line-height:1.5; }
+.c-title-cn { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink);
+    margin:3px 0 7px; line-height:1.55; }
+.c-authors { font-size:13px; color:var(--muted); }
+.c-oneline { font-size:13.5px; color:var(--ink2); margin-top:7px; }
+.c-side { display:flex; flex-direction:column; align-items:flex-end; gap:8px; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:1px 10px; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid var(--accent); color:var(--accent); }
+.chev { font-size:16px; color:var(--muted); transition:transform .2s; line-height:1; }
+.card[open] .chev { transform:rotate(90deg); color:var(--accent); }
+.card.collision { border-left:3px solid var(--must); }
+.detail { padding:2px 24px 22px; border-top:1px dashed var(--border-strong); }
+.detail h4 { font-size:13px; letter-spacing:.06em; color:var(--accent-ink); font-weight:700; margin:18px 0 6px; }
+.detail p { font-size:14.5px; line-height:1.85; color:var(--ink); margin-bottom:10px; }
+.detail .rel-note { font-size:13px; color:var(--accent); font-weight:600; margin:14px 0 2px; }
+.detail .action-box { background:color-mix(in srgb, var(--must) 8%, var(--card));
+    border:1px solid color-mix(in srgb, var(--must) 30%, var(--border));
+    border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border-strong); border-radius:8px; padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--muted); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details p { font-size:13px; color:var(--ink2); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--muted); }
+.src-link a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.radar-note { max-width:860px; margin:0 auto 30px; padding:0 24px; font-size:13px; color:var(--muted); }
+.footer { text-align:center; padding:36px 24px 48px; font-size:12.5px; color:var(--muted); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:640px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:16px; }
+    .stat-sep { display:none; }
+    .card summary { padding:16px 18px; }
+    .detail { padding:2px 18px 18px; }
+}
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.2.5/index.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
+  startup: { ready() {
+      MathJax.startup.defaultReady();
+      document.querySelectorAll('details.card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
+        });
+      });
+  } }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+<nav class="topnav"><div class="nav-inner">
+  <span class="brand">ARXIV DAILY</span>
+  <span class="nav-right">
+    <a href="index.html">存档索引</a>
+    <button id="themeBtn" type="button">◐</button>
+  </span>
+</div></nav>
+
+<header class="cover">
+  <div class="kicker">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv · 2026年09月24日</h1>
+  <p class="sub">每日精选 · 按 Rao 的研究画像匹配</p>
+  <div class="stats">
+    <div class="stat"><span class="num">3</span><span class="label">核心精读 · ⭐2</span></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><span class="num">3</span><span class="label">领域动态</span></div>
+    
+  </div>
+  <p class="src">来源：gr-qc 16 · hep-th 12 · astro-ph.CO 5</p>
+</header>
+
+<section class="toc">
+  <h2>核心精读<span class="en">CORE</span></h2>
+  <ol class="toc-list"><li><span class="n">01</span><a href="#paper-1">熵在宇宙学中的应用：时空热力学、全息暗能量、熵引力及其他——一篇综述</a></li><li><span class="n">02</span><a href="#paper-2">协变相空间形式中场依赖对称生成元的守恒荷与黑洞第一定律</a></li><li><span class="n">03</span><a href="#paper-3">动态 Chern-Simons 引力中的费米子宇宙弦</a></li></ol>
+  <h2>领域动态<span class="en">FIELD RADAR</span></h2><ol class="toc-list"><li><span class="n">R1</span><a href="#radar-1">质量膨胀还是标量子刚性：度规 f(R) 中的 Cauchy 视界</a></li><li><span class="n">R2</span><a href="#radar-2">动力学 Chern-Simons 引力中的脉冲星磁层：死亡线与极冠粒子加速</a></li><li><span class="n">R3</span><a href="#radar-3">动态黑洞标量化过程中圆轨道的演化与瓦解</a></li></ol>
+  
+</section>
+
+<div class="papers">
+<details class="card" id="paper-1">
+<summary>
+  <div>
+    <div class="c-kicker">#1 · arXiv:2609.28331 · astro-ph.CO · gr-qc · hep-th</div>
+    <div class="c-title-cn">熵在宇宙学中的应用：时空热力学、全息暗能量、熵引力及其他——一篇综述</div>
+    <div class="c-title-en">Entropy applications in cosmology: spacetime thermodynamics, holographic dark energy, entropic gravity and beyond - a review</div>
+    <div class="c-authors">Emmanuel N. Saridakis, Giuseppe Gaetano Luciano, Andreas Lymperis, Eirini C. Telali</div>
+    <div class="c-oneline">💡 这篇综述统一梳理了熵在引力与宇宙学中的三类应用——时空热力学、全息暗能量与熵引力，并汇总了面积律的量子修正与推广。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s8">9.0</span>
+    <span class="must">必读</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>黑洞是热力学系统、其熵正比于视界面积，这一事实长期被视为时空可能具有微观结构的证据；此后熵在量子场论、全息、量子引力与宇宙学中取得中心地位。但各分支（黑洞热力学、熵界、纠缠熵、修正熵、时空热力学、全息暗能量、熵引力）长期各自为政，缺少一份把它们放在同一概念框架下对照的文献，这正是本综述的动机。
+
+文章先综述引力系统中的熵：黑洞热力学、熵界、全息原理、纠缠熵与面积律，以及来自量子场论、广义不确定关系（GUP）、修改统计和扩展引力理论的修正与推广。随后区分熵在宇宙学中的三种用法：其一为时空热力学猜想，即引力动力学由施加于宇宙学视界的热力学关系涌现，广义熵形式因此导致修改的宇宙演化；其二为全息进路，熵界约束宇宙真空能，导出全息暗能量及其多种扩展；其三为熵引力，把引力解释为熵起源的涌现现象并给出宇宙学现象学。文章最后讨论开放问题与走向更深热力学—信息论理解的方向。</p>
+  <h4>评价</h4>
+  <p>【创新点】把此前分散的三条熵—宇宙学路线（时空热力学、全息暗能量、熵引力）放进同一叙述框架，并系统列出面积律在 GUP、修改统计、扩展引力下的修正形式，便于横向比较不同熵形式对宇宙演化的影响。
+【局限性】作为综述，它不提供新的第一性原理推导或新约束；对各类修正熵的选取标准、以及哪些修正来自自洽的微观理论、哪些只是唯象替换，摘要未给出判据，读者仍需自行甄别。
+【对 Rao 的意义】与 Rao 引力热力学学习计划的核心模块（黑洞热力学、FRW 视界热力学、统一第一定律、GSL）高度重合，可作为 26 周计划的路线图与文献索引；其中广义熵导致修改宇宙演化的部分，与 P2（f(Q) 宇宙学 P-V 临界）和 P3（非绝热扰动对视界熵的响应）直接相关。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可把综述当作模块化索引：黑洞熵—熵界—全息—纠缠熵—面积律修正这条链，对应学习计划中 Wald 熵与协变荷、Jacobson 纲领两段；注意区分三类熵用法在定义上的差异——时空热力学中的熵是视界熵（含表观视界与 Misner–Sharp 能量、Kodama 矢量），全息暗能量中的熵是约束真空能的熵界，熵引力中的熵是力与熵梯度的关系，三者的温度与熵变量并不相同，混用会导致第一定律形式错位。修正熵（GUP、修改统计）通常以 S = A/4 + 对数/幂次修正的形式出现，需警惕这些修正是否仍满足 Clausius 关系与 GSL。</p>
+  <h4>💡 推荐课题</h4>
+  <p>1) 以综述中“广义熵 → 修改宇宙演化”一节为起点，把 P2 的 f(Q) P-V 临界点计算推广到含对数修正熵的情形，第一步是写出修正熵下的有效温度与压强并检查临界点存在条件；2) 针对 P3，从综述列出的非平衡/非绝热熵产生项出发，构造有限波长扰动下视界熵响应的最小模型，第一步是确定相对熵模与视界面积涨落的耦合形式。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.28331v1 Announce Type: new Abstract: Entropy has emerged as a key concept at the intersection of gravity, quantum theory, and cosmology, revealing deep connections between geometry, information, and thermodynamics. The realization that black holes are thermodynamic systems, characterized by an entropy proportional to their horizon area, has provided evidence that spacetime itself may possess a microscopic structure. Since then, entropy has acquired a central role across quantum field theory, holography, quantum gravity, and cosmology. In this review, we present a unified account of entropy in gravitational and cosmological contexts. We first survey entropy in gravitational systems, focusing on black-hole thermodynamics, entropy bounds, the holographic principle, entanglement entropy, and the area law, together with the main corrections and generalizations arising from quantum field theory, generalized uncertainty principles, modified statistics, and extended theories of gravity. We then discuss three conceptually distinct ways in which entropy is employed in cosmology. The first is through the spacetime-thermodynamics conjecture, in which gravitational dynamics emerge from thermodynamic relations applied to cosmological horizons, and generalized entropy forms consequently lead to modified cosmological evolution. The second is the holographic approach, in which entropy bounds constrain the vacuum energy of the Universe, giving rise to the holographic dark energy scenario and its various extensions. The third is entropic gravity, where gravity is interpreted as an emergent phenomenon of entropic origin, leading to interesting cosmological phenomenology. By reviewing the theoretical foundations and cosmological implications of these entropic frameworks, we aim to clarify the role of entropy, discuss open issues and outline directions toward a deeper thermodynamic and informational understanding of gravity and cosmology.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.28331" target="_blank" rel="noopener">arXiv:2609.28331</a></p>
+</div>
+</details>
+<details class="card" id="paper-2">
+<summary>
+  <div>
+    <div class="c-kicker">#2 · arXiv:2609.27454 · gr-qc · hep-th</div>
+    <div class="c-title-cn">协变相空间形式中场依赖对称生成元的守恒荷与黑洞第一定律</div>
+    <div class="c-title-en">Conserved charges and the first law of black holes for field dependent symmetry generators in the covariant phase space formalism</div>
+    <div class="c-authors">Hai-Feng Ding</div>
+    <div class="c-oneline">💡 作者把协变相空间形式推广到场依赖的微分同胚加内禀规范变换生成元，证明一般协变引力理论中黑洞第一定律是该形式下的直接结果，并在环面黑洞与 Euler-Heisenberg AdS 黑洞上验证。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s8">9.0</span>
+    <span class="must">必读</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>协变相空间形式是计算引力理论守恒荷与黑洞熵的标准工具，但已有处理通常假定对称生成元是固定的 Killing 矢量，或只考虑纯微分同胚而不含内禀规范变换。当生成元依赖场构型（例如场依赖的 Killing 矢量、或规范场存在时的组合生成元）时，辛势与荷的可积性、以及第一定律的推导都需要重新处理，这正是本文要补的缺口。
+
+作者把协变相空间形式推广到场依赖矢量，并在存在规范场时纳入内禀规范变换，使对称生成元是微分同胚与内禀规范变换的组合且依赖场构型。在此形式下，对一般协变引力理论，黑洞热力学第一定律成为直接结果。为检验形式，作者计算了 Einstein-Maxwell 理论中环面状黑洞、以及 Einstein-Euler-Heisenberg 非线性电动力学中带电 Euler-Heisenberg AdS 黑洞的守恒荷与热力学第一定律，均得到自洽结果。</p>
+  <h4>评价</h4>
+  <p>【创新点】把场依赖生成元与内禀规范变换同时纳入协变相空间形式，使第一定律在一般协变引力理论中作为形式体系的直接推论出现，而非逐例验证；并在 Euler-Heisenberg 非线性电动力学这一非最小耦合电磁扇区上做了检验，超出此前多限于 Einstein-Maxwell 的算例。
+【局限性】摘要未说明场依赖生成元带来的额外项（如生成元变分对辛势的贡献）是否被完全吸收进荷定义，也未讨论非可积性、边界项歧义与零模（规范冗余）的处理；算例限于静态/稳态高对称背景，未涉及转动或含标量场的理论。
+【对 Rao 的意义】直接对应学习计划中“几何熵与协变荷：Wald 熵、Iyer–Wald Noether 荷、辛势与边界歧义、协变相空间”模块，是 P5（动态热流与协变荷通量的关系）的方法基础；场依赖生成元的处理对 P1 中不规则联络背景下的对称性识别也有参考价值。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可借用的核心是：当生成元 ξ 依赖场 φ 时，辛流与辛势的变分要多出与 δξ 相关的项，第一定律的可积性条件因此改变；把内禀规范变换并入生成元意味着规范参数也进入荷定义，需警惕规范选择与理论对称性的区分（与 Rao 关注的 gauge 选择 vs 理论对称性一致）。Euler-Heisenberg 算例提示非线性电动力学中熵不再只由面积给出，需检查 Wald 熵公式中 ∂L/∂R 的贡献。</p>
+  <h4>💡 推荐课题</h4>
+  <p>1) 把该形式用于 P5：在含标量场的协变理论中写出场依赖生成元下的荷通量表达式，第一步是推导 δξ 项对辛势的修正并检查可积性；2) 与 P1 衔接：在 NYTG 不规则联络宇宙中识别场依赖的对称生成元，第一步是确定联络分支下场依赖 Killing 矢量的存在条件及其对第一定律的影响。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.27454v1 Announce Type: new Abstract: In this paper, we generalize the covariant phase space formalism conjugate to field dependent vectors to include internal gauge transformations when gauge fields are present. In our formalism, the symmetry generators are combination of diffeomorphisms plus internal gauge transformations and depend on the field configuration. When the field dependence of the symmetry generators is considered in the covariant phase space formalism, the first law of black hole thermodynamics is a direct result for generally invariant gravitational theories. To check the validity of our formalism, we investigate the conserved charges and the first laws of thermodynamics for a torus-like black hole in Einstein-Maxwell theory and a charged Einstein-Euler-Heisenberg AdS black hole in Einstein-Euler-Heisenberg nonlinear electrodynamics.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.27454" target="_blank" rel="noopener">arXiv:2609.27454</a></p>
+</div>
+</details>
+<details class="card" id="paper-3">
+<summary>
+  <div>
+    <div class="c-kicker">#3 · arXiv:2609.28421 · hep-th · astro-ph.CO · gr-qc · hep-ph</div>
+    <div class="c-title-cn">动态 Chern-Simons 引力中的费米子宇宙弦</div>
+    <div class="c-title-en">Fermionic cosmic strings in dynamical Chern-Simons gravity</div>
+    <div class="c-authors">Stephon Alexander, Heliudson Bernardo, Shengyuan Zhang</div>
+    <div class="c-oneline">💡 作者在 dCS 引力的费米子紫外完成中研究手征相变产生的拓扑缺陷，得到零模零流支撑的修正弦度规与引力 Pontryagin 项驱动的反常流入。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>动态 Chern-Simons（dCS）引力通过引力 Pontryagin 项引入宇称破缺，其宇宙学与致密天体效应已被广泛研究；但 dCS 耦合本身在紫外如何由物质扇区生成、以及这种生成是否改变拓扑缺陷（宇宙弦）的解，此前少有具体构造。手征相变产生的宇宙弦是早期宇宙宇称破缺的天然场所，因此值得追问其度规在 dCS 修正下如何变化。
+
+模型含一个复标量场，与费米子有手征 Yukawa 耦合。在手征对称破缺标度以下，积掉有能隙的体模后生成引力 Chern-Simons 耦合，作者论证它修改了相变产生的宇宙弦解。修正后的弦度规由 Callan-Harvey 费米子零模解的推广支撑，零模产生的零流提供了宇称破缺机制。在弱耦合、弱引力区，作者导出该外部度规的最低阶约化 dCS 修正，并讨论 dCS 引力中一般弦构型的有效作用量描述；引力 Pontryagin 项提供了抵消手征世界面理论引力反常所需的反常流入。</p>
+  <h4>评价</h4>
+  <p>【创新点】把 dCS 耦合的紫外起源（手征 Yukawa 扇面积掉体模）与拓扑缺陷解联系起来，并用推广的 Callan-Harvey 零模解支撑修正弦度规，使宇称破缺机制与反常流入在同一构造中闭合，而非把 dCS 项作为唯象输入。
+【局限性】结果限于弱耦合、弱引力区的最低阶约化修正，未给出强引力或非线性区的解；摘要未说明零模零流对弦张力、弦网络演化的定量影响，也未讨论该修正是否在 CMB 或引力波双折射上给出可观测签名。
+【对 Rao 的意义】与 Rao 的宇称破缺引力主线（Nieh–Yan、Chern–Simons、引力波双折射、CMB TB/EB）直接相关，也触及“引力重子/轻子生成”中边界项化学势的机制；反常流入与零模的对应关系可迁移到 P1 中手征分配问题的分析框架。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可学到 Callan-Harvey 机制的具体用法：体模有能隙后，零模沿缺陷的净流等于反常系数乘以规范场强，这一恒等式是反常流入的微观来源；在 dCS 中对应的是引力 Pontryagin 项与手征世界面引力反常的抵消。需警惕约定差异：dCS 的耦合常数符号与 Pontryagin 项归一化在不同文献中不一致，直接影响宇称破缺的符号与双折射手性；此外零模解的存在依赖弦背景的拓扑，平直时空近似下不成立。</p>
+  <h4>💡 推荐课题</h4>
+  <p>1) 与 P1 衔接：把该文的手征 Yukawa + 体模积分机制搬到 NYTG 不规则联络宇宙中，考察标量—张量纠缠的手征分配是否由类似零模流决定，第一步是写出不规则联络下费米子零模方程并检查零流条件；2) 与宇称破缺主线衔接：计算该修正弦度规对应的引力波双折射速度差，第一步是从修正度规提取左右手偏振的传播方程并比较相位。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.28421v1 Announce Type: new Abstract: We investigate topological defects produced by a chiral phase transition in a fermionic ultraviolet completion of dynamical Chern-Simons (dCS) gravity. The model contains a complex scalar field with a chiral Yukawa coupling to fermions. Below the chiral symmetry breaking scale, integrating out the gapped bulk modes produces a gravitational Chern-Simons coupling which, we argue, modifies cosmic string solutions from the phase transition. The resulting corrected string metric is supported by a generalization of the Callan-Harvey fermionic zero mode solution, in which the null current generated by these zero modes provides a mechanism for parity violation. In the weak-coupling and weak-gravity regime, we derive the leading order-reduced dCS correction to this exterior metric. We also discuss the effective action description for generic string configurations in dCS gravity. The gravitational Pontryagin term provides the anomaly inflow required to cancel the gravitational anomaly of the chiral worldsheet theory.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.28421" target="_blank" rel="noopener">arXiv:2609.28421</a></p>
+</div>
+</details></div>
+
+<div class="divider"><span>领域动态 · 修正引力宇宙学</span></div><div class="papers">
+<details class="card " id="radar-1">
+<summary>
+  <div>
+    <div class="c-kicker">R1 · arXiv:2609.27889 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">质量膨胀还是标量子刚性：度规 f(R) 中的 Cauchy 视界</div>
+    <div class="c-title-en">Mass inflation or scalaron rigidity: Cauchy horizons in metric f(R)</div>
+    <div class="c-authors">Francisco S. N. Lobo, Maickol Mu\~noz-Palma, Francisco Tello-Ortiz</div>
+    <div class="c-oneline">💡 在度规 f(R) 中建立双零坐标 Cauchy 视界动力学框架，区分质量膨胀、标量子抵消与真正逃逸，并给出曲率系数由横向渐近行为固定的条件。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-neighbor">近邻</span>
+    <span class="score s6">6.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>Cauchy 视界（CH）的蓝移不稳定性是强宇宙监督假设的核心议题。在 GR 中，Price 尾在 CH 上引起质量膨胀（Hawking 质量发散）；在含额外标量自由度的修正引力中，标量子（scalaron）可能抵消这一发散，从而让 CH 变成可穿越的规则面，但此前缺乏一个能系统区分"真抵消"与"假逃逸"的框架。
+
+本文从精确的球对称 Hawking 质量输运方程出发，建立双零（double-null）形式。核心判据：若有效纵向源最终非负、一致地主导混合通道、且其蓝移加权积分发散，则规则非退化 CH 必然发生质量膨胀；因此有界质量要求该源具有足够强的蓝移可积压制，或存在独立的竞争通道。作者进一步分析标量子只抵消领头 Price 尾的弱分支：在非抵消的横向与迹渐近下，这迫使 $|R|\to\infty$，理论渐近为线性高曲率形式 $f(R)/R\to F_->0$，其中 $F_-\equiv\lim_{v\to\infty}f_R$，曲率系数由横向渐近显式固定。</p>
+<h4>评价</h4><p>【创新点】把 CH 稳定性问题从 GR 的 Price 尾论证推广为可操作的"源项判据"，并首次指出标量子只抵消领头尾项时理论必须渐近趋于线性 $f(R)$，且系数被横向渐近唯一确定——这是对 f(R) 中 CH 是否规则的一个结构性结论，而非模型逐个检验。
+
+【局限性】全部结论建立在球对称、双零坐标与特定渐近假设（非抵消横向/迹渐近）之上，未涉及旋转或非球对称情形；判据是充分条件而非充要条件，摘要也未说明对 $F_-$ 符号与稳定性的进一步约束。
+
+【对 Rao 的意义】与 Rao 的引力热力学主线（视界热力学、Wald 熵、协变荷）有方法上的接口：Hawking 质量输运方程与 Misner–Sharp 能量、Kodama 矢量在球对称下是同一套语言，可借其双零分解处理 P5（动态热流与协变荷通量）。属修正引力理论分析类，非现象学拟合。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.27889" target="_blank" rel="noopener">arXiv:2609.27889</a></p>
+</div>
+</details>
+<details class="card " id="radar-2">
+<summary>
+  <div>
+    <div class="c-kicker">R2 · arXiv:2609.28428 · 宇称破缺引力</div>
+    <div class="c-title-cn">动力学 Chern-Simons 引力中的脉冲星磁层：死亡线与极冠粒子加速</div>
+    <div class="c-title-en">Pulsar magnetospheres in dynamical Chern-Simons gravity: deathline conditions and polar-cap particle acceleration</div>
+    <div class="c-authors">Sherzod Sayfiyev, Bobomurat Ahmedov, Chengxun Yuan, Javlon Rayimbaev, Bahodir Ahmedov, Asadbek Shermanov</div>
+    <div class="c-oneline">💡 在慢转弱耦合 dCS 引力中求解 Maxwell 方程，发现磁场分量与 GR 相同而电场被修正，并据此导出脉冲星死亡线与极冠加速的解析表达式。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-neighbor">近邻</span>
+    <span class="score s5">5.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>脉冲星磁层是检验强场引力的天然实验室：中子星紧致度 $M/R\simeq 0.2$，其表面附近的等离子体辐射机制对时空度规的偏离敏感。动力学 Chern-Simons（dCS）引力作为宇称破缺的修正引力，其慢转弱耦合极限下只修正度规的非对角分量 $g_{t\phi}$，对角分量与 GR 相同，这为在脉冲星电动力学中寻找宇称破缺信号提供了干净入口。
+
+本文在 dCS 框架下求解 Maxwell 方程组，得到电磁场分量的解析解：磁场分量与 GR 完全一致，而电场分量被 dCS 修正。在此基础上作者推导了感应电场、极冠粒子加速以及脉冲星死亡线条件的解析表达式，并讨论 dCS 参数对死亡线位置与加速电势的影响。</p>
+<h4>评价</h4><p>【创新点】利用 dCS 在慢转弱耦合下只改 $g_{t\phi}$ 的结构，把宇称破缺效应干净地隔离到电场分量上，给出死亡线与极冠加速的解析式，比此前纯数值或纯度规层面的 dCS 中子星研究更贴近可观测量。
+
+【局限性】仅限慢转、弱耦合与解析近似，未做完整磁层数值模拟；磁场不变意味着主要观测量（如磁场几何）对 dCS 不敏感，实际可探测性依赖电场相关效应，摘要未给出参数约束量级。
+
+【对 Rao 的意义】与 Rao 的宇称破缺引力主线（Nieh–Yan、Chern–Simons、引力/电磁双折射）直接同族，可作为 dCS 现象学约束的参考；其"只改非对角分量"的处理方式与 Rao 在引力波双折射中分离 helicity 分量的思路可对照。属现象学类，方法新意有限。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.28428" target="_blank" rel="noopener">arXiv:2609.28428</a></p>
+</div>
+</details>
+<details class="card " id="radar-3">
+<summary>
+  <div>
+    <div class="c-kicker">R3 · arXiv:2609.27539 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">动态黑洞标量化过程中圆轨道的演化与瓦解</div>
+    <div class="c-title-en">Evolution and disruption of circular orbits during dynamic black hole scalarization</div>
+    <div class="c-authors">Yu-Peng Zhang, Shao-Wen Wei, Yu-Xiao Liu</div>
+    <div class="c-oneline">💡 用数值相对论模拟真空黑洞标量化过程，发现标量毛发增长会破坏初始稳定圆轨道，使其变为偏心轨道或直接落入黑洞。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>动态黑洞标量化描述无毛黑洞向带标量毛状态转变的过程，是修正引力/标量-张量理论中强场检验的重要通道。已有工作多聚焦标量化终态的准静态性质（如标量化阈值、终态度规），但转变过程中时空随时间演化对测试粒子轨道的影响尚不清楚，而这直接关系到吸积与天体物理观测信号。
+
+本文用数值相对论模拟真空黑洞的标量化过程，在动态变化的时空背景中演化类时测地线方程，追踪初始稳定的圆轨道。结果显示：标量毛的增长破坏了这些轨道的圆性，使其要么变为偏心轨道，要么直接落入黑洞；轨道失稳源于标量场引起的时空曲率快速变化。</p>
+<h4>评价</h4><p>【创新点】把标量化研究从终态静态分析推进到动力学过程，首次给出转变期间圆轨道瓦解的数值证据，指出失稳机制是曲率的快速变化而非终态度规的静态差异。
+
+【局限性】纯数值相对论工作，依赖特定标量化模型与初始数据，未给出解析判据；摘要未说明标量化时标与轨道周期的比值范围，也未讨论对电磁辐射信号的定量影响。
+
+【对 Rao 的意义】与 Rao 的标量-张量/mimetic 主线相关，但属纯数值相对论，方法上可迁移性有限；若关注标量化对黑洞热力学量（如视界面积、熵）的动力学响应，可作背景参考。现象学类，方法新意有限。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.27539" target="_blank" rel="noopener">arXiv:2609.27539</a></p>
+</div>
+</details></div>
+
+
+<div class="footer">
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年09月24日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+<script>
+(function(){
+  var saved = localStorage.getItem('arxiv-theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); }
+  var btn = document.getElementById('themeBtn');
+  function cur(){ return document.documentElement.getAttribute('data-theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  function label(){ btn.textContent = cur() === 'dark' ? '☾ 深色' : '☀ 浅色'; }
+  label();
+  btn.onclick = function(){
+    var t = cur() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('arxiv-theme', t); label();
+  };
+})();
+</script>
+</body>
+</html>
