@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv · 2026-09-28</title>
+<style>
+:root {
+    --bg:#f7f5f0; --card:#ffffff; --ink:#1c1c28; --ink2:#55566a; --muted:#8a8b99;
+    --accent:#3b4a8c; --accent-ink:#2e3a70; --accent-soft:#eceef6;
+    --border:#e4e1d6; --border-strong:#d3cfc0;
+    --must:#9e2b25; --s7:#b07c2a; --s6:#6b7c5e; --s5:#8a8b99;
+    --shadow:0 1px 2px rgba(28,28,40,.04), 0 4px 16px rgba(28,28,40,.06);
+    --shadow-hover:0 2px 4px rgba(28,28,40,.06), 0 10px 28px rgba(28,28,40,.10);
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","Fira Code","Consolas",monospace;
+}
+[data-theme="dark"] {
+    --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+    --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+    --border:#2b2f3d; --border-strong:#3a3f50;
+    --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+    --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+    --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+        --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+        --border:#2b2f3d; --border-strong:#3a3f50;
+        --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+        --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+        --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+    }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--bg); color:var(--ink);
+       line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .25s, color .25s; }
+[data-theme="dark"] body { background:#14161d; color:#e9e7de; }
+[data-theme="dark"] .card { background:#1d2029; border-color:#2b2f3d; }
+[data-theme="dark"] .topnav { background:rgba(20,22,29,.84); }
+.topnav { position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 84%, transparent); border-bottom:1px solid var(--border); }
+.nav-inner { max-width:860px; margin:0 auto; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; }
+.brand { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.nav-right { display:flex; gap:14px; align-items:center; font-size:13px; }
+.nav-right a { color:var(--accent); text-decoration:none; }
+.nav-right a:hover { text-decoration:underline; }
+#themeBtn { border:1px solid var(--border-strong); background:transparent; color:var(--ink2);
+    border-radius:999px; padding:2px 12px; font-size:12px; cursor:pointer; font-family:var(--sans); }
+#themeBtn:hover { border-color:var(--accent); color:var(--accent); }
+.cover { max-width:860px; margin:0 auto; text-align:center; padding:60px 24px 36px; }
+.kicker { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.cover h1 { font-family:var(--serif); font-size:34px; font-weight:600; margin:14px 0 8px; letter-spacing:.01em; }
+.cover .sub { font-size:14px; color:var(--ink2); }
+.stats { display:flex; justify-content:center; align-items:center; gap:26px; margin-top:30px; flex-wrap:wrap; }
+.stat { text-align:center; }
+.stat .num { display:block; font-family:var(--serif); font-size:30px; font-weight:600; color:var(--accent-ink); }
+.stat .label { display:block; font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.08em; }
+.stat-sep { width:1px; height:34px; background:var(--border-strong); }
+.cover .src { margin-top:20px; font-size:12.5px; color:var(--muted); }
+.toc { max-width:860px; margin:0 auto 8px; padding:0 24px; }
+.toc h2 { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; margin:26px 0 12px;
+    padding-bottom:8px; border-bottom:1px solid var(--border); }
+.toc h2 .en { font-weight:400; margin-left:8px; letter-spacing:.14em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list .n { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-right:6px; }
+.toc-list a { color:var(--ink); text-decoration:none; font-family:var(--serif); }
+.toc-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+.toc-list .toc-en { display:block; font-size:12px; color:var(--muted); margin-left:26px; margin-top:-2px; }
+.divider { max-width:860px; margin:36px auto -6px; padding:0 24px; display:flex; align-items:center; gap:16px; }
+.divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border-strong); }
+.divider span { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; white-space:nowrap; }
+.papers { max-width:860px; margin:0 auto; padding:0 24px 40px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0;
+    box-shadow:var(--shadow); overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.card summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto;
+    gap:16px; align-items:start; padding:20px 24px; user-select:none; }
+.card summary::-webkit-details-marker { display:none; }
+.c-kicker { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:6px; }
+.c-title-en { font-size:13.5px; color:var(--ink2); line-height:1.5; }
+.c-title-cn { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink);
+    margin:3px 0 7px; line-height:1.55; }
+.c-authors { font-size:13px; color:var(--muted); }
+.c-oneline { font-size:13.5px; color:var(--ink2); margin-top:7px; }
+.c-side { display:flex; flex-direction:column; align-items:flex-end; gap:8px; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:1px 10px; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid var(--accent); color:var(--accent); }
+.chev { font-size:16px; color:var(--muted); transition:transform .2s; line-height:1; }
+.card[open] .chev { transform:rotate(90deg); color:var(--accent); }
+.card.collision { border-left:3px solid var(--must); }
+.detail { padding:2px 24px 22px; border-top:1px dashed var(--border-strong); }
+.detail h4 { font-size:13px; letter-spacing:.06em; color:var(--accent-ink); font-weight:700; margin:18px 0 6px; }
+.detail p { font-size:14.5px; line-height:1.85; color:var(--ink); margin-bottom:10px; }
+.detail .rel-note { font-size:13px; color:var(--accent); font-weight:600; margin:14px 0 2px; }
+.detail .action-box { background:color-mix(in srgb, var(--must) 8%, var(--card));
+    border:1px solid color-mix(in srgb, var(--must) 30%, var(--border));
+    border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border-strong); border-radius:8px; padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--muted); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details p { font-size:13px; color:var(--ink2); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--muted); }
+.src-link a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.radar-note { max-width:860px; margin:0 auto 30px; padding:0 24px; font-size:13px; color:var(--muted); }
+.footer { text-align:center; padding:36px 24px 48px; font-size:12.5px; color:var(--muted); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:640px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:16px; }
+    .stat-sep { display:none; }
+    .card summary { padding:16px 18px; }
+    .detail { padding:2px 18px 18px; }
+}
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.2.5/index.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
+  startup: { ready() {
+      MathJax.startup.defaultReady();
+      document.querySelectorAll('details.card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
+        });
+      });
+  } }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+<nav class="topnav"><div class="nav-inner">
+  <span class="brand">ARXIV DAILY</span>
+  <span class="nav-right">
+    <a href="index.html">存档索引</a>
+    <button id="themeBtn" type="button">◐</button>
+  </span>
+</div></nav>
+
+<header class="cover">
+  <div class="kicker">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv · 2026年09月28日</h1>
+  <p class="sub">每日精选 · 按 Rao 的研究画像匹配</p>
+  <div class="stats">
+    <div class="stat"><span class="num">3</span><span class="label">核心精读 · ⭐2</span></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><span class="num">2</span><span class="label">领域动态</span></div>
+    <div class="stat-sep"></div><div class="stat"><span class="num">2</span><span class="label">名词推荐</span></div>
+  </div>
+  <p class="src">来源：gr-qc 24 · hep-th 16 · astro-ph.CO 5</p>
+</header>
+
+<section class="toc">
+  <h2>核心精读<span class="en">CORE</span></h2>
+  <ol class="toc-list"><li><span class="n">01</span><a href="#paper-1">从表观视界热力学出发的 Kruglov 熵宇宙学：背景动力学与观测约束</a></li><li><span class="n">02</span><a href="#paper-2">引力作用的 teleparallel 正则化</a></li><li><span class="n">03</span><a href="#paper-3">几何即热力学：熵驻定性与视界留数</a></li></ol>
+  <h2>领域动态<span class="en">FIELD RADAR</span></h2><ol class="toc-list"><li><span class="n">R1</span><a href="#radar-1">用 CMB 观测分析多项式 $\alpha$-attractor 模型中的 $\mu$ 参数范围与再加热持续时间</a></li><li><span class="n">R2</span><a href="#radar-2">宇宙非均匀性塑造暗能量与时间的演化</a></li></ol>
+  <h2>名词推荐<span class="en">KEYWORD PICKS</span></h2><ol class="toc-list"><li><span class="n">K1</span><a href="#kw-1">含标量场暗能量的相互作用暗部门模型中亚视界近似与准静态近似的有效性</a></li><li><span class="n">K2</span><a href="#kw-2">带 phantom 穿越的标量—矢量—张量暗能量的观测约束</a></li></ol>
+</section>
+
+<div class="papers">
+<details class="card" id="paper-1">
+<summary>
+  <div>
+    <div class="c-kicker">#1 · arXiv:2609.31426 · astro-ph.CO · gr-qc · hep-th</div>
+    <div class="c-title-cn">从表观视界热力学出发的 Kruglov 熵宇宙学：背景动力学与观测约束</div>
+    <div class="c-title-en">Kruglov-entropy cosmology from apparent-horizon thermodynamics: background dynamics and observational constraints</div>
+    <div class="c-authors">Candrasyah Muhammad, Burin Gumjudpai, Nandan Roy, Pornrad Srisawad</div>
+    <div class="c-oneline">💡 该文用 DESI DR2+CMB(+DES-Y5) 约束两种由 Kruglov 非可加熵在表观视界导出的晚期宇宙模型，发现同一熵的两种热力学实现给出截然不同的现象学。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s8">8.0</span>
+    <span class="must">必读</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>表观视界热力学（Cai–Kim 构造）已被广泛用于从广义熵导出修正 Friedmann 方程，但非可加熵（如 Kruglov 熵）在其中的具体嵌入方式并不唯一，而不同嵌入是否给出可观测上可区分的背景演化此前没有被系统比较。该文正是针对这一空白，检验同一非可加熵的两种热力学实现能否被当前数据区分。
+
+作者构造两个模型：模型 I 沿用 Kruglov 原始推导（Cai–Kim 构造），得到隐式修正 Friedmann 方程；模型 II 为本文新提出，由熵积分处方导出并含有效真空项。两者以无量纲 Hubble 参数表述、含辐射、强制今日闭合，并用隐式方程的解析导数演化物理分支。用 DESI DR2 BAO 加压缩 CMB 似然（含/不含 DES-Y5 Ia）约束：模型 I 被推向极低 $H_0\simeq62.4\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$，$w_{\rm DE,0}\simeq-0.814$（非 phantom），相对 flat $\Lambda$CDM 被强烈排除；模型 II 接近 $\Lambda$CDM，$w_{\rm DE,0}\simeq-1.003$，但两个熵扇区参数强简并，最佳拟合似然与 $\Lambda$CDM 相当而信息判据不支持额外参数。</p>
+  <h4>评价</h4>
+  <p>【创新点】首次把同一非可加熵的两种热力学实现（Cai–Kim 隐式方程 vs 熵积分处方）放在同一数据管线中对比，明确指出"熵如何进入 Friedmann 动力学"而非"熵本身"决定观测可行性；模型 II 的熵积分处方与有效真空项是新的构造。
+【局限性】纯背景层面分析，未涉及扰动、稳定性或 P-V 临界结构；模型 I 的隐式方程需选物理分支并依赖解析导数，分支选择与今日闭合条件可能影响结论；模型 II 两参数强简并意味着约束实际只限制一个组合，信息判据结论对先验敏感。
+【对 Rao 的意义】直接对应 P2（f(Q) 宇宙学 P-V 临界点的物理允许性）的方法论：把广义视界熵嵌入 Friedmann 方程时"嵌入方式"本身是自由度，且不同嵌入可被 BAO+CMB 强烈区分。可借用其隐式 Friedmann 方程的解析导数演化与今日闭合处理，作为 P2 中联络分支/熵修正项处理的对照。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可学到：非可加熵（Kruglov 形式）在表观视界热力学中的两种嵌入路径——Cai–Kim 构造给出隐式修正 Friedmann 方程，熵积分处方额外产生有效真空项；隐式方程需用解析导数沿物理分支演化，这是处理 f(Q)/熵修正宇宙学背景方程时的通用技术。需警惕：$H_0\simeq62.4$ 这类低值来自隐式方程分支选择与今日闭合的联合效应，不能直接当作熵参数的物理预言；模型 II 的参数简并说明"拟合好"不等于"熵修正被支持"。</p>
+  <h4>💡 推荐课题</h4>
+  <p>1) 与 P2 直接衔接：把 Kruglov 熵换成 f(Q) 联络方程导出的视界熵，检验 P-V 临界点是否随"熵嵌入方式"（Cai–Kim vs 熵积分）移动，第一步写出两种嵌入下的隐式 Friedmann 方程并比较临界点条件。2) 把该文的背景约束方法移植到 P3：在非绝热扰动框架下计算两种熵嵌入对有效声速与视界熵响应的差异，第一步推导熵修正项对背景方程的微扰展开。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.31426v1 Announce Type: new Abstract: We investigate two late-time cosmological models generated by Kruglov's nonadditive entropy at the apparent horizon. Model I, originally derived by Kruglov, follows the Cai--Kim thermodynamic construction and leads to an implicit modified Friedmann equation, whereas Model II, proposed and derived in this work, is obtained from an entropy-integral prescription and contains an effective vacuum contribution. We formulate both models in terms of the dimensionless Hubble parameter, include radiation, impose exact present-day closure, and evolve the physical branch using analytic derivatives of the implicit Friedmann equations. We constrain the models with DESI DR2 baryon acoustic oscillations and a compressed CMB likelihood, with and without DES-Y5 Type-Ia supernovae. Model I is driven to a markedly lower Hubble constant, $H_0\simeq62.4,\mathrm{km,s^{-1},Mpc^{-1}}$ for the combined data, and remains non-phantom with $w_{\rm DE,0}\simeq-0.814$; it is strongly disfavoured relative to flat $\Lambda$CDM. Model II stays close to $\Lambda$CDM in the standard cosmological parameters and gives $w_{\rm DE,0}\simeq-1.003$, while its two entropy-sector parameters remain strongly degenerate. Its best-fit likelihood is comparable to $\Lambda$CDM, but the additional parameters are not supported by information criteria. These results show that the two thermodynamic realizations of the same nonadditive entropy have sharply different phenomenological consequences at the homogeneous-background level. In summary, the observational plausibility of entropy-based cosmology hinges critically on how the generalized horizon entropy is incorporated into the Friedmann dynamics.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.31426" target="_blank" rel="noopener">arXiv:2609.31426</a></p>
+</div>
+</details>
+<details class="card" id="paper-2">
+<summary>
+  <div>
+    <div class="c-kicker">#2 · arXiv:2609.31444 · gr-qc</div>
+    <div class="c-title-cn">引力作用的 teleparallel 正则化</div>
+    <div class="c-title-en">Teleparallel Regularization of Gravitational Action</div>
+    <div class="c-authors">Martin Kr\v{s}\v{s}\'ak, Michal Stano</div>
+    <div class="c-oneline">💡 该文以 Schwarzschild 为例澄清 TEGR 中自旋联络作为表面项/抵消项正则化引力作用时的歧义，证明适当衰减的挠率张量唯一固定欧氏作用。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s8">8.0</span>
+    <span class="must">必读</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>在 teleparallel 等价于广义相对论（TEGR）的表述中，自旋联络通过表面项进入作用量，选取合适自旋联络可使其充当抵消项从而正则化作用量，但此前该程序中存在若干表观歧义（体作用与准局域作用不一致、tetrad 选择的作用、正则化是否唯一）。该文以 Schwarzschild 时空为具体例子系统澄清这些问题。
+
+作者证明体作用与准局域作用的表观差异来自时空奇点相关贡献，准局域作用与广义相对论标准结果一致；进一步说明 tetrad 选择如何决定对应自旋联络：proper diagonal 标架与 canonical 标架给出相同欧氏作用，但只有 proper diagonal 标架能在 Wheeler–DeWitt patch 上重现预期的 Lorentz 作用。最后确立正则化方案的唯一性，并证明对挠率张量施加适当的衰减行为可消除剩余歧义、唯一固定欧氏作用。</p>
+  <h4>评价</h4>
+  <p>【创新点】把 TEGR 作用量正则化中长期存在的"体 vs 准局域"不一致归因于奇点贡献，并给出 tetrad–自旋联络对应关系的明确判据（proper diagonal 标架在 WdW patch 上重现 Lorentz 作用）；挠率衰减条件唯一固定欧氏作用是新结果。
+【局限性】分析限于 Schwarzschild 这一高对称、静态、渐近平坦背景，未涉及转动、宇宙学或非平凡拓扑；"唯一性"是在给定衰减条件下证明的，条件本身是否物理必需未讨论；未触及 Lorentz 号差下一般边界的准局域作用构造。
+【对 Rao 的意义】与 Rao 的 teleparallel/TEGR 主线及协变荷/边界项兴趣直接相关：自旋联络作为表面项/抵消项的处理方式，与 Wald 熵、Iyer–Wald Noether 荷中边界项歧义是同一类问题。可借用其"奇点贡献导致体-边界作用差异"的论证，审视 f(T)/NYTG 中边界项与联络分支的对应。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可学到：TEGR 中自旋联络通过表面项进入作用量并可充当抵消项；proper diagonal 与 canonical 标架给出相同欧氏作用但只有前者在 Wheeler–DeWitt patch 上重现 Lorentz 作用——这是 teleparallel 中"标架选择 vs 理论对称性"的典型例子。需警惕：挠率衰减条件被用来唯一固定欧氏作用，这类"附加边界条件"在 f(T) 或 NYTG 中未必自然成立，引用其唯一性结论时须核对衰减假设。</p>
+  <h4>💡 推荐课题</h4>
+  <p>1) 与 P1/Q1 衔接：在 NYTG 不规则联络宇宙学中，检验自旋联络表面项是否同样可作抵消项，第一步计算 NYTG 作用量在给定标架下的表面项并检查其衰减行为。2) 把该文 tetrad–自旋联络对应判据用于 Q1 的静态球对称分支审计：对标准 NYTG 球对称解，比较 proper diagonal 与 canonical 标架给出的准局域作用是否一致。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.31444v1 Announce Type: new Abstract: We study the gravitational action in the teleparallel equivalent of general relativity, where the spin connection contributes to the action through a surface term and, when chosen appropriately, regularizes the action by effectively playing the role of a counterterm. We resolve several apparent ambiguities in this procedure using the Schwarzschild spacetime as an example. We show that the apparent discrepancy between bulk and quasilocal actions originates from contributions associated with spacetime singularities, and that the quasilocal action agrees with the standard results obtained in general relativity. We further clarify the role of the tetrad choice in determining the corresponding spin connection, showing that the proper diagonal and canonical frames give the same Euclidean action, while only the proper diagonal frame reproduces the expected Lorentzian action on the Wheeler--DeWitt patch. Finally, we establish the uniqueness of the regularization scheme and show that imposing an appropriate fall-off behavior of the torsion tensor removes the remaining ambiguity and fixes the Euclidean action uniquely.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.31444" target="_blank" rel="noopener">arXiv:2609.31444</a></p>
+</div>
+</details>
+<details class="card" id="paper-3">
+<summary>
+  <div>
+    <div class="c-kicker">#3 · arXiv:2609.30660 · gr-qc</div>
+    <div class="c-title-cn">几何即热力学：熵驻定性与视界留数</div>
+    <div class="c-title-en">Geometry as Thermodynamics:Entropy Stationarity and Horizon Residues</div>
+    <div class="c-authors">Wen-Xiang Chen</div>
+    <div class="c-oneline">💡 该文从零矢量熵泛函显式导出 Einstein 方程，并用亚纯径向一形式的留数（等于 1/(2κ)）结合 Noether 荷给出 Wald 熵的围道表示，同时构造反例界定"极点结构=动力学"的适用边界。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s8">8.0</span>
+    
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>引力热力学中，时空动力学的变分条件（熵驻定）与视界相关的解析结构（极点、留数）常被混为一谈，但二者假设不同、逻辑地位不同。该文在明确区分这两类结构的前提下考察其关系，并给出显式一致性检验。
+
+首先，作者从已有的零矢量熵泛函出发显式导出 Einstein 方程，包含零约束、物质项以及与宇宙学常数相关的积分常数。其次，对具有非退化 Killing 视界的解析静态球对称几何，定义亚纯径向一形式，其留数为表面引力两倍的倒数；欧氏正则性固定 Hawking 温度；将该留数与 Einstein–Hilbert Noether 荷结合，得到 Wald 熵的归一化围道表示，并重现 Schwarzschild 的温度、熵与 Smarr 关系，但明确声明这不构成面积律的独立微观推导。最后界定更强"极点结构=动力学"对应的极限：存在渐近平坦解族保持 Schwarzschild 视界留数、面积、表面引力与质量却违反真空 Einstein 方程；极端带电解具有高阶极点；并说明为何对未指定熵泛函取指数不会产生普适熵留数。</p>
+  <h4>评价</h4>
+  <p>【创新点】把"熵驻定（变分）"与"视界解析性（留数）"明确分离为两个独立假设，并给出反例族（保持留数/面积/κ/质量但违反真空 Einstein 方程）证明二者不能互相推出；Wald 熵的归一化围道表示与"指数化不产生普适留数"的否定结论都是具体的新澄清。
+【局限性】静态球对称、非退化 Killing 视界是核心假设，转动/宇宙学视界/退化视界（极端解仅作为反例提及）未系统处理；围道表示依赖 Einstein–Hilbert Noether 荷，推广到高阶曲率或 teleparallel 熵需重新推导；作者自己声明不构成面积律的微观推导。
+【对 Rao 的意义】与 Rao 的几何熵与协变荷主线（Wald 熵、Iyer–Wald Noether 荷、辛势与边界歧义）高度契合，也直接服务 P5（动态热流与协变荷通量）。其"留数=1/(2κ)"与 Noether 荷归一化的结合方式，可作为检验 f(Q)/NYTG 中视界熵定义一致性的模板；反例族提醒 Rao 在从视界解析性反推动力学时须独立验证场方程。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可学到：亚纯径向一形式的留数等于 1/(2κ)（κ 为表面引力），欧氏正则性如何固定 Hawking 温度，以及如何把该留数与 Einstein–Hilbert Noether 荷组合成 Wald 熵的归一化围道积分；Smarr 关系在此框架下自然重现。需警惕："保持留数/面积/κ/质量但违反真空 Einstein 方程"的反例说明视界解析结构不蕴含动力学，任何"从极点结构读出场方程"的论证都需额外假设；对未指定熵泛函取指数不产生普适留数，这与某些文献中"指数化熵泛函"的做法相冲突。</p>
+  <h4>💡 推荐课题</h4>
+  <p>1) 与 P5 直接衔接：把该文的留数–Noether 荷围道表示推广到动态（非 Killing）视界，检验动态热流项是否对应留数的非绝热修正，第一步在球对称动态背景下定义径向一形式并计算其留数的时间依赖。2) 与 P2/Q1 衔接：对 f(Q) 或 NYTG 静态球对称解，检验其视界留数是否仍等于 1/(2κ) 且与相应 Noether 荷归一化一致，第一步写出该理论下的 Noether 荷并构造对应亚纯一形式。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2609.30660v1 Announce Type: new Abstract: Thermodynamic descriptions of gravity involve both variational conditions for spacetime dynamics and analytic structures associated with horizons. We examine their relation while keeping their assumptions distinct. First, we present an explicit derivation of the Einstein equation from the established null-vector entropy functional, including the null constraint, the matter term, and the integration constant associated with the cosmological constant. Second, for an analytic static spherical geometry with a nondegenerate Killing horizon, we define a meromorphic radial one-form whose residue is the inverse of twice the surface gravity. Euclidean regularity then fixes the Hawking temperature. Combining this residue with the Einstein--Hilbert Noether charge gives a normalized contour representation of the Wald entropy. The construction reproduces the Schwarzschild temperature, entropy, and Smarr relation, but does not constitute an independent microscopic derivation of the area law. We establish the limits of a stronger identification between pole structure and dynamics: an asymptotically flat family can retain the Schwarzschild horizon residue, area, surface gravity, and mass while violating the vacuum Einstein equation, and an extremal charged solution possesses a higher-order pole. We also show why exponentiating an unspecified entropy functional does not produce a universal entropy residue. The resulting framework separates entropy stationarity, horizon analyticity, and charge normalization, providing explicit consistency tests for further thermodynamic interpretations of gravitational singularities.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.30660" target="_blank" rel="noopener">arXiv:2609.30660</a></p>
+</div>
+</details></div>
+
+<div class="divider"><span>领域动态 · 修正引力宇宙学</span></div><div class="papers">
+<details class="card " id="radar-1">
+<summary>
+  <div>
+    <div class="c-kicker">R1 · arXiv:2609.30390 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">用 CMB 观测分析多项式 $\alpha$-attractor 模型中的 $\mu$ 参数范围与再加热持续时间</div>
+    <div class="c-title-en">Analyzing $\mu$ Parameter Range and the Duration of Reheating in the Polynomial $\alpha$-attractor Models using CMB Observations</div>
+    <div class="c-authors">Ajay Atwal (IIT Mandi), Apurba Samanta (IIT Mandi)</div>
+    <div class="c-oneline">💡 该文把多项式 $\alpha$-attractor 的次领头修正算进 $n_s$ 与 $r$，发现 $n_s$ 显式依赖 $\mu$，并用 CMB 约束 $\mu$ 与再加热时长。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>宇宙学 $\alpha$-attractor 模型以对暴胀观测量（$n_s$、$r$）的普适预言著称，这种普适性在领头阶上几乎不依赖暴胀子势的具体形式，因此被广泛当作"模型无关"的暴胀基准。但普适性只在领头阶成立，一旦保留次领头项，势的细节（如多项式次数与系数）就会重新进入观测量，而这一层次的模型依赖此前缺少系统分析，尤其与再加热历史耦合后更不清楚。本文针对多项式 $\alpha$-attractor，推导了保留次领头贡献的 $n_s$ 与 $r$ 的扩展解析表达式，发现修正项使 $n_s$ 显式依赖刻画多项式势的参数 $\mu$——这一依赖在领头普适表达式中完全不存在。作者随后在 $(n_s, r)$ 平面上系统考察该模型依赖如何改变预言、并如何约束 $\mu$ 的取值，进一步把再加热持续时间 $\Delta N_{rh}$ 纳入分析，用 CMB 观测数据对 $\mu$ 与 $\Delta N_{rh}$ 联合限制。</p>
+<h4>评价</h4><p>【创新点】把 $\alpha$-attractor 的普适性从领头阶推进到次领头阶，明确指出 $n_s$ 对多项式参数 $\mu$ 的显式依赖，并把再加热时长 $\Delta N_{rh}$ 与 $\mu$ 联合纳入 CMB 约束，比只做领头阶 $(n_s,r)$ 拟合的工作多了一层模型分辨力。【局限性】本质仍是单场慢滚暴胀的解析展开加观测拟合，未涉及修正引力几何、非最小耦合或高阶导数结构；再加热段用瞬时/参数化处理，$\Delta N_{rh}$ 与 $\mu$ 的简并度是否可被现有 CMB 数据打破，摘要未给出定量说明。【对 Rao 的意义】现象学类，方法新意有限，但"领头普适 + 次领头模型依赖"的展开思路可迁移到 f(Q)/标量-张量暴胀的 $n_s$、$r$ 计算中，用于判断哪些观测量能区分联络分支。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.30390" target="_blank" rel="noopener">arXiv:2609.30390</a></p>
+</div>
+</details>
+<details class="card " id="radar-2">
+<summary>
+  <div>
+    <div class="c-kicker">R2 · arXiv:2609.31543 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">宇宙非均匀性塑造暗能量与时间的演化</div>
+    <div class="c-title-en">Cosmic Heterogeneity Shapes the Evolution of Dark Energy and Time</div>
+    <div class="c-authors">Jacky David Yang, Hans-Otto Carmesin</div>
+    <div class="c-oneline">💡 该文仅用宇宙体积动力学与物质非均匀分布，从第一性原理导出暗能量密度参数为 2/3、空间曲率为零，并给出随红移变化的膨胀率与暗能量密度。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>Hubble 常数在早期与晚期宇宙测量之间的分歧（Hubble tension）持续存在，标准 $\Lambda$CDM 的六个参数大多靠观测拟合，缺少从动力学本身导出参数的原则性方案，这正是本文试图切入的缺口。作者提出一个只依赖宇宙体积动力学、并允许物质非均匀分布的框架：体积形成过程给出暗能量密度参数为 $2/3$，空间曲率严格为零，物质密度由剩余宇宙能量预算决定，于是六个标准参数中有三个由底层动力学而非拟合得到；$H_0$ 仍作为观测输入，理由是它代表一个"日历日期"而非宇宙的内禀属性，其余两个参数同样取自观测。一旦把宇宙非均匀性作为动力学分量纳入，膨胀率与暗能量密度参数都变成红移依赖的量，后者从均匀时期的 0.679 向现在增加约 8%。</p>
+<h4>评价</h4><p>【创新点】把暗能量密度参数 $2/3$ 与零空间曲率作为体积动力学的推论而非拟合结果，并让非均匀性驱动暗能量密度随红移演化（$0.679$ 至今增约 8%），在思路上区别于常见的 $w(z)$ 参数化拟合。【局限性】"体积形成"与"非均匀性作为动力学分量"的微观定义在摘要中未给出，缺乏作用量层面的推导与微扰稳定性分析；$H_0$ 被归为"日历日期"从而排除在预言之外，这一论证是否自洽需看正文；与 CMB、BAO 数据的定量对比摘要未体现。【对 Rao 的意义】现象学类，方法新意有限，但"非均匀性 → 有效暗能量随红移演化"的图像与 Rao 关注的 FRW 视界热力学中表观视界、Misner–Sharp 能量对非均匀性的依赖有概念上的邻接，可作为背景参考。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.31543" target="_blank" rel="noopener">arXiv:2609.31543</a></p>
+</div>
+</details></div>
+<div class="divider"><span>名词推荐 · 暗能量</span></div><div class="papers">
+<details class="card" id="kw-1">
+<summary>
+  <div>
+    <div class="c-kicker">K1 · arXiv:2609.30937 · gr-qc · astro-ph.CO</div>
+    <div class="c-title-cn">含标量场暗能量的相互作用暗部门模型中亚视界近似与准静态近似的有效性</div>
+    <div class="c-title-en">Sub-Horizon and Quasi-Static Approximations in Interacting Dark Sector Models Involving Scalar Field Dark Energy</div>
+    <div class="c-authors">Priyanka Saha, Sharvari Nadkarni-Ghosh, Kaushik bhattacharya</div>
+    <div class="c-oneline">💡 该文推导 quintessence 与 phantom 相互作用暗能量模型的完整相对论扰动演化，发现亚视界近似随耦合强度增大而系统性失效，且不能还原标准牛顿流体方程。</div>
+  </div>
+  <div class="c-side">
+    <span class="kw">关键词：暗能量</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>在标量场暗能量与暗物质存在能量交换的模型中，线性物质扰动通常用亚视界近似（SHA）和准静态近似（QSA）来简化计算，这两个近似在 $\Lambda$CDM 和无相互作用标量场模型中已被反复检验，但在相互作用暗部门（interacting dark sector）中是否仍然成立，此前缺乏系统对照。由于相互作用项会改变扰动方程中能量—动量守恒的结构，近似的适用边界直接决定这类模型拟合结果的可靠性，因此值得逐项审计。
+
+作者对 quintessence 和 phantom 两类标量场分别写出完整相对论扰动方程，再与 SHA、QSA 解逐尺度、逐耦合强度对比。结果显示：对无相互作用和弱相互作用模型，在足够深的亚视界尺度上 SHA 可达到百分级精度；但随着相互作用强度增大、以及向更大尺度移动，SHA 精度逐步恶化。更关键的是，与 $\Lambda$CDM 及无相互作用标量场不同，把 SHA 施加于相互作用模型并不能完全还原标准牛顿流体方程。在所考察的尺度范围内，QSA 通常比 SHA 更接近完整相对论演化。作者还用完整相对论方程与 SHA 分别比较标量场模型与 $\Lambda$CDM。</p>
+<h4>评价</h4><p>【创新点】首次系统量化了相互作用暗部门模型中 SHA/QSA 的失效模式，明确指出 SHA 在相互作用情形下无法还原牛顿流体方程这一结构性差异，并给出精度随耦合强度与尺度的退化趋势，而非仅给单一模型的适用性结论。
+
+【局限性】摘要未给出具体耦合强度阈值与失效尺度，也未说明所采用的相互作用形式（如 $Q=\beta H\rho$ 类）是否具有代表性；结论限于线性扰动与标量场暗能量，未涉及更一般的 Horndeski/DHOST 或矢量、非度规扇区。
+
+【对 Rao 的意义】属修正引力宇宙学现象学/近似方法审计类，方法新意有限，但"近似在相互作用下失效"的判据对 Rao 的 P3（非绝热扰动对视界熵的有限波长响应）有直接参考价值：P3 同样需要判断哪些尺度上准静态/亚视界简化不可用。可借用其完整相对论扰动与近似解的逐尺度对照流程。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.30937" target="_blank" rel="noopener">arXiv:2609.30937</a></p>
+</div>
+</details>
+<details class="card" id="kw-2">
+<summary>
+  <div>
+    <div class="c-kicker">K2 · arXiv:2609.31113 · astro-ph.CO · gr-qc · hep-ph · hep-th</div>
+    <div class="c-title-cn">带 phantom 穿越的标量—矢量—张量暗能量的观测约束</div>
+    <div class="c-title-en">Observational constraints on scalar-vector-tensor dark energy with phantom-divide crossing</div>
+    <div class="c-authors">Nandan Roy, Shinji Tsujikawa, Ying-li Zhang, Zejun Zhang</div>
+    <div class="c-oneline">💡 该文用 DES Y5 超新星、DESI DR2 BAO、压缩 CMB 与 Gold-2017 RSD 约束标量—矢量—张量暗能量模型，发现穿越 $w=-1$ 的历史获得显著后验支持且拟合优于平坦 $\Lambda$CDM。</div>
+  </div>
+  <div class="c-side">
+    <span class="kw">关键词：暗能量</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>暗能量状态方程是否穿越 phantom 分界 $w=-1$ 是当前宇宙学的核心争议之一，DESI 的 BAO 数据对动态暗能量给出了偏好信号，但单一标量场难以自然实现先 phantom 后 quintessence 的穿越。标量—矢量—张量（SVT）模型通过矢量扇区在早期把 $w$ 压到 $-1$ 以下、再由正则标量场把 $w$ 拉回 $-1$ 以上，提供了一种机制性解释，因此需要与最新数据正面对撞。
+
+作者用 DES Year 5 超新星、DESI DR2 BAO 和压缩 CMB 信息做背景约束，再加入 Gold-2017 红移空间畸变（RSD）测量探测结构增长。背景后验对穿越历史赋予可观权重，最佳拟合优于平坦 $\Lambda$CDM；加入 RSD 后定性背景演化保持不变，同时约束了成团振幅，并提高了对"方向性穿越判据"的后验支持。作者强调这一提升不能仅归因于 RSD 似然，因为增长分析还施加了额外的微扰支持条件。匹配的 PolyChord 计算给出较大的 Bayes 因子。</p>
+<h4>评价</h4><p>【创新点】把矢量扇区作为实现 phantom 穿越的动力学机制，并用 DESI DR2 + DES Y5 + RSD 的联合数据给出背景与增长两个层面的支持，特别是指出 RSD 对穿越判据的增益来自微扰条件而非单纯似然权重，这一点比一般动态暗能量拟合更细致。
+
+【局限性】摘要未给出 Bayes 因子的具体数值与误差条，也未说明矢量扇区是否引入鬼不稳定性或强耦合尺度；模型参数较多，与 $\Lambda$CDM 的拟合改善是否稳健于先验选择尚不清楚。
+
+【对 Rao 的意义】现象学类，方法新意有限，但属 Rao 雷达层"修正引力宇宙学一般项"与"mimetic/标量-张量"方向。其 SVT 分解与矢量扇区驱动 $w$ 穿越的构造，可与 Rao 在研的 SVT 分解、动能矩阵与约束消元工作对照，用于检查矢量自由度是否被正确消元。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2609.31113" target="_blank" rel="noopener">arXiv:2609.31113</a></p>
+</div>
+</details></div>
+
+<div class="footer">
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年09月28日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+<script>
+(function(){
+  var saved = localStorage.getItem('arxiv-theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); }
+  var btn = document.getElementById('themeBtn');
+  function cur(){ return document.documentElement.getAttribute('data-theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  function label(){ btn.textContent = cur() === 'dark' ? '☾ 深色' : '☀ 浅色'; }
+  label();
+  btn.onclick = function(){
+    var t = cur() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('arxiv-theme', t); label();
+  };
+})();
+</script>
+</body>
+</html>
