@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv · 2026-10-08</title>
+<style>
+:root {
+    --bg:#f7f5f0; --card:#ffffff; --ink:#1c1c28; --ink2:#55566a; --muted:#8a8b99;
+    --accent:#3b4a8c; --accent-ink:#2e3a70; --accent-soft:#eceef6;
+    --border:#e4e1d6; --border-strong:#d3cfc0;
+    --must:#9e2b25; --s7:#b07c2a; --s6:#6b7c5e; --s5:#8a8b99;
+    --shadow:0 1px 2px rgba(28,28,40,.04), 0 4px 16px rgba(28,28,40,.06);
+    --shadow-hover:0 2px 4px rgba(28,28,40,.06), 0 10px 28px rgba(28,28,40,.10);
+    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --mono:"SF Mono","Fira Code","Consolas",monospace;
+}
+[data-theme="dark"] {
+    --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+    --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+    --border:#2b2f3d; --border-strong:#3a3f50;
+    --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+    --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+    --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
+        --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
+        --border:#2b2f3d; --border-strong:#3a3f50;
+        --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
+        --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
+        --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
+    }
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--sans); background:var(--bg); color:var(--ink);
+       line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .25s, color .25s; }
+[data-theme="dark"] body { background:#14161d; color:#e9e7de; }
+[data-theme="dark"] .card { background:#1d2029; border-color:#2b2f3d; }
+[data-theme="dark"] .topnav { background:rgba(20,22,29,.84); }
+.topnav { position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    background:color-mix(in srgb, var(--bg) 84%, transparent); border-bottom:1px solid var(--border); }
+.nav-inner { max-width:860px; margin:0 auto; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; }
+.brand { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.nav-right { display:flex; gap:14px; align-items:center; font-size:13px; }
+.nav-right a { color:var(--accent); text-decoration:none; }
+.nav-right a:hover { text-decoration:underline; }
+#themeBtn { border:1px solid var(--border-strong); background:transparent; color:var(--ink2);
+    border-radius:999px; padding:2px 12px; font-size:12px; cursor:pointer; font-family:var(--sans); }
+#themeBtn:hover { border-color:var(--accent); color:var(--accent); }
+.cover { max-width:860px; margin:0 auto; text-align:center; padding:60px 24px 36px; }
+.kicker { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
+.cover h1 { font-family:var(--serif); font-size:34px; font-weight:600; margin:14px 0 8px; letter-spacing:.01em; }
+.cover .sub { font-size:14px; color:var(--ink2); }
+.stats { display:flex; justify-content:center; align-items:center; gap:26px; margin-top:30px; flex-wrap:wrap; }
+.stat { text-align:center; }
+.stat .num { display:block; font-family:var(--serif); font-size:30px; font-weight:600; color:var(--accent-ink); }
+.stat .label { display:block; font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.08em; }
+.stat-sep { width:1px; height:34px; background:var(--border-strong); }
+.cover .src { margin-top:20px; font-size:12.5px; color:var(--muted); }
+.toc { max-width:860px; margin:0 auto 8px; padding:0 24px; }
+.toc h2 { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; margin:26px 0 12px;
+    padding-bottom:8px; border-bottom:1px solid var(--border); }
+.toc h2 .en { font-weight:400; margin-left:8px; letter-spacing:.14em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list .n { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-right:6px; }
+.toc-list a { color:var(--ink); text-decoration:none; font-family:var(--serif); }
+.toc-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
+.toc-list .toc-en { display:block; font-size:12px; color:var(--muted); margin-left:26px; margin-top:-2px; }
+.divider { max-width:860px; margin:36px auto -6px; padding:0 24px; display:flex; align-items:center; gap:16px; }
+.divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border-strong); }
+.divider span { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; white-space:nowrap; }
+.papers { max-width:860px; margin:0 auto; padding:0 24px 40px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0;
+    box-shadow:var(--shadow); overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 40%, var(--border)); }
+.card summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto;
+    gap:16px; align-items:start; padding:20px 24px; user-select:none; }
+.card summary::-webkit-details-marker { display:none; }
+.c-kicker { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:6px; }
+.c-title-en { font-size:13.5px; color:var(--ink2); line-height:1.5; }
+.c-title-cn { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink);
+    margin:3px 0 7px; line-height:1.55; }
+.c-authors { font-size:13px; color:var(--muted); }
+.c-oneline { font-size:13.5px; color:var(--ink2); margin-top:7px; }
+.c-side { display:flex; flex-direction:column; align-items:flex-end; gap:8px; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:1px 10px; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid var(--accent); color:var(--accent); }
+.chev { font-size:16px; color:var(--muted); transition:transform .2s; line-height:1; }
+.card[open] .chev { transform:rotate(90deg); color:var(--accent); }
+.card.collision { border-left:3px solid var(--must); }
+.detail { padding:2px 24px 22px; border-top:1px dashed var(--border-strong); }
+.detail h4 { font-size:13px; letter-spacing:.06em; color:var(--accent-ink); font-weight:700; margin:18px 0 6px; }
+.detail p { font-size:14.5px; line-height:1.85; color:var(--ink); margin-bottom:10px; }
+.detail .rel-note { font-size:13px; color:var(--accent); font-weight:600; margin:14px 0 2px; }
+.detail .action-box { background:color-mix(in srgb, var(--must) 8%, var(--card));
+    border:1px solid color-mix(in srgb, var(--must) 30%, var(--border));
+    border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border-strong); border-radius:8px; padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--muted); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details p { font-size:13px; color:var(--ink2); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--muted); }
+.src-link a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
+.radar-note { max-width:860px; margin:0 auto 30px; padding:0 24px; font-size:13px; color:var(--muted); }
+.footer { text-align:center; padding:36px 24px 48px; font-size:12.5px; color:var(--muted); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:640px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:16px; }
+    .stat-sep { display:none; }
+    .card summary { padding:16px 18px; }
+    .detail { padding:2px 18px 18px; }
+}
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.2.5/index.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
+  startup: { ready() {
+      MathJax.startup.defaultReady();
+      document.querySelectorAll('details.card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
+        });
+      });
+  } }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+<nav class="topnav"><div class="nav-inner">
+  <span class="brand">ARXIV DAILY</span>
+  <span class="nav-right">
+    <a href="index.html">存档索引</a>
+    <button id="themeBtn" type="button">◐</button>
+  </span>
+</div></nav>
+
+<header class="cover">
+  <div class="kicker">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv · 2026年10月08日</h1>
+  <p class="sub">每日精选 · 按 Rao 的研究画像匹配</p>
+  <div class="stats">
+    <div class="stat"><span class="num">2</span><span class="label">核心精读 · ⭐0</span></div>
+    <div class="stat-sep"></div>
+    <div class="stat"><span class="num">2</span><span class="label">领域动态</span></div>
+    <div class="stat-sep"></div><div class="stat"><span class="num">1</span><span class="label">名词推荐</span></div>
+  </div>
+  <p class="src">来源：gr-qc 19 · hep-th 19 · astro-ph.CO 10</p>
+</header>
+
+<section class="toc">
+  <h2>核心精读<span class="en">CORE</span></h2>
+  <ol class="toc-list"><li><span class="n">01</span><a href="#paper-1">Lovelock 引力中含挠率的极大对称黑洞</a></li><li><span class="n">02</span><a href="#paper-2">动态 Chern-Simons 黑洞的解析宇称破坏灰体因子</a></li></ol>
+  <h2>领域动态<span class="en">FIELD RADAR</span></h2><ol class="toc-list"><li><span class="n">R1</span><a href="#radar-1">大轻子不对称性产生的宇宙双折射</a></li><li><span class="n">R2</span><a href="#radar-2">非均匀 $SU(2)$ 与 $SL(2,\mathbb{R})$ 非线性 $\sigma$-模型中的各向异性宇宙学</a></li></ol>
+  <h2>名词推荐<span class="en">KEYWORD PICKS</span></h2><ol class="toc-list"><li><span class="n">K1</span><a href="#kw-1">LazyTB：含多种相互作用流体的扩展 LTB 解数值代码</a></li></ol>
+</section>
+
+<div class="papers">
+<details class="card" id="paper-1">
+<summary>
+  <div>
+    <div class="c-kicker">#1 · arXiv:2610.10348 · hep-th</div>
+    <div class="c-title-cn">Lovelock 引力中含挠率的极大对称黑洞</div>
+    <div class="c-title-en">Maximally symmetric black holes with torsion in Lovelock gravity</div>
+    <div class="c-authors">B. Cvetkovi\'c, D. Simi\'c</div>
+    <div class="c-oneline">💡 在五维 Lovelock 引力中按对称类构造出含非平凡挠率的静态黑洞解，每个解由两个独立常数刻画，并给出相应守恒荷。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>Lovelock 引力是 Lanczos–Lovelock 高阶曲率项的推广，其无挠分支的黑洞解已被广泛研究；但挠率在 Lovelock 框架中如何与高阶曲率项共存、极大对称视界是否仍允许非平凡挠率，长期缺乏系统分类。该问题值得做，因为挠率若能在高阶引力中存活，会直接改变黑洞热力学第一定律中熵与守恒荷的定义，并影响 teleparallel/度规仿射表述的等价性讨论。
+
+作者在五维 Lovelock 引力中，对每一类极大对称视界（球面、平面、双曲）分别求解含挠率的静态场方程，得到由两个独立积分常数（质量类与挠率类）参数化的黑洞解。随后用协变相空间/Noether 方法计算这些解的守恒荷（质量、角动量及挠率贡献的荷），并讨论其与无挠 Lovelock 黑洞的偏离。摘要未给出具体荷表达式或热力学量的数值，仅说明解的存在性与荷的确定。</p>
+  <h4>评价</h4>
+  <p>【创新点】首次在五维 Lovelock 引力中系统给出含非平凡挠率的极大对称黑洞解，并按对称类分类，突破了以往只在 Einstein–Cartan 或 TEGR 中讨论挠率黑洞的限制，且明确给出守恒荷。
+【局限性】仅限五维、静态、极大对称视界，未涉及旋转或渐近非平坦情形；摘要未说明解是否满足全部场方程分支条件（规则/不规则联络），也未讨论热力学第一定律与熵的具体形式，因此结论的普适性有限。
+【对 Rao 的意义】与 Rao 的 teleparallel/f(T) 与度规仿射主线直接相关，尤其是联络分支意识与守恒荷定义；其 Noether 荷计算可对照 Rao 在 f(Q) 视界熵与协变荷方面的工作，帮助辨析挠率对 Wald 熵的贡献。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可学习在 Lovelock 高阶曲率项下如何用协变相空间方法定义含挠率的守恒荷；注意其联络约定（是否采用 Weitzenböck 或一般度规仿射联络）与 Rao 熟悉的 f(Q) 非度规联络不同，比较时需警惕符号与边界项差异。</p>
+  <h4>💡 推荐课题</h4>
+  <p>暂无</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2610.10348v1 Announce Type: new Abstract: We analyze the existence of static black hole solutions with maximally symmetric horizons and nontrivial torsion in five-dimensional Lovelock gravity. For each symmetry class, we obtain a black hole solution characterized by two independent constants. We also determine the conserved charges associated with these solutions.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.10348" target="_blank" rel="noopener">arXiv:2610.10348</a></p>
+</div>
+</details>
+<details class="card" id="paper-2">
+<summary>
+  <div>
+    <div class="c-kicker">#2 · arXiv:2610.10280 · gr-qc · astro-ph.HE · hep-th</div>
+    <div class="c-title-cn">动态 Chern-Simons 黑洞的解析宇称破坏灰体因子</div>
+    <div class="c-title-en">Analytic parity-violating greybody factors of a dynamical Chern-Simons black hole</div>
+    <div class="c-authors">Abhishek Rout (University of South Carolina)</div>
+    <div class="c-oneline">💡 用匹配渐近展开首次给出 dCS 黑洞中引力子到赝标量的转换概率 d₂=3(π²−9)²/8 与四极灰体吸收不对称 κ₂ 的高精度解析重构。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>动态 Chern-Simons (dCS) 引力中，轴（奇宇称）引力扇区与动力学赝标量不可约耦合，而极（偶宇称）扇区保持广义相对论形式，这导致引力波双折射与吸收不对称。此前对 dCS 黑洞灰体因子的计算多为数值或仅给领头阶，缺乏解析闭式，而解析结果对连接吸收不对称与轴/极准正规模劈裂至关重要。
+
+作者在无量纲耦合 ζ=(ℓ_CS/M)⁴ 一阶、低频极限下，用匹配渐近展开研究非旋转 dCS 黑洞对引力波与赝标量波的散射。得到引力子→赝标量转换概率的精确闭式 d₂=3(π²−9)²/8，以及四极 (ℓ=2) 通道灰体吸收不对称 κ₂=(21/80)π⁴+(27/8)π²−89833/1536 的高精度重构，二者均为 π⁴、π² 与有理数的组合，重构基中无 ln2 或奇 ζ 项。透射相位含解析的 ζ(3)−9/8 静态积分，但整体匹配前因子为数值确定；领头反射相位不对称为零，故反射波无偏振旋转，仅透射相位保留 O(ωζ) 次领头不对称。归一化通量不对称在几何光学极限下与 1/(Mω)² 衰减一致，主要剩余通量效应为转换损失。结果与直接双通道积分交叉验证。</p>
+  <h4>评价</h4>
+  <p>【创新点】首次给出 dCS 黑洞灰体因子的解析闭式与超越基重构，明确区分反射相位（领头为零）与透射相位（含 ζ(3) 项）的不对称结构，并给出转换概率的精确常数 d₂。
+【局限性】仅限非旋转黑洞、低频、ζ 一阶与四极通道；透射相位整体前因子仍为数值，未推广到旋转或高阶多极，结论的适用范围较窄。
+【对 Rao 的意义】直接对应 Rao 的宇称破缺引力与引力波双折射主线，尤其是手征 GW 与 CMB TB/EB 的解析靶标；其匹配渐近展开与超越基方法可迁移到 Rao 的 f(Q)/NYTG 手征谱计算。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可学习匹配渐近展开在宇称破坏散射中的用法，以及如何将灰体不对称表示为 π⁴、π² 与有理数的组合；注意 dCS 中轴/极扇区解耦方式与 Rao 熟悉的 NYTG 手征分配不同，转换概率的常数 d₂ 可作为检验手征信号的基准。</p>
+  <h4>💡 推荐课题</h4>
+  <p>可尝试将 dCS 的灰体不对称解析方法移植到 P1（NYTG 不规则联络宇宙中标量—张量纠缠及手征分配），第一步计算在 NYTG 轴扇区中写出对应的低频匹配方程并求领头转换概率；或与 P3（非绝热扰动对视界熵的有限波长响应）结合，用类似超越基重构视界熵的有限波长修正。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2610.10280v1 Announce Type: new Abstract: We study the low-frequency scattering of gravitational and pseudoscalar waves off a non-rotating black hole in dynamical Chern-Simons (dCS) gravity, where the axial (odd-parity) gravitational sector is irreducibly coupled to the dynamical pseudoscalar while the polar sector remains general relativistic. Working to first order in the dimensionless coupling zeta = (ell_CS/M)^4 and using matched asymptotic expansions, we obtain an exact closed form for the graviton-to-pseudoscalar conversion probability, d_2 = 3(pi^2-9)^2/8, and a high-precision reconstruction, in a proven transcendental basis, of the graviton greybody (absorption) asymmetry, kappa_2 = (21/80) pi^4 + (27/8) pi^2 - 89833/1536, for the quadrupole (ell=2) channel. Both reduce to combinations of pi^4, pi^2, and rational numbers, with no ln2 or odd-zeta terms in the reconstructed basis; the transmission-phase sector, by contrast, contains an analytically derived zeta(3)-9/8 static integral, while its overall matching prefactor is identified numerically. The leading reflection-phase asymmetry vanishes, so that no polarization rotation is imprinted on the reflected wave at leading low-frequency order, while a subleading O(omegazeta) asymmetry remains in the transmitted phase. The normalized flux asymmetries are numerically consistent with a 1/(Momega)^2 falloff in the geometric-optics limit, where the leading remaining flux effect is conversion loss. The matched-asymptotic results are checked against direct two-channel integration, while the one-dimensional integral determining kappa_2 is evaluated to high precision within an analytically controlled transcendental basis. The results provide analytic targets linking dCS parity violation in absorption and mode conversion to the axial/polar quasinormal-mode splitting.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.10280" target="_blank" rel="noopener">arXiv:2610.10280</a></p>
+</div>
+</details></div>
+
+<div class="divider"><span>领域动态 · 修正引力宇宙学</span></div><div class="papers">
+<details class="card " id="radar-1">
+<summary>
+  <div>
+    <div class="c-kicker">R1 · arXiv:2610.09748 · 宇称破缺引力/引力重子/轻子生成</div>
+    <div class="c-title-cn">大轻子不对称性产生的宇宙双折射</div>
+    <div class="c-title-en">Cosmic Birefringence from Large Lepton Asymmetry</div>
+    <div class="c-authors">Kentaro Kasai, Ippei Obata</div>
+    <div class="c-oneline">💡 中微子流-光子矢量 Chern-Simons 耦合可解释各向同性 CMB 双折射，且轻子数等曲率扰动在大尺度给出可观测的各向异性信号。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-neighbor">近邻</span>
+    <span class="score s6">6.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>宇宙双折射指 CMB 光子偏振面在传播中的旋转，Planck 数据给出约 0.3 度的各向同性旋转角，其起源尚无定论。轴子类粒子（ALP）与光子的 Chern-Simons 耦合是最主流解释，但轻子数不对称是否也能通过中微子流与光子的矢量 Chern-Simons 耦合产生双折射，此前未被系统研究，尤其是各向异性信号部分完全空白。
+
+本文首次分析中微子流诱导的各向异性宇宙双折射，发现由轻子数等曲率扰动产生的各向异性信号在大尺度上不可忽略，而在小尺度上引力效应诱导的各向异性信号超过 ALP 情形。随后作者证明，通过 Affleck-Dine 机制产生的大轻子不对称性可以成功解释观测到的各向同性双折射，并讨论了其与 Subaru EMPRESS 和 Atacama Cosmology Telescope（ACT）近期报告的低氦-4丰度之间的可能联系。</p>
+<h4>评价</h4><p>【创新点】首次计算中微子流-光子矢量 Chern-Simons 耦合产生的各向异性双折射，指出大尺度由轻子数等曲率扰动主导、小尺度由引力效应主导，与 ALP 情形的尺度依赖不同；同时把 Affleck-Dine 轻子生成与各向同性双折射及低氦-4丰度联系起来。
+【局限性】各向异性信号的计算依赖轻子数等曲率扰动的初始条件与 Affleck-Dine 参数选择，摘要未给出对旋转角幅度与观测上限的定量拟合；矢量 Chern-Simons 耦合的紫外完备性也未讨论。
+【对 Rao 的意义】属宇称破缺引力雷达层中的近邻工作：与 Rao 关注的引力/电磁宇称破缺统一、CMB TB/EB 旋转约束直接相关，其矢量 Chern-Simons 耦合的宇称奇结构可与 Nieh-Yan 项及引力双折射的宇称分类对照，但本文只处理平坦时空中的中微子流耦合，未涉及引力扇区。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.09748" target="_blank" rel="noopener">arXiv:2610.09748</a></p>
+</div>
+</details>
+<details class="card " id="radar-2">
+<summary>
+  <div>
+    <div class="c-kicker">R2 · arXiv:2610.09049 · 修正引力宇宙学一般项</div>
+    <div class="c-title-cn">非均匀 $SU(2)$ 与 $SL(2,\mathbb{R})$ 非线性 $\sigma$-模型中的各向异性宇宙学</div>
+    <div class="c-title-en">Anisotropic Cosmology with Inhomogeneous $SU(2) $ and $SL(2,\mathbb{R})$ Nonlinear $\sigma$-Models</div>
+    <div class="c-authors">N. Dimakis, A. Giacomini, G. Leon, F. Moncada, A. Paliathanasis</div>
+    <div class="c-oneline">💡 在 Bianchi V 背景中研究非均匀标量场非线性 $\sigma$-模型相空间，发现非均匀性排除慢滚与双曲暴胀，加速需宇宙学常数。</div>
+  </div>
+  <div class="c-side">
+    <span class="rel rel-field">风向</span>
+    <span class="score s5">4.0</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>各向异性 Bianchi 模型是检验暴胀对初始条件敏感性的标准场所，而多标量场非线性 $\sigma$-模型（动能度规为常曲率空间）在宇宙学中已有大量工作，但多数假设标量场只依赖时间。当背景本身各向异性且带空间曲率时，标量场是否可以取非均匀位形、这种非均匀性如何改变相空间结构，此前讨论不多，值得系统分析。本文在局部旋转对称的 Bianchi V 背景中，取内部对称群为 $SU(2)$ 与 $SL(2,\mathbb{R})$，使多标量场动能度规为常曲率空间，并假设标量场非均匀位形，从而让 $\sigma$-模型在 Bianchi V 中存在非平凡解。对指数势，作者完整分析相空间，求出所有不动点并讨论稳定性。关键结果是：标量场非均匀性同时排除了慢滚暴胀和双曲暴胀阶段；要描述宇宙加速，必须引入宇宙学常数。</p>
+<h4>评价</h4><p>【创新点】把常曲率动能度规的非线性 $\sigma$-模型放到 Bianchi V 各向异性背景并允许标量场非均匀，得到非均匀性排除慢滚/双曲暴胀、加速必须靠 $\Lambda$ 的结论，比常见的均匀标量场相空间分析更接近真实各向异性初条件。【局限性】只处理指数势与特定内部对称群，未讨论更一般势或量子修正；相空间分析限于 Bianchi V，结论能否推广到其他 Bianchi 类型或含挠率/非度规几何不清楚；未给出与观测（如各向异性膨胀、原初引力波）的定量约束。【对 Rao 的意义】现象学类，方法新意有限，但相空间不动点与稳定性分析的技术可迁移到 Rao 的 P2（f(Q) 宇宙学 P-V 临界点稳定性）与联络分支宇宙学的动力学系统研究，尤其是各向异性背景下的约束消元思路。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.09049" target="_blank" rel="noopener">arXiv:2610.09049</a></p>
+</div>
+</details></div>
+<div class="divider"><span>名词推荐 · 暗能量</span></div><div class="papers">
+<details class="card" id="kw-1">
+<summary>
+  <div>
+    <div class="c-kicker">K1 · arXiv:2610.09625 · astro-ph.CO · gr-qc</div>
+    <div class="c-title-cn">LazyTB：含多种相互作用流体的扩展 LTB 解数值代码</div>
+    <div class="c-title-en">LazyTB: Extended LTB-solutions with Multiple Interacting Fluids</div>
+    <div class="c-authors">Kimmo Kainulainen, Enrico Schiappacasse, Linda Tenhu, Olli V\"ais\"anen</div>
+    <div class="c-oneline">💡 发布开源代码 LazyTB，用 ADM 形式求解任意多流体球对称 Einstein 方程，并演示 LTB、辐射+暗物质、耦合暗物质-暗能量等模型。</div>
+  </div>
+  <div class="c-side">
+    <span class="kw">关键词：暗能量</span>
+    <span class="chev">▸</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>球对称非均匀宇宙模型（LTB 及其推广）是检验宇宙学原理偏离、解释表观加速膨胀的重要工具，但传统 LTB 求解器通常只支持尘埃加宇宙常数，难以处理多流体、有相互作用或非零声速的组分。随着暗能量与暗物质相互作用模型、以及视界热力学中非均匀背景（如 Misner–Sharp 能量、表观视界演化）研究的推进，需要一个能灵活处理任意流体与相互作用的通用数值框架。
+
+作者提出 LazyTB，在 ADM 形式下求解一般球对称问题的 Einstein 方程，支持任意数量流体、用户自定义状态方程，以及通过 drag-vector 媒介的流体间相互作用。代码采用精心选取的无量纲变量，通过解析消去潜在发散项来避免数值不稳定。作者用标准 LTB 模型、辐射+暗物质模型、具有非零声速的多方暗能量模型、以及耦合相互作用的暗物质-暗能量模型进行了演示，并实现了包括光线追踪在内的诊断工具，可从模拟中提取任意位置观测者的光度距离等物理观测量。代码设计为易于扩展到晚期宇宙之外的应用。</p>
+<h4>评价</h4><p>【创新点】相比既有 LTB 求解器，LazyTB 的核心新意在于支持任意数量流体、用户自定义状态方程以及 drag-vector 媒介的流体相互作用，并通过无量纲变量选取解析消去发散项以提升数值稳定性，同时内置光线追踪等观测诊断工具。
+
+【局限性】摘要未给出与已有代码的定量精度对比或收敛性测试数据；drag-vector 相互作用的具体物理动机与参数范围也未展开，且演示模型限于晚期宇宙，早期宇宙或强非均匀情形的适用性未知。
+
+【对 Rao 的意义】属修正引力宇宙学一般项中的数值工具类工作，与 Rao 的 P2（f(Q) 宇宙学 P-V 临界）和 P3（非绝热扰动对视界熵的响应）无直接模型重叠，但若未来需要在非均匀球对称背景上检验视界热力学量（Misner–Sharp 能量、表观视界），该代码的多流体与相互作用支持可作为现成平台。现象学/数值工具类，方法新意有限。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.09625" target="_blank" rel="noopener">arXiv:2610.09625</a></p>
+</div>
+</details></div>
+
+<div class="footer">
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年10月08日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+<script>
+(function(){
+  var saved = localStorage.getItem('arxiv-theme');
+  if (saved) { document.documentElement.setAttribute('data-theme', saved); }
+  var btn = document.getElementById('themeBtn');
+  function cur(){ return document.documentElement.getAttribute('data-theme') ||
+    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
+  function label(){ btn.textContent = cur() === 'dark' ? '☾ 深色' : '☀ 浅色'; }
+  label();
+  btn.onclick = function(){
+    var t = cur() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    localStorage.setItem('arxiv-theme', t); label();
+  };
+})();
+</script>
+</body>
+</html>
