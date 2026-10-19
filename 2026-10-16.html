@@ -3,134 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>arXiv · 2026-10-16</title>
+<title>arXiv 每日精选 — 2026-10-16</title>
 <style>
 :root {
-    --bg:#f7f5f0; --card:#ffffff; --ink:#1c1c28; --ink2:#55566a; --muted:#8a8b99;
-    --accent:#3b4a8c; --accent-ink:#2e3a70; --accent-soft:#eceef6;
-    --border:#e4e1d6; --border-strong:#d3cfc0;
-    --must:#9e2b25; --s7:#b07c2a; --s6:#6b7c5e; --s5:#8a8b99;
-    --shadow:0 1px 2px rgba(28,28,40,.04), 0 4px 16px rgba(28,28,40,.06);
-    --shadow-hover:0 2px 4px rgba(28,28,40,.06), 0 10px 28px rgba(28,28,40,.10);
-    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    --mono:"SF Mono","Fira Code","Consolas",monospace;
-}
-[data-theme="dark"] {
-    --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
-    --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
-    --border:#2b2f3d; --border-strong:#3a3f50;
-    --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
-    --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
-    --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
-}
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
-        --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
-        --border:#2b2f3d; --border-strong:#3a3f50;
-        --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
-        --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
-        --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
-    }
+    --bg:#fafaf8; --card-bg:#ffffff; --text:#2c2c2c; --text-secondary:#666;
+    --accent:#2563eb; --accent-light:#eff6ff; --border:#e5e7eb;
+    --tag-bg:#f3f4f6; --tag-text:#4b5563;
+    --must:#dc2626; --s7:#d97706; --s6:#059669; --s5:#6b7280;
+    --shadow:0 1px 3px rgba(0,0,0,0.08); --radius:8px;
+    --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+    --font-mono:"SF Mono","Fira Code","Cascadia Code","Consolas",monospace;
 }
 * { box-sizing:border-box; margin:0; padding:0; }
 html { scroll-behavior:smooth; }
-body { font-family:var(--sans); background:var(--bg); color:var(--ink);
-       line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .25s, color .25s; }
-[data-theme="dark"] body { background:#14161d; color:#e9e7de; }
-[data-theme="dark"] .card { background:#1d2029; border-color:#2b2f3d; }
-[data-theme="dark"] .topnav { background:rgba(20,22,29,.84); }
-.topnav { position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-    background:color-mix(in srgb, var(--bg) 84%, transparent); border-bottom:1px solid var(--border); }
-.nav-inner { max-width:860px; margin:0 auto; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; }
-.brand { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
-.nav-right { display:flex; gap:14px; align-items:center; font-size:13px; }
-.nav-right a { color:var(--accent); text-decoration:none; }
-.nav-right a:hover { text-decoration:underline; }
-#themeBtn { border:1px solid var(--border-strong); background:transparent; color:var(--ink2);
-    border-radius:999px; padding:2px 12px; font-size:12px; cursor:pointer; font-family:var(--sans); }
-#themeBtn:hover { border-color:var(--accent); color:var(--accent); }
-.cover { max-width:860px; margin:0 auto; text-align:center; padding:60px 24px 36px; }
-.kicker { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
-.cover h1 { font-family:var(--serif); font-size:34px; font-weight:600; margin:14px 0 8px; letter-spacing:.01em; }
-.cover .sub { font-size:14px; color:var(--ink2); }
-.stats { display:flex; justify-content:center; align-items:center; gap:26px; margin-top:30px; flex-wrap:wrap; }
-.stat { text-align:center; }
-.stat .num { display:block; font-family:var(--serif); font-size:30px; font-weight:600; color:var(--accent-ink); }
-.stat .label { display:block; font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.08em; }
-.stat-sep { width:1px; height:34px; background:var(--border-strong); }
-.cover .src { margin-top:20px; font-size:12.5px; color:var(--muted); }
-.toc { max-width:860px; margin:0 auto 8px; padding:0 24px; }
-.toc h2 { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; margin:26px 0 12px;
-    padding-bottom:8px; border-bottom:1px solid var(--border); }
-.toc h2 .en { font-weight:400; margin-left:8px; letter-spacing:.14em; }
-.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; list-style:none; }
+body { font-family:var(--font-sans); background:var(--bg); color:var(--text);
+       line-height:1.7; -webkit-font-smoothing:antialiased; }
+.cover { max-width:800px; margin:64px auto 48px; text-align:center; padding:0 24px; }
+.cover .badge { display:inline-block; background:var(--accent); color:#fff; font-size:13px;
+    font-weight:600; letter-spacing:.08em; padding:6px 20px; border-radius:100px; margin-bottom:24px; }
+.cover h1 { font-size:36px; font-weight:700; margin-bottom:8px; color:#111; }
+.cover .date { font-size:18px; color:var(--text-secondary); margin-bottom:32px; }
+.stats { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.stat-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 32px; min-width:140px; box-shadow:var(--shadow); }
+.stat-card .num { font-size:32px; font-weight:700; color:var(--accent); }
+.stat-card .label { font-size:13px; color:var(--text-secondary); margin-top:4px; }
+.cover .src { margin-top:20px; font-size:13px; color:var(--text-secondary); }
+.toc-section { max-width:800px; margin:0 auto 40px; padding:0 24px; }
+.toc-section h2 { font-size:20px; font-weight:700; color:#111; margin-bottom:8px;
+    padding-bottom:8px; border-bottom:2px solid var(--border); }
+.toc-group { font-size:13px; font-weight:600; color:var(--text-secondary); letter-spacing:.06em; margin:16px 0 10px; }
+.toc-group .en { font-weight:400; margin-left:6px; letter-spacing:.1em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; list-style:none; }
 .toc-list li { font-size:14px; line-height:1.6; }
-.toc-list .n { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-right:6px; }
-.toc-list a { color:var(--ink); text-decoration:none; font-family:var(--serif); }
-.toc-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
-.toc-list .toc-en { display:block; font-size:12px; color:var(--muted); margin-left:26px; margin-top:-2px; }
-.divider { max-width:860px; margin:36px auto -6px; padding:0 24px; display:flex; align-items:center; gap:16px; }
-.divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border-strong); }
-.divider span { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; white-space:nowrap; }
-.papers { max-width:860px; margin:0 auto; padding:0 24px 40px; }
-.card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0;
-    box-shadow:var(--shadow); overflow:hidden;
-    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
-.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 40%, var(--border)); }
-.card summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto;
-    gap:16px; align-items:start; padding:20px 24px; user-select:none; }
-.card summary::-webkit-details-marker { display:none; }
-.c-kicker { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:6px; }
-.c-title-en { font-size:13.5px; color:var(--ink2); line-height:1.5; }
-.c-title-cn { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink);
-    margin:3px 0 7px; line-height:1.55; }
-.c-authors { font-size:13px; color:var(--muted); }
-.c-oneline { font-size:13.5px; color:var(--ink2); margin-top:7px; }
-.c-side { display:flex; flex-direction:column; align-items:flex-end; gap:8px; padding-top:2px; }
-.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:1px 10px; }
+.toc-list a { color:var(--accent); text-decoration:none; display:flex; align-items:baseline; gap:6px; }
+.toc-list a:hover { text-decoration:underline; }
+.toc-list .toc-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);
+    min-width:28px; flex-shrink:0; }
+.papers { max-width:800px; margin:0 auto 16px; padding:0 24px; }
+.sec-head { max-width:800px; margin:48px auto 16px; padding:0 24px; }
+.sec-head h2 { font-size:20px; font-weight:700; color:#111; padding-bottom:8px; border-bottom:2px solid var(--border); }
+.sec-head .sub { font-size:13px; color:var(--text-secondary); margin-top:6px; }
+.paper-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    margin-bottom:16px; box-shadow:var(--shadow); overflow:hidden; }
+.paper-card summary { padding:20px 24px; cursor:pointer; list-style:none; display:flex;
+    align-items:flex-start; gap:12px; user-select:none; }
+.paper-card summary::-webkit-details-marker { display:none; }
+.paper-card summary::before { content:"▶"; font-size:11px; color:var(--text-secondary);
+    flex-shrink:0; margin-top:5px; transition:transform .2s; display:inline-block; }
+.paper-card[open] summary::before { transform:rotate(90deg); }
+.paper-card .card-body { flex:1; min-width:0; }
+.paper-card .card-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-title { font-size:16px; font-weight:600; color:#111; margin-bottom:4px; line-height:1.5; }
+.paper-card .card-title-cn { font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; }
+.paper-card .card-authors { font-size:13px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-oneline { font-size:13px; color:var(--text-secondary); }
+.paper-card .c-side { display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex-shrink:0; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:100px;
+    padding:1px 10px; background:#fff; }
 .s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
 .must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
 .rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
 .rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
-.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid var(--accent); color:var(--accent); }
-.chev { font-size:16px; color:var(--muted); transition:transform .2s; line-height:1; }
-.card[open] .chev { transform:rotate(90deg); color:var(--accent); }
-.card.collision { border-left:3px solid var(--must); }
-.detail { padding:2px 24px 22px; border-top:1px dashed var(--border-strong); }
-.detail h4 { font-size:13px; letter-spacing:.06em; color:var(--accent-ink); font-weight:700; margin:18px 0 6px; }
-.detail p { font-size:14.5px; line-height:1.85; color:var(--ink); margin-bottom:10px; }
-.detail .rel-note { font-size:13px; color:var(--accent); font-weight:600; margin:14px 0 2px; }
-.detail .action-box { background:color-mix(in srgb, var(--must) 8%, var(--card));
-    border:1px solid color-mix(in srgb, var(--must) 30%, var(--border));
-    border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13.5px; }
-.abs-details { margin:14px 0 4px; border:1px dashed var(--border-strong); border-radius:8px; padding:8px 14px; }
-.abs-details summary { font-size:12.5px; color:var(--muted); cursor:pointer; padding:0; display:block; border:none; }
-.abs-details p { font-size:13px; color:var(--ink2); margin-top:8px; }
-.src-link { margin-top:16px; font-size:13px; color:var(--muted); }
-.src-link a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
-.radar-note { max-width:860px; margin:0 auto 30px; padding:0 24px; font-size:13px; color:var(--muted); }
-.footer { text-align:center; padding:36px 24px 48px; font-size:12.5px; color:var(--muted); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px;
+    border:1px solid var(--accent); color:var(--accent); }
+.paper-card.collision { border-left:3px solid var(--must); }
+.paper-card .detail { padding:0 24px 24px; border-top:1px solid var(--border); }
+.paper-card .detail h4 { font-size:14px; font-weight:600; color:var(--accent); margin:20px 0 8px; }
+.paper-card .detail p { font-size:14px; color:var(--text); line-height:1.8; margin-bottom:12px; }
+.detail .action-box { background:#fef2f2; border:1px solid #fecaca; border-radius:var(--radius);
+    padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border); border-radius:var(--radius); padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--text-secondary); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details summary::before { content:""; }
+.abs-details p { font-size:13px; color:var(--text-secondary); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--text-secondary); }
+.src-link a { color:var(--accent); text-decoration:none; }
+.radar-note { max-width:800px; margin:0 auto 24px; padding:0 24px; font-size:13px; color:var(--text-secondary); }
+.archives { max-width:800px; margin:24px auto 0; padding:0 24px; }
+.archives-inner { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:20px 24px; text-align:center; }
+.archives h3 { font-size:15px; font-weight:600; color:#111; margin-bottom:14px; }
+.arc-list { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.arc-item { display:inline-block; font-size:14px; padding:8px 16px; border-radius:100px;
+    text-decoration:none; color:var(--accent); background:var(--accent-light); border:1px solid #dbeafe; }
+a.arc-item:hover { background:#dbeafe; }
+.arc-item.arc-current { color:#fff; background:var(--accent); border-color:var(--accent); font-weight:600; }
+.arc-count { font-size:12px; color:var(--text-secondary); margin-left:6px; font-weight:400; }
+.arc-item.arc-current .arc-count { color:#bfdbfe; }
+.footer { text-align:center; padding:40px 24px; font-size:13px; color:var(--text-secondary); }
 .footer a { color:var(--accent); text-decoration:none; }
-@media (max-width:640px) {
+@media (max-width:600px) {
     .toc-list { grid-template-columns:1fr; }
     .cover h1 { font-size:26px; }
-    .stats { gap:16px; }
-    .stat-sep { display:none; }
-    .card summary { padding:16px 18px; }
-    .detail { padding:2px 18px 18px; }
+    .stats { gap:8px; }
+    .stat-card { padding:14px 20px; min-width:100px; }
+    .stat-card .num { font-size:24px; }
+    .paper-card summary { padding:16px 18px; }
+    .paper-card .detail { padding:0 18px 18px; }
 }
 </style>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.2.5/index.css">
 <script>
 window.MathJax = {
   tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
   options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
   startup: { ready() {
       MathJax.startup.defaultReady();
-      document.querySelectorAll('details.card').forEach(function(el) {
+      document.querySelectorAll('details.paper-card').forEach(function(el) {
         el.addEventListener('toggle', function() {
           if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
         });
@@ -143,48 +123,39 @@ window.MathJax = {
 </head>
 <body>
 
-<nav class="topnav"><div class="nav-inner">
-  <span class="brand">ARXIV DAILY</span>
-  <span class="nav-right">
-    <a href="index.html">存档索引</a>
-    <button id="themeBtn" type="button">◐</button>
-  </span>
-</div></nav>
-
 <header class="cover">
-  <div class="kicker">GR-QC · HEP-TH · ASTRO-PH.CO</div>
-  <h1>arXiv · 2026年10月16日</h1>
-  <p class="sub">每日精选 · 按 Rao 的研究画像匹配</p>
+  <div class="badge">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv 每日精选</h1>
+  <p class="date">2026年10月16日</p>
   <div class="stats">
-    <div class="stat"><span class="num">3</span><span class="label">核心精读 · ⭐2</span></div>
-    <div class="stat-sep"></div>
-    <div class="stat"><span class="num">6</span><span class="label">领域动态</span></div>
+    <div class="stat-card"><div class="num">3</div><div class="label">核心精读 · ⭐2 必读</div></div>
+    <div class="stat-card"><div class="num">6</div><div class="label">领域动态</div></div>
     
   </div>
-  <p class="src">来源：gr-qc 16 · hep-th 23 · astro-ph.CO 9</p>
+  <p class="src">来源：gr-qc 16 · hep-th 23 · astro-ph.CO 9　·　按 Rao 的研究画像匹配</p>
 </header>
 
-<section class="toc">
-  <h2>核心精读<span class="en">CORE</span></h2>
-  <ol class="toc-list"><li><span class="n">01</span><a href="#paper-1">视界内部的束缚态与黑洞熵</a></li><li><span class="n">02</span><a href="#paper-2">带约束初级毛的转动黑洞热力学</a></li><li><span class="n">03</span><a href="#paper-3">双场暴胀中的Krylov复杂度与振荡量子动力学</a></li></ol>
-  <h2>领域动态<span class="en">FIELD RADAR</span></h2><ol class="toc-list"><li><span class="n">R1</span><a href="#radar-1">bumblebee 引力中的精确 Simpson-Visser 族</a></li><li><span class="n">R2</span><a href="#radar-2">Kerr-Newman-(反)de Sitter 黑洞引力电磁扰动的精确代数分离</a></li><li><span class="n">R3</span><a href="#radar-3">大 $D$ 极限下的量子临界坍缩</a></li><li><span class="n">R4</span><a href="#radar-4">DESI DR1 LRG2 上形状参数显式变化的模型无关参数测量</a></li><li><span class="n">R5</span><a href="#radar-5">统一的 Bound Dark Energy–Bound Dark Matter 模型：理论与 DESI DR2 约束</a></li><li><span class="n">R6</span><a href="#radar-6">解耦几何与增长：宇宙中微子质量约束的更物理拆分与诊断</a></li></ol>
+<section class="toc-section">
+  <h2>📋 目录</h2>
+  <p class="toc-group">核心精读<span class="en">CORE</span></p>
+  <ol class="toc-list"><li><a href="#paper-1"><span class="toc-num">01.</span>视界内部的束缚态与黑洞熵</a></li><li><a href="#paper-2"><span class="toc-num">02.</span>带约束初级毛的转动黑洞热力学</a></li><li><a href="#paper-3"><span class="toc-num">03.</span>双场暴胀中的Krylov复杂度与振荡量子动力学</a></li></ol>
+  <p class="toc-group">领域动态<span class="en">FIELD RADAR</span></p><ol class="toc-list"><li><a href="#radar-1"><span class="toc-num">R1</span>bumblebee 引力中的精确 Simpson-Visser 族</a></li><li><a href="#radar-2"><span class="toc-num">R2</span>Kerr-Newman-(反)de Sitter 黑洞引力电磁扰动的精确代数分离</a></li><li><a href="#radar-3"><span class="toc-num">R3</span>大 $D$ 极限下的量子临界坍缩</a></li><li><a href="#radar-4"><span class="toc-num">R4</span>DESI DR1 LRG2 上形状参数显式变化的模型无关参数测量</a></li><li><a href="#radar-5"><span class="toc-num">R5</span>统一的 Bound Dark Energy–Bound Dark Matter 模型：理论与 DESI DR2 约束</a></li><li><a href="#radar-6"><span class="toc-num">R6</span>解耦几何与增长：宇宙中微子质量约束的更物理拆分与诊断</a></li></ol>
   
 </section>
 
 <div class="papers">
-<details class="card" id="paper-1">
+<details class="paper-card" id="paper-1">
 <summary>
-  <div>
-    <div class="c-kicker">#1 · arXiv:2610.21426 · gr-qc · hep-th</div>
-    <div class="c-title-cn">视界内部的束缚态与黑洞熵</div>
-    <div class="c-title-en">Bound States Inside the Horizon and Black Hole Entropy</div>
-    <div class="c-authors">Hassan Firouzjahi</div>
-    <div class="c-oneline">💡 该文用Schwarzschild视界内部束缚态微态谱做微正则计数，得到熵正比于视界面积，但要求束缚态能量占黑洞总能量O(1)份额才能饱和。</div>
+  <div class="card-body">
+    <div class="card-num">#1 · arXiv:2610.21426 · gr-qc · hep-th</div>
+    <div class="card-title">Bound States Inside the Horizon and Black Hole Entropy</div>
+    <div class="card-title-cn">视界内部的束缚态与黑洞熵</div>
+    <div class="card-authors">Hassan Firouzjahi</div>
+    <div class="card-oneline">💡 该文用Schwarzschild视界内部束缚态微态谱做微正则计数，得到熵正比于视界面积，但要求束缚态能量占黑洞总能量O(1)份额才能饱和。</div>
   </div>
   <div class="c-side">
     <span class="score s8">8.0</span>
     <span class="must">必读</span>
-    <span class="chev">▸</span>
   </div>
 </summary>
 <div class="detail">
@@ -204,19 +175,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.21426" target="_blank" rel="noopener">arXiv:2610.21426</a></p>
 </div>
 </details>
-<details class="card" id="paper-2">
+<details class="paper-card" id="paper-2">
 <summary>
-  <div>
-    <div class="c-kicker">#2 · arXiv:2610.21830 · gr-qc</div>
-    <div class="c-title-cn">带约束初级毛的转动黑洞热力学</div>
-    <div class="c-title-en">Thermodynamics of rotating black holes with constrained primary hair</div>
-    <div class="c-authors">Wentao Liu, Di Wu, Shao-Wen Wei, Yu-Xiao Liu</div>
-    <div class="c-oneline">💡 该文构造广义Proca理论中二阶转动、视界等温的精确转动解，用协变面荷导出对数Hamiltonian熵并验证两方向第一定律与尺度修正Smarr关系。</div>
+  <div class="card-body">
+    <div class="card-num">#2 · arXiv:2610.21830 · gr-qc</div>
+    <div class="card-title">Thermodynamics of rotating black holes with constrained primary hair</div>
+    <div class="card-title-cn">带约束初级毛的转动黑洞热力学</div>
+    <div class="card-authors">Wentao Liu, Di Wu, Shao-Wen Wei, Yu-Xiao Liu</div>
+    <div class="card-oneline">💡 该文构造广义Proca理论中二阶转动、视界等温的精确转动解，用协变面荷导出对数Hamiltonian熵并验证两方向第一定律与尺度修正Smarr关系。</div>
   </div>
   <div class="c-side">
     <span class="score s8">8.0</span>
     <span class="must">必读</span>
-    <span class="chev">▸</span>
   </div>
 </summary>
 <div class="detail">
@@ -236,19 +206,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.21830" target="_blank" rel="noopener">arXiv:2610.21830</a></p>
 </div>
 </details>
-<details class="card" id="paper-3">
+<details class="paper-card" id="paper-3">
 <summary>
-  <div>
-    <div class="c-kicker">#3 · arXiv:2610.21574 · hep-th · gr-qc</div>
-    <div class="c-title-cn">双场暴胀中的Krylov复杂度与振荡量子动力学</div>
-    <div class="c-title-en">Krylov complexity and oscillatory quantum dynamics in two-field inflation</div>
-    <div class="c-authors">Tao Li, Lei-Hua Liu, Hai-Bing Fu</div>
-    <div class="c-oneline">💡 该文用四模压缩态描述双场暴胀的曲率-熵扰动，发现两通道Krylov复杂度在视界穿越处出现振荡，源于压缩方程中的相对相位。</div>
+  <div class="card-body">
+    <div class="card-num">#3 · arXiv:2610.21574 · hep-th · gr-qc</div>
+    <div class="card-title">Krylov complexity and oscillatory quantum dynamics in two-field inflation</div>
+    <div class="card-title-cn">双场暴胀中的Krylov复杂度与振荡量子动力学</div>
+    <div class="card-authors">Tao Li, Lei-Hua Liu, Hai-Bing Fu</div>
+    <div class="card-oneline">💡 该文用四模压缩态描述双场暴胀的曲率-熵扰动，发现两通道Krylov复杂度在视界穿越处出现振荡，源于压缩方程中的相对相位。</div>
   </div>
   <div class="c-side">
     <span class="score s7">7.0</span>
     
-    <span class="chev">▸</span>
   </div>
 </summary>
 <div class="detail">
@@ -269,20 +238,19 @@ window.MathJax = {
 </div>
 </details></div>
 
-<div class="divider"><span>领域动态 · 修正引力宇宙学</span></div><div class="papers">
-<details class="card " id="radar-1">
+<div class="sec-head"><h2>📡 领域动态 · 修正引力宇宙学</h2></div><div class="papers">
+<details class="paper-card " id="radar-1">
 <summary>
-  <div>
-    <div class="c-kicker">R1 · arXiv:2610.21701 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">bumblebee 引力中的精确 Simpson-Visser 族</div>
-    <div class="c-title-en">An exact Simpson-Visser family in bumblebee gravity</div>
-    <div class="c-authors">A. A. Ara\'{u}jo Filho</div>
-    <div class="c-oneline">💡 在 bumblebee 引力中构造出由幽灵标量、磁非线性电动力学与固定模矢量支撑的精确 Simpson-Visser 解，统一给出虫洞、零最小几何与黑洞反弹。</div>
+  <div class="card-body">
+    <div class="card-num">R1 · arXiv:2610.21701 · 修正引力宇宙学一般项</div>
+    <div class="card-title">An exact Simpson-Visser family in bumblebee gravity</div>
+    <div class="card-title-cn">bumblebee 引力中的精确 Simpson-Visser 族</div>
+    <div class="card-authors">A. A. Ara\'{u}jo Filho</div>
+    <div class="card-oneline">💡 在 bumblebee 引力中构造出由幽灵标量、磁非线性电动力学与固定模矢量支撑的精确 Simpson-Visser 解，统一给出虫洞、零最小几何与黑洞反弹。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-neighbor">近邻</span>
     <span class="score s5">5.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-neighbor">近邻</span>
   </div>
 </summary>
 <div class="detail">
@@ -294,19 +262,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.21701" target="_blank" rel="noopener">arXiv:2610.21701</a></p>
 </div>
 </details>
-<details class="card " id="radar-2">
+<details class="paper-card " id="radar-2">
 <summary>
-  <div>
-    <div class="c-kicker">R2 · arXiv:2610.22274 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">Kerr-Newman-(反)de Sitter 黑洞引力电磁扰动的精确代数分离</div>
-    <div class="c-title-en">Exact algebraic separation of the gravitoelectromagnetic perturbations of Kerr-Newman-(anti-)de Sitter black holes</div>
-    <div class="c-authors">Jun-Kun Zhao</div>
-    <div class="c-oneline">💡 对非极端 Kerr-Newman-(A)dS 黑洞，用常数行列式矩阵把耦合的引力与电磁辐射方程显式分离，径向与角向系统对任意复频率成立。</div>
+  <div class="card-body">
+    <div class="card-num">R2 · arXiv:2610.22274 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Exact algebraic separation of the gravitoelectromagnetic perturbations of Kerr-Newman-(anti-)de Sitter black holes</div>
+    <div class="card-title-cn">Kerr-Newman-(反)de Sitter 黑洞引力电磁扰动的精确代数分离</div>
+    <div class="card-authors">Jun-Kun Zhao</div>
+    <div class="card-oneline">💡 对非极端 Kerr-Newman-(A)dS 黑洞，用常数行列式矩阵把耦合的引力与电磁辐射方程显式分离，径向与角向系统对任意复频率成立。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-field">风向</span>
     <span class="score s6">6.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-field">风向</span>
   </div>
 </summary>
 <div class="detail">
@@ -318,19 +285,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.22274" target="_blank" rel="noopener">arXiv:2610.22274</a></p>
 </div>
 </details>
-<details class="card " id="radar-3">
+<details class="paper-card " id="radar-3">
 <summary>
-  <div>
-    <div class="c-kicker">R3 · arXiv:2610.20705 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">大 $D$ 极限下的量子临界坍缩</div>
-    <div class="c-title-en">Quantum critical collapse in the large $D$ limit</div>
-    <div class="c-authors">Chih-Hung Wu</div>
-    <div class="c-oneline">💡 在大 $D$ 极限下研究 Einstein-标量临界坍缩的量子自能模，证明普适 Lyapunov 指数在连续与离散自相似下均存活，并给出量子墙半径 $r_h\propto(D-2)^{-2}$。</div>
+  <div class="card-body">
+    <div class="card-num">R3 · arXiv:2610.20705 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Quantum critical collapse in the large $D$ limit</div>
+    <div class="card-title-cn">大 $D$ 极限下的量子临界坍缩</div>
+    <div class="card-authors">Chih-Hung Wu</div>
+    <div class="card-oneline">💡 在大 $D$ 极限下研究 Einstein-标量临界坍缩的量子自能模，证明普适 Lyapunov 指数在连续与离散自相似下均存活，并给出量子墙半径 $r_h\propto(D-2)^{-2}$。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-field">风向</span>
     <span class="score s5">5.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-field">风向</span>
   </div>
 </summary>
 <div class="detail">
@@ -342,19 +308,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.20705" target="_blank" rel="noopener">arXiv:2610.20705</a></p>
 </div>
 </details>
-<details class="card " id="radar-4">
+<details class="paper-card " id="radar-4">
 <summary>
-  <div>
-    <div class="c-kicker">R4 · arXiv:2610.21235 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">DESI DR1 LRG2 上形状参数显式变化的模型无关参数测量</div>
-    <div class="c-title-en">Model-independent parameters from DESI DR1 LRG2 with an explicitly varying power-spectrum shape</div>
-    <div class="c-authors">Yong-Seon Song, M. Icaza-Lizaola, Minji Oh, Yi Zheng</div>
-    <div class="c-oneline">💡 提出同时约束原初功率谱形状参数与模型无关距离/增长参数的方法，用 N 体模板加高斯过程 emulator 拟合 DESI DR1 LRG2。</div>
+  <div class="card-body">
+    <div class="card-num">R4 · arXiv:2610.21235 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Model-independent parameters from DESI DR1 LRG2 with an explicitly varying power-spectrum shape</div>
+    <div class="card-title-cn">DESI DR1 LRG2 上形状参数显式变化的模型无关参数测量</div>
+    <div class="card-authors">Yong-Seon Song, M. Icaza-Lizaola, Minji Oh, Yi Zheng</div>
+    <div class="card-oneline">💡 提出同时约束原初功率谱形状参数与模型无关距离/增长参数的方法，用 N 体模板加高斯过程 emulator 拟合 DESI DR1 LRG2。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-field">风向</span>
     <span class="score s5">4.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-field">风向</span>
   </div>
 </summary>
 <div class="detail">
@@ -366,19 +331,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.21235" target="_blank" rel="noopener">arXiv:2610.21235</a></p>
 </div>
 </details>
-<details class="card " id="radar-5">
+<details class="paper-card " id="radar-5">
 <summary>
-  <div>
-    <div class="c-kicker">R5 · arXiv:2610.20716 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">统一的 Bound Dark Energy–Bound Dark Matter 模型：理论与 DESI DR2 约束</div>
-    <div class="c-title-en">The unified Bound Dark Energy--Bound Dark Matter model: theory and constraints from DESI DR2</div>
-    <div class="c-authors">Jose Agustin Lozano Torres, Axel de la Macorra</div>
-    <div class="c-oneline">💡 从单一 $SU(3)$、$N_f=6$ 超对称规范群同时导出暗能量与全部暗物质，规范耦合统一预言 $\Lambda_c=34^{+16}_{-11}$ eV，DESI DR2 拟合给出 $43.67\pm0.13$ eV。</div>
+  <div class="card-body">
+    <div class="card-num">R5 · arXiv:2610.20716 · 修正引力宇宙学一般项</div>
+    <div class="card-title">The unified Bound Dark Energy--Bound Dark Matter model: theory and constraints from DESI DR2</div>
+    <div class="card-title-cn">统一的 Bound Dark Energy–Bound Dark Matter 模型：理论与 DESI DR2 约束</div>
+    <div class="card-authors">Jose Agustin Lozano Torres, Axel de la Macorra</div>
+    <div class="card-oneline">💡 从单一 $SU(3)$、$N_f=6$ 超对称规范群同时导出暗能量与全部暗物质，规范耦合统一预言 $\Lambda_c=34^{+16}_{-11}$ eV，DESI DR2 拟合给出 $43.67\pm0.13$ eV。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-field">风向</span>
     <span class="score s5">4.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-field">风向</span>
   </div>
 </summary>
 <div class="detail">
@@ -390,19 +354,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.20716" target="_blank" rel="noopener">arXiv:2610.20716</a></p>
 </div>
 </details>
-<details class="card " id="radar-6">
+<details class="paper-card " id="radar-6">
 <summary>
-  <div>
-    <div class="c-kicker">R6 · arXiv:2610.20977 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">解耦几何与增长：宇宙中微子质量约束的更物理拆分与诊断</div>
-    <div class="c-title-en">Disentangling geometry &amp; growth in cosmic neutrino mass constraints: a more physical split and diagnostic</div>
-    <div class="c-authors">Fei Ge, Frank J. Qu, Hanyue Wang, Emmanuel Schaan, W. L. Kimmy Wu, Alexander Friedland</div>
-    <div class="c-oneline">💡 把中微子质量拆成控制距离的几何部分与控制扰动增长的生长部分，Planck+ACT+SPT+DESI 数据显示两者都偏好负值。</div>
+  <div class="card-body">
+    <div class="card-num">R6 · arXiv:2610.20977 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Disentangling geometry &amp; growth in cosmic neutrino mass constraints: a more physical split and diagnostic</div>
+    <div class="card-title-cn">解耦几何与增长：宇宙中微子质量约束的更物理拆分与诊断</div>
+    <div class="card-authors">Fei Ge, Frank J. Qu, Hanyue Wang, Emmanuel Schaan, W. L. Kimmy Wu, Alexander Friedland</div>
+    <div class="card-oneline">💡 把中微子质量拆成控制距离的几何部分与控制扰动增长的生长部分，Planck+ACT+SPT+DESI 数据显示两者都偏好负值。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-field">风向</span>
     <span class="score s5">4.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-field">风向</span>
   </div>
 </summary>
 <div class="detail">
@@ -417,25 +380,11 @@ window.MathJax = {
 </details></div>
 
 
+<div class="archives"><div class="archives-inner"><h3>📚 最近 6 天（滚动保留 6 天）</h3><div class="arc-list"><span class="arc-item arc-current">10月16日（今天）<span class="arc-count">9 篇</span></span><a class="arc-item" href="2026-10-15.html">10月15日<span class="arc-count">11 篇</span></a><a class="arc-item" href="2026-10-12.html">10月12日<span class="arc-count">13 篇</span></a><a class="arc-item" href="2026-10-09.html">10月9日<span class="arc-count">12 篇</span></a><a class="arc-item" href="2026-10-08.html">10月8日<span class="arc-count">5 篇</span></a><a class="arc-item" href="2026-10-06.html">10月6日<span class="arc-count">13 篇</span></a></div></div></div>
+
 <div class="footer">
   由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年10月16日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
 </div>
 
-<script>
-(function(){
-  var saved = localStorage.getItem('arxiv-theme');
-  if (saved) { document.documentElement.setAttribute('data-theme', saved); }
-  var btn = document.getElementById('themeBtn');
-  function cur(){ return document.documentElement.getAttribute('data-theme') ||
-    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
-  function label(){ btn.textContent = cur() === 'dark' ? '☾ 深色' : '☀ 浅色'; }
-  label();
-  btn.onclick = function(){
-    var t = cur() === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', t);
-    localStorage.setItem('arxiv-theme', t); label();
-  };
-})();
-</script>
 </body>
 </html>

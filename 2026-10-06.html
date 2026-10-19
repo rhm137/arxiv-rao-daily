@@ -3,134 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>arXiv · 2026-10-06</title>
+<title>arXiv 每日精选 — 2026-10-06</title>
 <style>
 :root {
-    --bg:#f7f5f0; --card:#ffffff; --ink:#1c1c28; --ink2:#55566a; --muted:#8a8b99;
-    --accent:#3b4a8c; --accent-ink:#2e3a70; --accent-soft:#eceef6;
-    --border:#e4e1d6; --border-strong:#d3cfc0;
-    --must:#9e2b25; --s7:#b07c2a; --s6:#6b7c5e; --s5:#8a8b99;
-    --shadow:0 1px 2px rgba(28,28,40,.04), 0 4px 16px rgba(28,28,40,.06);
-    --shadow-hover:0 2px 4px rgba(28,28,40,.06), 0 10px 28px rgba(28,28,40,.10);
-    --serif:"Noto Serif SC","Source Han Serif SC","Songti SC","SimSun",serif;
-    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    --mono:"SF Mono","Fira Code","Consolas",monospace;
-}
-[data-theme="dark"] {
-    --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
-    --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
-    --border:#2b2f3d; --border-strong:#3a3f50;
-    --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
-    --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
-    --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
-}
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --bg:#14161d; --card:#1d2029; --ink:#e9e7de; --ink2:#b3b4c0; --muted:#7e8090;
-        --accent:#93a3d9; --accent-ink:#b3c0ea; --accent-soft:#262a3a;
-        --border:#2b2f3d; --border-strong:#3a3f50;
-        --must:#d4706a; --s7:#d0a35c; --s6:#93a583; --s5:#7e8090;
-        --shadow:0 1px 2px rgba(0,0,0,.25), 0 4px 16px rgba(0,0,0,.3);
-        --shadow-hover:0 2px 4px rgba(0,0,0,.3), 0 10px 28px rgba(0,0,0,.4);
-    }
+    --bg:#fafaf8; --card-bg:#ffffff; --text:#2c2c2c; --text-secondary:#666;
+    --accent:#2563eb; --accent-light:#eff6ff; --border:#e5e7eb;
+    --tag-bg:#f3f4f6; --tag-text:#4b5563;
+    --must:#dc2626; --s7:#d97706; --s6:#059669; --s5:#6b7280;
+    --shadow:0 1px 3px rgba(0,0,0,0.08); --radius:8px;
+    --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+    --font-mono:"SF Mono","Fira Code","Cascadia Code","Consolas",monospace;
 }
 * { box-sizing:border-box; margin:0; padding:0; }
 html { scroll-behavior:smooth; }
-body { font-family:var(--sans); background:var(--bg); color:var(--ink);
-       line-height:1.75; -webkit-font-smoothing:antialiased; transition:background .25s, color .25s; }
-[data-theme="dark"] body { background:#14161d; color:#e9e7de; }
-[data-theme="dark"] .card { background:#1d2029; border-color:#2b2f3d; }
-[data-theme="dark"] .topnav { background:rgba(20,22,29,.84); }
-.topnav { position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
-    background:color-mix(in srgb, var(--bg) 84%, transparent); border-bottom:1px solid var(--border); }
-.nav-inner { max-width:860px; margin:0 auto; padding:10px 24px; display:flex; justify-content:space-between; align-items:center; }
-.brand { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
-.nav-right { display:flex; gap:14px; align-items:center; font-size:13px; }
-.nav-right a { color:var(--accent); text-decoration:none; }
-.nav-right a:hover { text-decoration:underline; }
-#themeBtn { border:1px solid var(--border-strong); background:transparent; color:var(--ink2);
-    border-radius:999px; padding:2px 12px; font-size:12px; cursor:pointer; font-family:var(--sans); }
-#themeBtn:hover { border-color:var(--accent); color:var(--accent); }
-.cover { max-width:860px; margin:0 auto; text-align:center; padding:60px 24px 36px; }
-.kicker { font-size:12px; letter-spacing:.24em; color:var(--muted); font-weight:600; }
-.cover h1 { font-family:var(--serif); font-size:34px; font-weight:600; margin:14px 0 8px; letter-spacing:.01em; }
-.cover .sub { font-size:14px; color:var(--ink2); }
-.stats { display:flex; justify-content:center; align-items:center; gap:26px; margin-top:30px; flex-wrap:wrap; }
-.stat { text-align:center; }
-.stat .num { display:block; font-family:var(--serif); font-size:30px; font-weight:600; color:var(--accent-ink); }
-.stat .label { display:block; font-size:12px; color:var(--muted); margin-top:2px; letter-spacing:.08em; }
-.stat-sep { width:1px; height:34px; background:var(--border-strong); }
-.cover .src { margin-top:20px; font-size:12.5px; color:var(--muted); }
-.toc { max-width:860px; margin:0 auto 8px; padding:0 24px; }
-.toc h2 { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; margin:26px 0 12px;
-    padding-bottom:8px; border-bottom:1px solid var(--border); }
-.toc h2 .en { font-weight:400; margin-left:8px; letter-spacing:.14em; }
-.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:8px 28px; list-style:none; }
+body { font-family:var(--font-sans); background:var(--bg); color:var(--text);
+       line-height:1.7; -webkit-font-smoothing:antialiased; }
+.cover { max-width:800px; margin:64px auto 48px; text-align:center; padding:0 24px; }
+.cover .badge { display:inline-block; background:var(--accent); color:#fff; font-size:13px;
+    font-weight:600; letter-spacing:.08em; padding:6px 20px; border-radius:100px; margin-bottom:24px; }
+.cover h1 { font-size:36px; font-weight:700; margin-bottom:8px; color:#111; }
+.cover .date { font-size:18px; color:var(--text-secondary); margin-bottom:32px; }
+.stats { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.stat-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 32px; min-width:140px; box-shadow:var(--shadow); }
+.stat-card .num { font-size:32px; font-weight:700; color:var(--accent); }
+.stat-card .label { font-size:13px; color:var(--text-secondary); margin-top:4px; }
+.cover .src { margin-top:20px; font-size:13px; color:var(--text-secondary); }
+.toc-section { max-width:800px; margin:0 auto 40px; padding:0 24px; }
+.toc-section h2 { font-size:20px; font-weight:700; color:#111; margin-bottom:8px;
+    padding-bottom:8px; border-bottom:2px solid var(--border); }
+.toc-group { font-size:13px; font-weight:600; color:var(--text-secondary); letter-spacing:.06em; margin:16px 0 10px; }
+.toc-group .en { font-weight:400; margin-left:6px; letter-spacing:.1em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; list-style:none; }
 .toc-list li { font-size:14px; line-height:1.6; }
-.toc-list .n { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-right:6px; }
-.toc-list a { color:var(--ink); text-decoration:none; font-family:var(--serif); }
-.toc-list a:hover { color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
-.toc-list .toc-en { display:block; font-size:12px; color:var(--muted); margin-left:26px; margin-top:-2px; }
-.divider { max-width:860px; margin:36px auto -6px; padding:0 24px; display:flex; align-items:center; gap:16px; }
-.divider::before, .divider::after { content:""; flex:1; height:1px; background:var(--border-strong); }
-.divider span { font-size:12px; letter-spacing:.2em; color:var(--muted); font-weight:700; white-space:nowrap; }
-.papers { max-width:860px; margin:0 auto; padding:0 24px 40px; }
-.card { background:var(--card); border:1px solid var(--border); border-radius:14px; margin:16px 0;
-    box-shadow:var(--shadow); overflow:hidden;
-    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
-.card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 40%, var(--border)); }
-.card summary { list-style:none; cursor:pointer; display:grid; grid-template-columns:1fr auto;
-    gap:16px; align-items:start; padding:20px 24px; user-select:none; }
-.card summary::-webkit-details-marker { display:none; }
-.c-kicker { font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:6px; }
-.c-title-en { font-size:13.5px; color:var(--ink2); line-height:1.5; }
-.c-title-cn { font-family:var(--serif); font-size:17px; font-weight:600; color:var(--ink);
-    margin:3px 0 7px; line-height:1.55; }
-.c-authors { font-size:13px; color:var(--muted); }
-.c-oneline { font-size:13.5px; color:var(--ink2); margin-top:7px; }
-.c-side { display:flex; flex-direction:column; align-items:flex-end; gap:8px; padding-top:2px; }
-.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:999px; padding:1px 10px; }
+.toc-list a { color:var(--accent); text-decoration:none; display:flex; align-items:baseline; gap:6px; }
+.toc-list a:hover { text-decoration:underline; }
+.toc-list .toc-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);
+    min-width:28px; flex-shrink:0; }
+.papers { max-width:800px; margin:0 auto 16px; padding:0 24px; }
+.sec-head { max-width:800px; margin:48px auto 16px; padding:0 24px; }
+.sec-head h2 { font-size:20px; font-weight:700; color:#111; padding-bottom:8px; border-bottom:2px solid var(--border); }
+.sec-head .sub { font-size:13px; color:var(--text-secondary); margin-top:6px; }
+.paper-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    margin-bottom:16px; box-shadow:var(--shadow); overflow:hidden; }
+.paper-card summary { padding:20px 24px; cursor:pointer; list-style:none; display:flex;
+    align-items:flex-start; gap:12px; user-select:none; }
+.paper-card summary::-webkit-details-marker { display:none; }
+.paper-card summary::before { content:"▶"; font-size:11px; color:var(--text-secondary);
+    flex-shrink:0; margin-top:5px; transition:transform .2s; display:inline-block; }
+.paper-card[open] summary::before { transform:rotate(90deg); }
+.paper-card .card-body { flex:1; min-width:0; }
+.paper-card .card-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-title { font-size:16px; font-weight:600; color:#111; margin-bottom:4px; line-height:1.5; }
+.paper-card .card-title-cn { font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; }
+.paper-card .card-authors { font-size:13px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-oneline { font-size:13px; color:var(--text-secondary); }
+.paper-card .c-side { display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex-shrink:0; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:100px;
+    padding:1px 10px; background:#fff; }
 .s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
 .must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
 .rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
 .rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
-.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid var(--accent); color:var(--accent); }
-.chev { font-size:16px; color:var(--muted); transition:transform .2s; line-height:1; }
-.card[open] .chev { transform:rotate(90deg); color:var(--accent); }
-.card.collision { border-left:3px solid var(--must); }
-.detail { padding:2px 24px 22px; border-top:1px dashed var(--border-strong); }
-.detail h4 { font-size:13px; letter-spacing:.06em; color:var(--accent-ink); font-weight:700; margin:18px 0 6px; }
-.detail p { font-size:14.5px; line-height:1.85; color:var(--ink); margin-bottom:10px; }
-.detail .rel-note { font-size:13px; color:var(--accent); font-weight:600; margin:14px 0 2px; }
-.detail .action-box { background:color-mix(in srgb, var(--must) 8%, var(--card));
-    border:1px solid color-mix(in srgb, var(--must) 30%, var(--border));
-    border-radius:8px; padding:10px 14px; margin:12px 0; font-size:13.5px; }
-.abs-details { margin:14px 0 4px; border:1px dashed var(--border-strong); border-radius:8px; padding:8px 14px; }
-.abs-details summary { font-size:12.5px; color:var(--muted); cursor:pointer; padding:0; display:block; border:none; }
-.abs-details p { font-size:13px; color:var(--ink2); margin-top:8px; }
-.src-link { margin-top:16px; font-size:13px; color:var(--muted); }
-.src-link a { color:var(--accent); text-decoration:none; border-bottom:1px solid color-mix(in srgb, var(--accent) 40%, transparent); }
-.radar-note { max-width:860px; margin:0 auto 30px; padding:0 24px; font-size:13px; color:var(--muted); }
-.footer { text-align:center; padding:36px 24px 48px; font-size:12.5px; color:var(--muted); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px;
+    border:1px solid var(--accent); color:var(--accent); }
+.paper-card.collision { border-left:3px solid var(--must); }
+.paper-card .detail { padding:0 24px 24px; border-top:1px solid var(--border); }
+.paper-card .detail h4 { font-size:14px; font-weight:600; color:var(--accent); margin:20px 0 8px; }
+.paper-card .detail p { font-size:14px; color:var(--text); line-height:1.8; margin-bottom:12px; }
+.detail .action-box { background:#fef2f2; border:1px solid #fecaca; border-radius:var(--radius);
+    padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border); border-radius:var(--radius); padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--text-secondary); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details summary::before { content:""; }
+.abs-details p { font-size:13px; color:var(--text-secondary); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--text-secondary); }
+.src-link a { color:var(--accent); text-decoration:none; }
+.radar-note { max-width:800px; margin:0 auto 24px; padding:0 24px; font-size:13px; color:var(--text-secondary); }
+.archives { max-width:800px; margin:24px auto 0; padding:0 24px; }
+.archives-inner { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:20px 24px; text-align:center; }
+.archives h3 { font-size:15px; font-weight:600; color:#111; margin-bottom:14px; }
+.arc-list { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.arc-item { display:inline-block; font-size:14px; padding:8px 16px; border-radius:100px;
+    text-decoration:none; color:var(--accent); background:var(--accent-light); border:1px solid #dbeafe; }
+a.arc-item:hover { background:#dbeafe; }
+.arc-item.arc-current { color:#fff; background:var(--accent); border-color:var(--accent); font-weight:600; }
+.arc-count { font-size:12px; color:var(--text-secondary); margin-left:6px; font-weight:400; }
+.arc-item.arc-current .arc-count { color:#bfdbfe; }
+.footer { text-align:center; padding:40px 24px; font-size:13px; color:var(--text-secondary); }
 .footer a { color:var(--accent); text-decoration:none; }
-@media (max-width:640px) {
+@media (max-width:600px) {
     .toc-list { grid-template-columns:1fr; }
     .cover h1 { font-size:26px; }
-    .stats { gap:16px; }
-    .stat-sep { display:none; }
-    .card summary { padding:16px 18px; }
-    .detail { padding:2px 18px 18px; }
+    .stats { gap:8px; }
+    .stat-card { padding:14px 20px; min-width:100px; }
+    .stat-card .num { font-size:24px; }
+    .paper-card summary { padding:16px 18px; }
+    .paper-card .detail { padding:0 18px 18px; }
 }
 </style>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-sc@5.2.5/index.css">
 <script>
 window.MathJax = {
   tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
   options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
   startup: { ready() {
       MathJax.startup.defaultReady();
-      document.querySelectorAll('details.card').forEach(function(el) {
+      document.querySelectorAll('details.paper-card').forEach(function(el) {
         el.addEventListener('toggle', function() {
           if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
         });
@@ -143,48 +123,39 @@ window.MathJax = {
 </head>
 <body>
 
-<nav class="topnav"><div class="nav-inner">
-  <span class="brand">ARXIV DAILY</span>
-  <span class="nav-right">
-    <a href="index.html">存档索引</a>
-    <button id="themeBtn" type="button">◐</button>
-  </span>
-</div></nav>
-
 <header class="cover">
-  <div class="kicker">GR-QC · HEP-TH · ASTRO-PH.CO</div>
-  <h1>arXiv · 2026年10月06日</h1>
-  <p class="sub">每日精选 · 按 Rao 的研究画像匹配</p>
+  <div class="badge">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv 每日精选</h1>
+  <p class="date">2026年10月06日</p>
   <div class="stats">
-    <div class="stat"><span class="num">4</span><span class="label">核心精读 · ⭐2</span></div>
-    <div class="stat-sep"></div>
-    <div class="stat"><span class="num">8</span><span class="label">领域动态</span></div>
-    <div class="stat-sep"></div><div class="stat"><span class="num">1</span><span class="label">名词推荐</span></div>
+    <div class="stat-card"><div class="num">4</div><div class="label">核心精读 · ⭐2 必读</div></div>
+    <div class="stat-card"><div class="num">8</div><div class="label">领域动态</div></div>
+    <div class="stat-card"><div class="num">1</div><div class="label">名词推荐</div></div>
   </div>
-  <p class="src">来源：gr-qc 33 · hep-th 29 · astro-ph.CO 18</p>
+  <p class="src">来源：gr-qc 33 · hep-th 29 · astro-ph.CO 18　·　按 Rao 的研究画像匹配</p>
 </header>
 
-<section class="toc">
-  <h2>核心精读<span class="en">CORE</span></h2>
-  <ol class="toc-list"><li><span class="n">01</span><a href="#paper-1">Palatini Kalb-Ramond 引力中的精确黑洞解</a></li><li><span class="n">02</span><a href="#paper-2">带辅助规范场的扩展黑洞热力学中的热力学体积</a></li><li><span class="n">03</span><a href="#paper-3">2+1 维引力中的 Wald 熵与 Wen-Zee 型规范-曲率耦合</a></li><li><span class="n">04</span><a href="#paper-4">Palatini 与度规仿射 f(R) 引力中宇宙学膜世界的整体一致性</a></li></ol>
-  <h2>领域动态<span class="en">FIELD RADAR</span></h2><ol class="toc-list"><li><span class="n">R1</span><a href="#radar-1">含 Chern-Simons 与 Maxwell 耦合的 Kerr-Newman 黑洞标量扰动的时域分析</a></li><li><span class="n">R2</span><a href="#radar-2">度规 $f(R)$ 引力 Bondi-Sachs 表述下 Schwarzschild 黑洞的标量子准正规模与准束缚模</a></li><li><span class="n">R3</span><a href="#radar-3">面向未来 CMB 实验的各向异性宇宙双折射估计</a></li><li><span class="n">R4</span><a href="#radar-4">黑洞标量化中 Ricci 耦合的非线性完备化</a></li><li><span class="n">R5</span><a href="#radar-5">对“Chern-Simons 界面上的手征电磁表面波”一文的评论</a></li><li><span class="n">R6</span><a href="#radar-6">DGP 膜引力中的黑洞熵与全息纠缠熵</a></li><li><span class="n">R7</span><a href="#radar-7">超导等离子体中 Schwarzschild 黑洞的电磁准正规模</a></li><li><span class="n">R8</span><a href="#radar-8">检验 ΛLTB 作为动力学暗能量的替代解释</a></li></ol>
-  <h2>名词推荐<span class="en">KEYWORD PICKS</span></h2><ol class="toc-list"><li><span class="n">K1</span><a href="#kw-1">暗维度与非超对称弦的现象学</a></li></ol>
+<section class="toc-section">
+  <h2>📋 目录</h2>
+  <p class="toc-group">核心精读<span class="en">CORE</span></p>
+  <ol class="toc-list"><li><a href="#paper-1"><span class="toc-num">01.</span>Palatini Kalb-Ramond 引力中的精确黑洞解</a></li><li><a href="#paper-2"><span class="toc-num">02.</span>带辅助规范场的扩展黑洞热力学中的热力学体积</a></li><li><a href="#paper-3"><span class="toc-num">03.</span>2+1 维引力中的 Wald 熵与 Wen-Zee 型规范-曲率耦合</a></li><li><a href="#paper-4"><span class="toc-num">04.</span>Palatini 与度规仿射 f(R) 引力中宇宙学膜世界的整体一致性</a></li></ol>
+  <p class="toc-group">领域动态<span class="en">FIELD RADAR</span></p><ol class="toc-list"><li><a href="#radar-1"><span class="toc-num">R1</span>含 Chern-Simons 与 Maxwell 耦合的 Kerr-Newman 黑洞标量扰动的时域分析</a></li><li><a href="#radar-2"><span class="toc-num">R2</span>度规 $f(R)$ 引力 Bondi-Sachs 表述下 Schwarzschild 黑洞的标量子准正规模与准束缚模</a></li><li><a href="#radar-3"><span class="toc-num">R3</span>面向未来 CMB 实验的各向异性宇宙双折射估计</a></li><li><a href="#radar-4"><span class="toc-num">R4</span>黑洞标量化中 Ricci 耦合的非线性完备化</a></li><li><a href="#radar-5"><span class="toc-num">R5</span>对“Chern-Simons 界面上的手征电磁表面波”一文的评论</a></li><li><a href="#radar-6"><span class="toc-num">R6</span>DGP 膜引力中的黑洞熵与全息纠缠熵</a></li><li><a href="#radar-7"><span class="toc-num">R7</span>超导等离子体中 Schwarzschild 黑洞的电磁准正规模</a></li><li><a href="#radar-8"><span class="toc-num">R8</span>检验 ΛLTB 作为动力学暗能量的替代解释</a></li></ol>
+  <p class="toc-group">名词推荐<span class="en">KEYWORD PICKS</span></p><ol class="toc-list"><li><a href="#kw-1"><span class="toc-num">K1</span>暗维度与非超对称弦的现象学</a></li></ol>
 </section>
 
 <div class="papers">
-<details class="card" id="paper-1">
+<details class="paper-card" id="paper-1">
 <summary>
-  <div>
-    <div class="c-kicker">#1 · arXiv:2610.05799 · gr-qc</div>
-    <div class="c-title-cn">Palatini Kalb-Ramond 引力中的精确黑洞解</div>
-    <div class="c-title-en">Exact black hole solutions in Palatini Kalb-Ramond gravity</div>
-    <div class="c-authors">Lin-Yi She, Rui-Jie Niu, Ke Yang</div>
-    <div class="c-oneline">💡 在 Palatini 表述的 Kalb-Ramond 引力中给出含正、零、负宇宙学常数的精确静态球对称黑洞解族，用 Iyer-Wald 形式确定守恒质量并验证第一定律与 Smarr 关系，再由水星近日点进动给出 q 的约束。</div>
+  <div class="card-body">
+    <div class="card-num">#1 · arXiv:2610.05799 · gr-qc</div>
+    <div class="card-title">Exact black hole solutions in Palatini Kalb-Ramond gravity</div>
+    <div class="card-title-cn">Palatini Kalb-Ramond 引力中的精确黑洞解</div>
+    <div class="card-authors">Lin-Yi She, Rui-Jie Niu, Ke Yang</div>
+    <div class="card-oneline">💡 在 Palatini 表述的 Kalb-Ramond 引力中给出含正、零、负宇宙学常数的精确静态球对称黑洞解族，用 Iyer-Wald 形式确定守恒质量并验证第一定律与 Smarr 关系，再由水星近日点进动给出 q 的约束。</div>
   </div>
   <div class="c-side">
     <span class="score s8">8.0</span>
     <span class="must">必读</span>
-    <span class="chev">▸</span>
   </div>
 </summary>
 <div class="detail">
@@ -206,19 +177,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.05799" target="_blank" rel="noopener">arXiv:2610.05799</a></p>
 </div>
 </details>
-<details class="card" id="paper-2">
+<details class="paper-card" id="paper-2">
 <summary>
-  <div>
-    <div class="c-kicker">#2 · arXiv:2610.05022 · gr-qc · hep-th</div>
-    <div class="c-title-cn">带辅助规范场的扩展黑洞热力学中的热力学体积</div>
-    <div class="c-title-en">Thermodynamic Volumes of Extended Black Hole Thermodynamics with Auxiliary Gauge Fields</div>
-    <div class="c-authors">Zili Mou, Yu Tian, Hongbao Zhang</div>
-    <div class="c-oneline">💡 用 Iyer-Wald 形式对把耦合常数提升为动力学标量场的修正拉氏量导出扩展第一定律，证明所得热力学体积与辅助规范场无关、与直接变分耦合常数的结果完全一致，并可在视界上由辅助规范场表示。</div>
+  <div class="card-body">
+    <div class="card-num">#2 · arXiv:2610.05022 · gr-qc · hep-th</div>
+    <div class="card-title">Thermodynamic Volumes of Extended Black Hole Thermodynamics with Auxiliary Gauge Fields</div>
+    <div class="card-title-cn">带辅助规范场的扩展黑洞热力学中的热力学体积</div>
+    <div class="card-authors">Zili Mou, Yu Tian, Hongbao Zhang</div>
+    <div class="card-oneline">💡 用 Iyer-Wald 形式对把耦合常数提升为动力学标量场的修正拉氏量导出扩展第一定律，证明所得热力学体积与辅助规范场无关、与直接变分耦合常数的结果完全一致，并可在视界上由辅助规范场表示。</div>
   </div>
   <div class="c-side">
     <span class="score s8">8.0</span>
     <span class="must">必读</span>
-    <span class="chev">▸</span>
   </div>
 </summary>
 <div class="detail">
@@ -240,19 +210,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.05022" target="_blank" rel="noopener">arXiv:2610.05022</a></p>
 </div>
 </details>
-<details class="card" id="paper-3">
+<details class="paper-card" id="paper-3">
 <summary>
-  <div>
-    <div class="c-kicker">#3 · arXiv:2610.04476 · hep-th · cond-mat.mes-hall · gr-qc</div>
-    <div class="c-title-cn">2+1 维引力中的 Wald 熵与 Wen-Zee 型规范-曲率耦合</div>
-    <div class="c-title-en">Wald entropy and Wen-Zee type gauge-curvature coupling in 2+1-dimensional gravity</div>
-    <div class="c-authors">Aryan Bhatia, Giandomenico Palumbo, Suraj S. Hegde</div>
-    <div class="c-oneline">💡 研究 Maxwell 代数 Chern-Simons 引力中 Wen-Zee 型混合规范-曲率耦合对视界熵的贡献，证明其 Wald 熵项等于一个视界 boost 荷，即附加规范场沿分叉圆切向投影的回路积分，该贡献在混合项于壳上为零时仍可非零。</div>
+  <div class="card-body">
+    <div class="card-num">#3 · arXiv:2610.04476 · hep-th · cond-mat.mes-hall · gr-qc</div>
+    <div class="card-title">Wald entropy and Wen-Zee type gauge-curvature coupling in 2+1-dimensional gravity</div>
+    <div class="card-title-cn">2+1 维引力中的 Wald 熵与 Wen-Zee 型规范-曲率耦合</div>
+    <div class="card-authors">Aryan Bhatia, Giandomenico Palumbo, Suraj S. Hegde</div>
+    <div class="card-oneline">💡 研究 Maxwell 代数 Chern-Simons 引力中 Wen-Zee 型混合规范-曲率耦合对视界熵的贡献，证明其 Wald 熵项等于一个视界 boost 荷，即附加规范场沿分叉圆切向投影的回路积分，该贡献在混合项于壳上为零时仍可非零。</div>
   </div>
   <div class="c-side">
     <span class="score s7">7.0</span>
     
-    <span class="chev">▸</span>
   </div>
 </summary>
 <div class="detail">
@@ -274,19 +243,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.04476" target="_blank" rel="noopener">arXiv:2610.04476</a></p>
 </div>
 </details>
-<details class="card" id="paper-4">
+<details class="paper-card" id="paper-4">
 <summary>
-  <div>
-    <div class="c-kicker">#4 · arXiv:2610.05821 · hep-th</div>
-    <div class="c-title-cn">Palatini 与度规仿射 f(R) 引力中宇宙学膜世界的整体一致性</div>
-    <div class="c-title-en">Global Consistency of Cosmological Braneworlds in Palatini and Metric-Affine f(R) Gravity</div>
-    <div class="c-authors">Paulo Michel L. T da Silva</div>
-    <div class="c-oneline">💡 在广义 Gibbons-Kallosh-Linde 框架下为 Palatini 与度规仿射 f(R) 引力的五维翘曲膜世界导出积分求和规则，分离几何、物质与非黎曼贡献，说明独立联络自由度如何修改爱因斯坦引力中光滑紧致膜世界的 no-go 障碍。</div>
+  <div class="card-body">
+    <div class="card-num">#4 · arXiv:2610.05821 · hep-th</div>
+    <div class="card-title">Global Consistency of Cosmological Braneworlds in Palatini and Metric-Affine f(R) Gravity</div>
+    <div class="card-title-cn">Palatini 与度规仿射 f(R) 引力中宇宙学膜世界的整体一致性</div>
+    <div class="card-authors">Paulo Michel L. T da Silva</div>
+    <div class="card-oneline">💡 在广义 Gibbons-Kallosh-Linde 框架下为 Palatini 与度规仿射 f(R) 引力的五维翘曲膜世界导出积分求和规则，分离几何、物质与非黎曼贡献，说明独立联络自由度如何修改爱因斯坦引力中光滑紧致膜世界的 no-go 障碍。</div>
   </div>
   <div class="c-side">
     <span class="score s7">7.0</span>
     
-    <span class="chev">▸</span>
   </div>
 </summary>
 <div class="detail">
@@ -309,20 +277,19 @@ window.MathJax = {
 </div>
 </details></div>
 
-<div class="divider"><span>领域动态 · 修正引力宇宙学</span></div><div class="papers">
-<details class="card " id="radar-1">
+<div class="sec-head"><h2>📡 领域动态 · 修正引力宇宙学</h2></div><div class="papers">
+<details class="paper-card " id="radar-1">
 <summary>
-  <div>
-    <div class="c-kicker">R1 · arXiv:2610.06393 · 宇称破缺引力</div>
-    <div class="c-title-cn">含 Chern-Simons 与 Maxwell 耦合的 Kerr-Newman 黑洞标量扰动的时域分析</div>
-    <div class="c-title-en">Time-domain analysis of scalar perturbations of Kerr--Newman black holes with Chern--Simons and Maxwell couplings</div>
-    <div class="c-authors">Yan-Ming Chen, Hyat Huang, Meng-Yun Lai, De-Cheng Zou, Yun Soo Myung, Ming Zhang</div>
-    <div class="c-oneline">💡 在 Einstein-Chern-Simons-Maxwell-标量理论中用双曲 Rácz-Tóth 演化与零模计算给出 Kerr-Newman 标量化的阈值分支结构。</div>
+  <div class="card-body">
+    <div class="card-num">R1 · arXiv:2610.06393 · 宇称破缺引力</div>
+    <div class="card-title">Time-domain analysis of scalar perturbations of Kerr--Newman black holes with Chern--Simons and Maxwell couplings</div>
+    <div class="card-title-cn">含 Chern-Simons 与 Maxwell 耦合的 Kerr-Newman 黑洞标量扰动的时域分析</div>
+    <div class="card-authors">Yan-Ming Chen, Hyat Huang, Meng-Yun Lai, De-Cheng Zou, Yun Soo Myung, Ming Zhang</div>
+    <div class="card-oneline">💡 在 Einstein-Chern-Simons-Maxwell-标量理论中用双曲 Rácz-Tóth 演化与零模计算给出 Kerr-Newman 标量化的阈值分支结构。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-neighbor">近邻</span>
     <span class="score s6">6.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-neighbor">近邻</span>
   </div>
 </summary>
 <div class="detail">
@@ -331,19 +298,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.06393" target="_blank" rel="noopener">arXiv:2610.06393</a></p>
 </div>
 </details>
-<details class="card " id="radar-2">
+<details class="paper-card " id="radar-2">
 <summary>
-  <div>
-    <div class="c-kicker">R2 · arXiv:2610.06370 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">度规 $f(R)$ 引力 Bondi-Sachs 表述下 Schwarzschild 黑洞的标量子准正规模与准束缚模</div>
-    <div class="c-title-en">Scalaron Quasinormal and Quasi-Bound Modes of Schwarzschild Black Holes in the Bondi-Sachs Formulation of Metric $f(R)$ Gravity</div>
-    <div class="c-authors">Bishop Mongwane, Didam G. A. Duniya, Seturumane Tema, Sanele Ziqubu, David F. Mota</div>
-    <div class="c-oneline">💡 在 Bondi-Sachs 表述中导出 $f(R)$ 标量子主方程，用连分式与特征演化独立验证准正规模，谱只依赖 $\mu M$。</div>
+  <div class="card-body">
+    <div class="card-num">R2 · arXiv:2610.06370 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Scalaron Quasinormal and Quasi-Bound Modes of Schwarzschild Black Holes in the Bondi-Sachs Formulation of Metric $f(R)$ Gravity</div>
+    <div class="card-title-cn">度规 $f(R)$ 引力 Bondi-Sachs 表述下 Schwarzschild 黑洞的标量子准正规模与准束缚模</div>
+    <div class="card-authors">Bishop Mongwane, Didam G. A. Duniya, Seturumane Tema, Sanele Ziqubu, David F. Mota</div>
+    <div class="card-oneline">💡 在 Bondi-Sachs 表述中导出 $f(R)$ 标量子主方程，用连分式与特征演化独立验证准正规模，谱只依赖 $\mu M$。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-neighbor">近邻</span>
     <span class="score s5">5.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-neighbor">近邻</span>
   </div>
 </summary>
 <div class="detail">
@@ -352,19 +318,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.06370" target="_blank" rel="noopener">arXiv:2610.06370</a></p>
 </div>
 </details>
-<details class="card " id="radar-3">
+<details class="paper-card " id="radar-3">
 <summary>
-  <div>
-    <div class="c-kicker">R3 · arXiv:2610.03876 · 宇称破缺引力/修正引力宇宙学一般项</div>
-    <div class="c-title-cn">面向未来 CMB 实验的各向异性宇宙双折射估计</div>
-    <div class="c-title-en">Anisotropic cosmic birefringence estimates for forthcoming CMB experiments</div>
-    <div class="c-authors">Matteo Longo Minnolo, Matteo Billi, Giuseppe Puglisi</div>
-    <div class="c-oneline">💡 用分块定位与 $\chi^2_{EB}$ 最小化对 Simons Observatory 与 LiteBIRD 类模拟做预报，各向异性 CB 统计不确定度较 Planck 改善 26–40 倍。</div>
+  <div class="card-body">
+    <div class="card-num">R3 · arXiv:2610.03876 · 宇称破缺引力/修正引力宇宙学一般项</div>
+    <div class="card-title">Anisotropic cosmic birefringence estimates for forthcoming CMB experiments</div>
+    <div class="card-title-cn">面向未来 CMB 实验的各向异性宇宙双折射估计</div>
+    <div class="card-authors">Matteo Longo Minnolo, Matteo Billi, Giuseppe Puglisi</div>
+    <div class="card-oneline">💡 用分块定位与 $\chi^2_{EB}$ 最小化对 Simons Observatory 与 LiteBIRD 类模拟做预报，各向异性 CB 统计不确定度较 Planck 改善 26–40 倍。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-neighbor">近邻</span>
     <span class="score s5">5.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-neighbor">近邻</span>
   </div>
 </summary>
 <div class="detail">
@@ -373,19 +338,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.03876" target="_blank" rel="noopener">arXiv:2610.03876</a></p>
 </div>
 </details>
-<details class="card " id="radar-4">
+<details class="paper-card " id="radar-4">
 <summary>
-  <div>
-    <div class="c-kicker">R4 · arXiv:2610.03779 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">黑洞标量化中 Ricci 耦合的非线性完备化</div>
-    <div class="c-title-en">Nonlinear completions of the Ricci coupling in black-hole scalarization</div>
-    <div class="c-authors">Subrat Parida</div>
-    <div class="c-oneline">💡 在标量-Gauss-Bonnet 引力中把 Ricci 耦合非线性完备到 $\phi^4$ 阶，给出近视界正则条件闭式解并定出分岔方向在 $\beta=1.1156$ 变号。</div>
+  <div class="card-body">
+    <div class="card-num">R4 · arXiv:2610.03779 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Nonlinear completions of the Ricci coupling in black-hole scalarization</div>
+    <div class="card-title-cn">黑洞标量化中 Ricci 耦合的非线性完备化</div>
+    <div class="card-authors">Subrat Parida</div>
+    <div class="card-oneline">💡 在标量-Gauss-Bonnet 引力中把 Ricci 耦合非线性完备到 $\phi^4$ 阶，给出近视界正则条件闭式解并定出分岔方向在 $\beta=1.1156$ 变号。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-neighbor">近邻</span>
     <span class="score s5">5.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-neighbor">近邻</span>
   </div>
 </summary>
 <div class="detail">
@@ -394,19 +358,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.03779" target="_blank" rel="noopener">arXiv:2610.03779</a></p>
 </div>
 </details>
-<details class="card " id="radar-5">
+<details class="paper-card " id="radar-5">
 <summary>
-  <div>
-    <div class="c-kicker">R5 · arXiv:2610.03843 · 宇称破缺引力</div>
-    <div class="c-title-cn">对“Chern-Simons 界面上的手征电磁表面波”一文的评论</div>
-    <div class="c-title-en">Comment on ''Chiral electromagnetic surface waves on Chern-Simons interfaces'' Phys.Rev.D114(2026)L051903 and on arXiv:2606.12513 by N. Kaloper</div>
-    <div class="c-authors">Igor Bandos, Bohdan Zvorskyi</div>
-    <div class="c-oneline">💡 指出 Kaloper 关于平面 Chern-Simons 界面局域平面波解推导中漏项，修正后原结论不成立，并指另一复现方法不自洽。</div>
+  <div class="card-body">
+    <div class="card-num">R5 · arXiv:2610.03843 · 宇称破缺引力</div>
+    <div class="card-title">Comment on ''Chiral electromagnetic surface waves on Chern-Simons interfaces'' Phys.Rev.D114(2026)L051903 and on arXiv:2606.12513 by N. Kaloper</div>
+    <div class="card-title-cn">对“Chern-Simons 界面上的手征电磁表面波”一文的评论</div>
+    <div class="card-authors">Igor Bandos, Bohdan Zvorskyi</div>
+    <div class="card-oneline">💡 指出 Kaloper 关于平面 Chern-Simons 界面局域平面波解推导中漏项，修正后原结论不成立，并指另一复现方法不自洽。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-neighbor">近邻</span>
     <span class="score s5">4.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-neighbor">近邻</span>
   </div>
 </summary>
 <div class="detail">
@@ -415,19 +378,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.03843" target="_blank" rel="noopener">arXiv:2610.03843</a></p>
 </div>
 </details>
-<details class="card " id="radar-6">
+<details class="paper-card " id="radar-6">
 <summary>
-  <div>
-    <div class="c-kicker">R6 · arXiv:2610.05946 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">DGP 膜引力中的黑洞熵与全息纠缠熵</div>
-    <div class="c-title-en">Black Hole Entropy and Holographic Entanglement Entropy in DGP Brane Gravity</div>
-    <div class="c-authors">Takamasa Kanai</div>
-    <div class="c-oneline">💡 在 DGP 膜世界模型中推导出引力熵与全息纠缠熵相等的条件，发现静态位形下该条件自动满足，且对 Lovelock 与 f(R) 膜上引力形式不变。</div>
+  <div class="card-body">
+    <div class="card-num">R6 · arXiv:2610.05946 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Black Hole Entropy and Holographic Entanglement Entropy in DGP Brane Gravity</div>
+    <div class="card-title-cn">DGP 膜引力中的黑洞熵与全息纠缠熵</div>
+    <div class="card-authors">Takamasa Kanai</div>
+    <div class="card-oneline">💡 在 DGP 膜世界模型中推导出引力熵与全息纠缠熵相等的条件，发现静态位形下该条件自动满足，且对 Lovelock 与 f(R) 膜上引力形式不变。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-field">风向</span>
     <span class="score s6">6.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-field">风向</span>
   </div>
 </summary>
 <div class="detail">
@@ -440,19 +402,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.05946" target="_blank" rel="noopener">arXiv:2610.05946</a></p>
 </div>
 </details>
-<details class="card " id="radar-7">
+<details class="paper-card " id="radar-7">
 <summary>
-  <div>
-    <div class="c-kicker">R7 · arXiv:2610.03761 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">超导等离子体中 Schwarzschild 黑洞的电磁准正规模</div>
-    <div class="c-title-en">Electromagnetic quasinormal modes of a Schwarzschild black hole in a superconducting plasma</div>
-    <div class="c-authors">Bobur Turimov, Akbar Davlataliev, Bobomurat Ahmedov, Chengxun Yuan, Chen Zhou, Sulton Usanov</div>
-    <div class="c-oneline">💡 将 London 电动力学协变化后证明其在 London 规范下等价于有效光子质量的 Proca 理论，并计算超导等离子体中 Schwarzschild 黑洞的电磁准正规模。</div>
+  <div class="card-body">
+    <div class="card-num">R7 · arXiv:2610.03761 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Electromagnetic quasinormal modes of a Schwarzschild black hole in a superconducting plasma</div>
+    <div class="card-title-cn">超导等离子体中 Schwarzschild 黑洞的电磁准正规模</div>
+    <div class="card-authors">Bobur Turimov, Akbar Davlataliev, Bobomurat Ahmedov, Chengxun Yuan, Chen Zhou, Sulton Usanov</div>
+    <div class="card-oneline">💡 将 London 电动力学协变化后证明其在 London 规范下等价于有效光子质量的 Proca 理论，并计算超导等离子体中 Schwarzschild 黑洞的电磁准正规模。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-field">风向</span>
     <span class="score s5">4.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-field">风向</span>
   </div>
 </summary>
 <div class="detail">
@@ -465,19 +426,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.03761" target="_blank" rel="noopener">arXiv:2610.03761</a></p>
 </div>
 </details>
-<details class="card " id="radar-8">
+<details class="paper-card " id="radar-8">
 <summary>
-  <div>
-    <div class="c-kicker">R8 · arXiv:2610.05729 · 修正引力宇宙学一般项</div>
-    <div class="c-title-cn">检验 ΛLTB 作为动力学暗能量的替代解释</div>
-    <div class="c-title-en">Testing $\Lambda$LTB as an alternative to dynamical dark energy</div>
-    <div class="c-authors">Yukang Zhang, Pengjie Zhang</div>
-    <div class="c-oneline">💡 用 DESI DR2 BAO、Planck CMB 与四组 SNe Ia 数据检验 ΛLTB 模型，发现数据无法区分其与动力学暗能量，但加入 kSZ 效应后排除了大部分宇宙学原理破坏参数空间。</div>
+  <div class="card-body">
+    <div class="card-num">R8 · arXiv:2610.05729 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Testing $\Lambda$LTB as an alternative to dynamical dark energy</div>
+    <div class="card-title-cn">检验 ΛLTB 作为动力学暗能量的替代解释</div>
+    <div class="card-authors">Yukang Zhang, Pengjie Zhang</div>
+    <div class="card-oneline">💡 用 DESI DR2 BAO、Planck CMB 与四组 SNe Ia 数据检验 ΛLTB 模型，发现数据无法区分其与动力学暗能量，但加入 kSZ 效应后排除了大部分宇宙学原理破坏参数空间。</div>
   </div>
   <div class="c-side">
-    <span class="rel rel-field">风向</span>
     <span class="score s5">4.0</span>
-    <span class="chev">▸</span>
+    <span class="rel rel-field">风向</span>
   </div>
 </summary>
 <div class="detail">
@@ -490,19 +450,18 @@ window.MathJax = {
   <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2610.05729" target="_blank" rel="noopener">arXiv:2610.05729</a></p>
 </div>
 </details></div>
-<div class="divider"><span>名词推荐 · 暗能量</span></div><div class="papers">
-<details class="card" id="kw-1">
+<div class="sec-head"><h2>🔑 名词推荐</h2><p class="sub">暗能量</p></div><div class="papers">
+<details class="paper-card" id="kw-1">
 <summary>
-  <div>
-    <div class="c-kicker">K1 · arXiv:2610.04909 · hep-th · hep-ph</div>
-    <div class="c-title-cn">暗维度与非超对称弦的现象学</div>
-    <div class="c-title-en">The Phenomenology of the Dark Dimension and Non-Supersymmetric Strings</div>
-    <div class="c-authors">Cumrun Vafa</div>
-    <div class="c-oneline">💡 Vafa 综述暗维度情景：微米级额外维度统一暗能量、KK 引力子暗物质、中微子质量与 QCD 轴子衰变常数，并拟合 DESI DR2 数据。</div>
+  <div class="card-body">
+    <div class="card-num">K1 · arXiv:2610.04909 · hep-th · hep-ph</div>
+    <div class="card-title">The Phenomenology of the Dark Dimension and Non-Supersymmetric Strings</div>
+    <div class="card-title-cn">暗维度与非超对称弦的现象学</div>
+    <div class="card-authors">Cumrun Vafa</div>
+    <div class="card-oneline">💡 Vafa 综述暗维度情景：微米级额外维度统一暗能量、KK 引力子暗物质、中微子质量与 QCD 轴子衰变常数，并拟合 DESI DR2 数据。</div>
   </div>
   <div class="c-side">
     <span class="kw">关键词：暗能量</span>
-    <span class="chev">▸</span>
   </div>
 </summary>
 <div class="detail">
@@ -518,25 +477,11 @@ window.MathJax = {
 </div>
 </details></div>
 
+<div class="archives"><div class="archives-inner"><h3>📚 最近 6 天（滚动保留 6 天）</h3><div class="arc-list"><a class="arc-item" href="2026-10-16.html">10月16日（今天）<span class="arc-count">9 篇</span></a><a class="arc-item" href="2026-10-15.html">10月15日<span class="arc-count">11 篇</span></a><a class="arc-item" href="2026-10-12.html">10月12日<span class="arc-count">13 篇</span></a><a class="arc-item" href="2026-10-09.html">10月9日<span class="arc-count">12 篇</span></a><a class="arc-item" href="2026-10-08.html">10月8日<span class="arc-count">5 篇</span></a><span class="arc-item arc-current">10月6日<span class="arc-count">13 篇</span></span></div></div></div>
+
 <div class="footer">
   由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年10月06日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
 </div>
 
-<script>
-(function(){
-  var saved = localStorage.getItem('arxiv-theme');
-  if (saved) { document.documentElement.setAttribute('data-theme', saved); }
-  var btn = document.getElementById('themeBtn');
-  function cur(){ return document.documentElement.getAttribute('data-theme') ||
-    (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); }
-  function label(){ btn.textContent = cur() === 'dark' ? '☾ 深色' : '☀ 浅色'; }
-  label();
-  btn.onclick = function(){
-    var t = cur() === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', t);
-    localStorage.setItem('arxiv-theme', t); label();
-  };
-})();
-</script>
 </body>
 </html>
