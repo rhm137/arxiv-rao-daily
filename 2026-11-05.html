@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv 每日精选 — 2026-11-05</title>
+<style>
+:root {
+    --bg:#fafaf8; --card-bg:#ffffff; --text:#2c2c2c; --text-secondary:#666;
+    --accent:#2563eb; --accent-light:#eff6ff; --border:#e5e7eb;
+    --tag-bg:#f3f4f6; --tag-text:#4b5563;
+    --must:#dc2626; --s7:#d97706; --s6:#059669; --s5:#6b7280;
+    --shadow:0 1px 3px rgba(0,0,0,0.08); --radius:8px;
+    --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+    --font-mono:"SF Mono","Fira Code","Cascadia Code","Consolas",monospace;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font-sans); background:var(--bg); color:var(--text);
+       line-height:1.7; -webkit-font-smoothing:antialiased; }
+.cover { max-width:800px; margin:64px auto 48px; text-align:center; padding:0 24px; }
+.cover .badge { display:inline-block; background:var(--accent); color:#fff; font-size:13px;
+    font-weight:600; letter-spacing:.08em; padding:6px 20px; border-radius:100px; margin-bottom:24px; }
+.cover h1 { font-size:36px; font-weight:700; margin-bottom:8px; color:#111; }
+.cover .date { font-size:18px; color:var(--text-secondary); margin-bottom:32px; }
+.stats { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.stat-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 32px; min-width:140px; box-shadow:var(--shadow); }
+.stat-card .num { font-size:32px; font-weight:700; color:var(--accent); }
+.stat-card .label { font-size:13px; color:var(--text-secondary); margin-top:4px; }
+.cover .src { margin-top:20px; font-size:13px; color:var(--text-secondary); }
+.toc-section { max-width:800px; margin:0 auto 40px; padding:0 24px; }
+.toc-section h2 { font-size:20px; font-weight:700; color:#111; margin-bottom:8px;
+    padding-bottom:8px; border-bottom:2px solid var(--border); }
+.toc-group { font-size:13px; font-weight:600; color:var(--text-secondary); letter-spacing:.06em; margin:16px 0 10px; }
+.toc-group .en { font-weight:400; margin-left:6px; letter-spacing:.1em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list a { color:var(--accent); text-decoration:none; display:flex; align-items:baseline; gap:6px; }
+.toc-list a:hover { text-decoration:underline; }
+.toc-list .toc-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);
+    min-width:28px; flex-shrink:0; }
+.papers { max-width:800px; margin:0 auto 16px; padding:0 24px; }
+.sec-head { max-width:800px; margin:48px auto 16px; padding:0 24px; }
+.sec-head h2 { font-size:20px; font-weight:700; color:#111; padding-bottom:8px; border-bottom:2px solid var(--border); }
+.sec-head .sub { font-size:13px; color:var(--text-secondary); margin-top:6px; }
+.paper-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    margin-bottom:16px; box-shadow:var(--shadow); overflow:hidden; }
+.paper-card summary { padding:20px 24px; cursor:pointer; list-style:none; display:flex;
+    align-items:flex-start; gap:12px; user-select:none; }
+.paper-card summary::-webkit-details-marker { display:none; }
+.paper-card summary::before { content:"▶"; font-size:11px; color:var(--text-secondary);
+    flex-shrink:0; margin-top:5px; transition:transform .2s; display:inline-block; }
+.paper-card[open] summary::before { transform:rotate(90deg); }
+.paper-card .card-body { flex:1; min-width:0; }
+.paper-card .card-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-title { font-size:16px; font-weight:600; color:#111; margin-bottom:4px; line-height:1.5; }
+.paper-card .card-title-cn { font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; }
+.paper-card .card-authors { font-size:13px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-oneline { font-size:13px; color:var(--text-secondary); }
+.paper-card .c-side { display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex-shrink:0; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:100px;
+    padding:1px 10px; background:#fff; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px;
+    border:1px solid var(--accent); color:var(--accent); }
+.paper-card.collision { border-left:3px solid var(--must); }
+.paper-card .detail { padding:0 24px 24px; border-top:1px solid var(--border); }
+.paper-card .detail h4 { font-size:14px; font-weight:600; color:var(--accent); margin:20px 0 8px; }
+.paper-card .detail p { font-size:14px; color:var(--text); line-height:1.8; margin-bottom:12px; }
+.detail .action-box { background:#fef2f2; border:1px solid #fecaca; border-radius:var(--radius);
+    padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border); border-radius:var(--radius); padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--text-secondary); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details summary::before { content:""; }
+.abs-details p { font-size:13px; color:var(--text-secondary); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--text-secondary); }
+.src-link a { color:var(--accent); text-decoration:none; }
+.radar-note { max-width:800px; margin:0 auto 24px; padding:0 24px; font-size:13px; color:var(--text-secondary); }
+.archives { max-width:800px; margin:24px auto 0; padding:0 24px; }
+.archives-inner { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:20px 24px; text-align:center; }
+.archives h3 { font-size:15px; font-weight:600; color:#111; margin-bottom:14px; }
+.arc-list { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.arc-item { display:inline-block; font-size:14px; padding:8px 16px; border-radius:100px;
+    text-decoration:none; color:var(--accent); background:var(--accent-light); border:1px solid #dbeafe; }
+a.arc-item:hover { background:#dbeafe; }
+.arc-item.arc-current { color:#fff; background:var(--accent); border-color:var(--accent); font-weight:600; }
+.arc-count { font-size:12px; color:var(--text-secondary); margin-left:6px; font-weight:400; }
+.arc-item.arc-current .arc-count { color:#bfdbfe; }
+.footer { text-align:center; padding:40px 24px; font-size:13px; color:var(--text-secondary); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:600px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:8px; }
+    .stat-card { padding:14px 20px; min-width:100px; }
+    .stat-card .num { font-size:24px; }
+    .paper-card summary { padding:16px 18px; }
+    .paper-card .detail { padding:0 18px 18px; }
+}
+</style>
+
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
+  startup: { ready() {
+      MathJax.startup.defaultReady();
+      document.querySelectorAll('details.paper-card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
+        });
+      });
+  } }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+<header class="cover">
+  <div class="badge">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv 每日精选</h1>
+  <p class="date">2026年11月05日</p>
+  <div class="stats">
+    <div class="stat-card"><div class="num">2</div><div class="label">核心精读</div></div>
+    <div class="stat-card"><div class="num">7</div><div class="label">领域动态</div></div>
+    
+  </div>
+  <p class="src">来源：gr-qc 22 · hep-th 20 · astro-ph.CO 12　·　按 Rao 的研究画像匹配</p>
+</header>
+
+<section class="toc-section">
+  <h2>📋 目录</h2>
+  <p class="toc-group">核心精读<span class="en">CORE</span></p>
+  <ol class="toc-list"><li><a href="#paper-1"><span class="toc-num">01.</span>度规-仿射引力中的暴胀吸引子</a></li><li><a href="#paper-2"><span class="toc-num">02.</span>四维 Einstein-scalar-Gauss-Bonnet 引力中的耦合膜响应与视界耗散</a></li></ol>
+  <p class="toc-group">领域动态<span class="en">FIELD RADAR</span></p><ol class="toc-list"><li><a href="#radar-1"><span class="toc-num">R1</span>标量-张量理论中正则黑洞的几何禁行定理</a></li><li><a href="#radar-2"><span class="toc-num">R2</span>纯度规Horndeski理论中的轴向黑洞扰动</a></li><li><a href="#radar-3"><span class="toc-num">R3</span>耦合场下黑洞准正规模激发与模式混合</a></li><li><a href="#radar-4"><span class="toc-num">R4</span>位移对称暗扇区相互作用对宇宙加速的阻碍</a></li><li><a href="#radar-5"><span class="toc-num">R5</span>引力波对 $R^2$ 引力的限制</a></li><li><a href="#radar-6"><span class="toc-num">R6</span>将 Horndeski 引力作为有效暗能量流体用于宇宙学 N 体模拟</a></li><li><a href="#radar-7"><span class="toc-num">R7</span>shift-symmetric Einstein–scalar–Gauss–Bonnet 引力中绕旋转黑洞的白矮星准平衡潮汐折叠</a></li></ol>
+  
+</section>
+
+<div class="papers">
+<details class="paper-card" id="paper-1">
+<summary>
+  <div class="card-body">
+    <div class="card-num">#1 · arXiv:2611.06750 · gr-qc · astro-ph.CO · hep-ph</div>
+    <div class="card-title">Inflationary attractors in metric-affine gravity</div>
+    <div class="card-title-cn">度规-仿射引力中的暴胀吸引子</div>
+    <div class="card-authors">Ilaria Andrei, Christian Dioguardi</div>
+    <div class="card-oneline">💡 该文证明在投影不变度规-仿射引力中，强耦合极限普遍给出 α-吸引子，标量谱指数 n_s=1−2/N_*、张标比 r=12α/N_*²，α=1+ζ/(6ξ)。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>度规表述下 ξ-吸引子类的强耦合极限普遍收敛到 Starobinsky 吸引子，而 Palatini 表述下这一普适性丢失、预言依赖模型。度规-仿射引力（MAG）介于两者之间，含挠率与非度规但取不传播的畸变场，因此值得问：MAG 的强耦合极限是否恢复普适吸引子，以及投影不变性是否必要。
+作者取至曲率线性、畸变二次的最一般作用量，先施加投影不变性并把所有系数提升为标量场函数；积掉非动力学畸变后净效应是动能项修正 k(φ)。对非最小耦合与势由单一函数 f(φ) 固定的 ξ-吸引子类，在畸变耦合与 ξ 之比有限的强耦合极限下得到 α-吸引子，n_s=1−2/N_*、r=12α/N_*²，α=1+ζ/(6ξ)，Starobinsky 与 Palatini 暴胀为特例。数值参数扫描显示几乎所有健康点落在两条吸引子之一：Nieh–Yan 型暴胀（前作，此处扩展）或新的 MAG α-吸引子。显式放弃投影不变性后大场渐近结构不变，非投影不变算符不带来额外暴胀现象学。</p>
+  <h4>评价</h4>
+  <p>【创新点】把 ξ-吸引子从度规/Palatini 二分推广到 MAG，给出闭式 α=1+ζ/(6ξ) 与 r=12α/N_*²，并用参数扫描证明健康参数空间几乎全部塌缩到两条吸引子，从而把 Palatini 的模型依赖性归因于畸变耦合比值的取值而非框架本身。
+【局限性】全程限于单场慢滚与不传播畸变（代数消去），未讨论畸变场可能引入的额外自由度或强耦合尺度；α-吸引子结论依赖“畸变耦合/ξ 有限”的强耦合极限，弱耦合区仍是模型依赖；扫描的健康判据（引力波速度、鬼模等）摘要未列明。
+【对 Rao 的意义】直接落在修正引力等价表述与暴胀扰动这条主线上，且 Nieh–Yan 型分支与 Rao 的宇称破缺引力线相交；α=1+ζ/(6ξ) 这种“畸变耦合进入吸引子参数”的结构可搬到 f(Q) 宇宙学的 P-V 临界点分析中作类比。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可借用其技术路线：投影不变性下把联络/畸变自由度代数消去、净效应写成动能修正 k(φ)，这是处理 f(Q) 与 metric-affine 理论联络分支的标准手法，与 Rao 在 f(Q) 中区分规则/不规则联络的做法同构。需警惕约定差异：此处 α 的定义含 ζ/(6ξ)，与通常 α-吸引子（α 为标量流形曲率）不是同一参数，比较观测约束时须换算；另外 Palatini 下 Starobinsky 吸引子丢失这一反例，正好说明“联络选择改变暴胀预言”，可作为 SVT 分解时联络扇区处理的警示。</p>
+  <h4>💡 推荐课题</h4>
+  <p>课题一（接 P2）：在 f(Q) 宇宙学中问同一问题——把非度规/联络畸变积掉后，P-V 临界点位置是否也由某个组合 ζ/ξ 型的无量纲比唯一控制；第一步写出含动能修正 k(φ) 的 f(Q) 背景方程并求临界点条件。课题二（接宇称破缺线）：该文 Nieh–Yan 型分支与 MAG α-吸引子的分界是否对应某个宇称奇算符的符号，第一步在投影不变作用量中加入 Nieh–Yan 项并重做参数扫描。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2611.06750v1 Announce Type: new Abstract: We study single-field slow-roll inflation in metric-affine gravity (MAG). We consider the most general action up to operators linear in curvature and quadratic in the distortion, without propagating torsion and non-metricity. We first impose projective invariance and promote every coefficient to a function of the scalar field. After integrating out the non-dynamical distortion, the net contribution is a correction $k(\phi)$ to the scalar kinetic term. We then consider the class of $\xi$-attractors for which the non-minimal couplings and the scalar potential are fixed by a single function $f(\phi)$. It is well-known that in the metric formulation the strong-coupling regime is universally the Starobinsky attractor. In the Palatini framework, instead, this attractor is lost and the predictions become model-dependent. Here, we show that the MAG framework restores universality: in the strong coupling limit with finite ratios of the distortion couplings to $\xi$ we have an $\alpha$-attractor, $n_s=1-2/N_*$ and $r=12\alpha/N_*^2$, with $\alpha=1+\zeta/(6\xi)$. The ratio $\zeta/\xi$ encodes the distortion contribution. Starobinsky and Palatini inflation are recovered as specific limits. Through a numerical parameter scan we show that almost all the healthy points lie on one of the two attractors : either Nieh-Yan-like inflation (studied in a previous work and extended here) or the new MAG $\alpha$-attractor found here. Finally, we explicitly drop projective invariance and analyse the general MAG theory. The same large-field asymptotic structure survives. We conclude that no extra inflationary phenomenology is reached by the non-projectively invariant operators: the $\alpha$-attractor is a general prediction of MAG.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.06750" target="_blank" rel="noopener">arXiv:2611.06750</a></p>
+</div>
+</details>
+<details class="paper-card" id="paper-2">
+<summary>
+  <div class="card-body">
+    <div class="card-num">#2 · arXiv:2611.06198 · gr-qc</div>
+    <div class="card-title">Coupled membrane response and horizon dissipation in four-dimensional Einstein-scalar-Gauss-Bonnet gravity</div>
+    <div class="card-title-cn">四维 Einstein-scalar-Gauss-Bonnet 引力中的耦合膜响应与视界耗散</div>
+    <div class="card-authors">Yan-Heng Jin, Wen-Biao Han</div>
+    <div class="card-oneline">💡 该文为四维 EsGB 黑洞建立作用量型膜范式，给出视界吸收与两稳态切片间 Wald 熵二阶变化的平衡关系，并由此得到标量扰动的指数增长率而无需拟合阻尼系数。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s6">6.0</span>
+    
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>膜范式把黑洞视界替换为满足流体方程的等效膜，是提取视界耗散与输运系数的有力工具，但此前主要在 Einstein 引力或特定高阶理论中建立。四维 EsGB 引力含标量—高斯-邦内耦合，视界能量吸收同时来自几何剪切与标量相互作用，二者如何分配到膜功与熵变尚缺一个作用量层面的自洽框架。
+作者对非极端、静态球对称 EsGB 黑洞构造作用量型膜范式，计算对外部扰动的线性膜响应，据此分析对膜做的功与被视界吸收的能量。标量贡献分为对膜的直接功与由诱导视界膨胀带来的功两部分。随后建立积分视界吸收与两稳态视界切片间 Wald 熵二阶变化之间的平衡关系。将该框架用于简单转折点附近的慢动力学，得到球对称标量扰动的主导指数增长或衰减率，且不需要拟合动力学阻尼系数。</p>
+  <h4>评价</h4>
+  <p>【创新点】把膜范式从 Einstein 引力推广到含标量—GB 耦合的四维理论，并给出“视界吸收 = Wald 熵二阶变化”的积分平衡式；关键结果是扰动指数率可由膜响应直接算出，绕开了通常需要数值拟合阻尼系数的步骤。
+【局限性】限于非极端、静态球对称背景与线性响应，未涉及旋转或动态视界；只在“简单转折点附近慢动力学”这一近似下提取指数率，适用范围窄；摘要未给出与已知 EsGB 准正规模或数值结果的定量对比，平衡关系的普适性尚待检验。
+【对 Rao 的意义】与引力热力学主线中的 Wald 熵、协变荷与视界热力学直接相关，尤其“熵的二阶变化 ↔ 视界能量吸收”这一平衡式，可对照 Rao 关注的统一第一定律与 GSL 表述；标量—GB 耦合的处理方式对 P3（非绝热扰动对视界熵的响应）有方法参考价值。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可学到把视界熵变写成膜上积分通量的操作：Wald 熵对切片的一阶变分对应膜上的能量流，二阶变分对应吸收功，这与 Iyer–Wald Noether 荷、辛势的边界项结构一致，可作为协变相空间方法的具体算例。需警惕：EsGB 中 Wald 熵含 Gauss-Bonnet 标量项，其变分与面积项不同，比较“面积定律”与“Wald 熵”时必须区分；另外该文用“转折点附近慢动力学”近似，等价于绝热/低频极限，与 P3 关心的有限波长响应不是同一区间。</p>
+  <h4>💡 推荐课题</h4>
+  <p>课题（接 P3/P5）：把该文的“视界吸收—Wald 熵二阶变分”平衡式搬到 FRW 表观视界，检验非绝热（相对熵模）扰动下平衡式是否出现额外源项；第一步在球对称扰动下写出表观视界处 Misner–Sharp 能量的二阶变分并与膜功对比。难度中等，主要障碍是 FRW 中视界非稳态、需选 Kodama 时间切片。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2611.06198v1 Announce Type: new Abstract: We develop an action-based membrane paradigm for nonextremal, static, spherically symmetric black holes in four-dimensional Einstein-scalar-Gauss-Bonnet (EsGB) gravity, describing their interaction with external perturbations through an effective fluid membrane. We calculate the linear membrane responses to perturbations and use them to analyze the work done on the membrane and the energy absorbed by the horizon. Horizon energy absorption receives contributions from geometric shear and scalar interactions. The scalar contribution includes both direct work on the membrane and work associated with the induced horizon expansion. We then establish a balance relation between the integrated horizon absorption and the second-order change in Wald entropy between stationary horizon cuts. Applying this framework to slow dynamics near a simple turning point, we obtain the leading exponential growth or decay rate of spherically symmetric scalar perturbations without fitting a dynamical damping coefficient.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.06198" target="_blank" rel="noopener">arXiv:2611.06198</a></p>
+</div>
+</details></div>
+
+<div class="sec-head"><h2>📡 领域动态 · 修正引力宇宙学</h2></div><div class="papers">
+<details class="paper-card " id="radar-1">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R1 · arXiv:2611.06460 · mimetic/标量-张量</div>
+    <div class="card-title">A Geometric No-Go Theorem for Regular Black Holes in Scalar-Tensor Theories</div>
+    <div class="card-title-cn">标量-张量理论中正则黑洞的几何禁行定理</div>
+    <div class="card-authors">Shulang Peng, Jun Tao, Mian Zhu, Yi-Fu Cai</div>
+    <div class="card-oneline">💡 证明在Horndeski、DHOST等一大类标量-张量理论中，双视界正则黑洞必然因奇宇称张量扰动传播速度平方为负而线性不稳定，构成几何禁行定理。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s6">6.0</span>
+    <span class="rel rel-neighbor">近邻</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>正则黑洞（RBH）用有限曲率核心替代奇点，但这类时空普遍受扰动不稳定性困扰；此前标量-张量（ST）理论已被证明能稳定非奇异反弹与可穿越虫洞，自然的问题是：同一套机制能否也稳定RBH？这关系到RBH能否作为修正引力的可信解存在。
+作者对由径向标量场支撑的静态球对称RBH做几何分析：在双视界结构中，纵向标度与球面半径之比必须在内部取极大值；而在一大类ST理论（空间协变引力、Horndeski、二次GLPV、DHOST、U-DHOST及其可允许的disformal延拓）中，背景场方程把该比值的原时导数与奇宇称张量扰动传播速度平方联系起来。洛伦兹型奇张量光锥要求该处为极小值而非极大值，两者矛盾，故此类RBH在这些理论中无法稳定存在。</p>
+<h4>评价</h4><p>【创新点】把RBH稳定性问题转化为纯几何的极值条件与张量光锥符号的冲突，无需逐模型求解扰动方程，一次性覆盖Horndeski/DHOST/U-DHOST及disformal延拓，结论比单模型不稳定性计算强得多。
+【局限性】仅限静态球对称、双视界、由径向标量场支撑的RBH；单视界或含其他场支撑的构型、以及非洛伦兹型传播（如存在超光速但因果性另定的情形）不在覆盖内，摘要未说明极值条件在视界退化时的行为。
+【对 Rao 的意义】与Q1（NYTG静态球对称分支与无毛条件审计）方法上直接相关：其“背景方程把几何量与扰动速度平方挂钩”的手法可移植到f(Q)/NYTG的联络分支审计，用于快速排除不稳定分支；也提醒在P2中讨论视界解稳定性时须先查奇宇称扇区的光锥符号。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.06460" target="_blank" rel="noopener">arXiv:2611.06460</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-2">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R2 · arXiv:2611.06875 · mimetic/标量-张量</div>
+    <div class="card-title">Axial black hole perturbations in purely-metric Horndeski theories</div>
+    <div class="card-title-cn">纯度规Horndeski理论中的轴向黑洞扰动</div>
+    <div class="card-authors">H\'elo\"ise Delaporte, Hugo Roussille</div>
+    <div class="card-oneline">💡 证明纯度规Horndeski理论中静态球对称黑洞的轴向扰动等价于GR中在某个有效度规下传播的扰动，并给出该有效度规的显式表达式。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s6">6.0</span>
+    <span class="rel rel-neighbor">近邻</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>纯度规Horndeski理论只含度规与由度规导出的标量自由度，运动方程二阶，是研究“纯引力”标量自由度的干净框架。此前已知在部分子类中，Schwarzschild解附近标量场出现快子不稳定性，会生成新的带毛黑洞分支，作者称之为“curvaturisation”（类比标量化）。
+本文先系统回顾这类理论的构造与该带毛分支的形成机制，再用一阶方法处理轴向（奇宇称）扰动，发现其动力学完全等价于GR中轴向扰动在一个不同的有效度规中传播；作者以背景量和拉氏量函数显式给出该有效度规，并指出它与背景共享相同的因果结构。这为用黑洞振荡谱检验这类理论提供了可直接计算的扰动方程。</p>
+<h4>评价</h4><p>【创新点】把纯度规Horndeski的轴向扰动约化为GR形式加有效度规，避免了逐模型推导耦合扰动方程，且显式给出有效度规，便于直接算QNM；同时厘清了curvaturisation分支的扰动层面可观测性。
+【局限性】只处理轴向（奇宇称）扇区，极向扰动与标量模混合未涉及；结果限于静态球对称背景与一阶扰动，强耦合或非微扰区域不适用。
+【对 Rao 的意义】与P1的标量—张量纠缠及Q1的静态球对称分支审计相关：其“扰动等价于有效度规中的GR扰动”的约化技巧可借用于f(Q)/NYTG不规则联络背景的奇宇称扰动分析，也提示在比较不同联络分支的因果结构时须区分背景度规与扰动有效度规。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.06875" target="_blank" rel="noopener">arXiv:2611.06875</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-3">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R3 · arXiv:2611.05488 · 宇称破缺引力/修正引力宇宙学一般项</div>
+    <div class="card-title">Black hole quasinormal mode excitation and mixing for coupled fields</div>
+    <div class="card-title-cn">耦合场下黑洞准正规模激发与模式混合</div>
+    <div class="card-authors">Caio F. B. Macedo, Orival R. de Medeiros, Emanuele Berti, Hector O. Silva, Sebastian H. V\"olkel</div>
+    <div class="card-oneline">💡 用参数化QNM形式与矩阵连分式方法计算修正引力中引力场与额外自由度耦合时的准正规模谱与振幅，揭示弱耦合下振幅的标度规律。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">5.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>黑洞光谱学已进入实验阶段，但多数修正引力理论中引力扰动与额外标量/矢量自由度耦合，导致模式混合，ringdown信号不再是单一指数衰减叠加，频率与振幅都偏离GR预言。如何在频域与时域一致地提取耦合系统的QNM谱与激发振幅，是当前方法层面的缺口。
+作者采用非旋转黑洞的参数化QNM形式，在频域用直接积分与矩阵值连分式方法求解耦合扰动方程，再与时域演化对比，用Prony方法与最小二乘拟合提取频率和振幅。结果显示弱耦合区引力主导模的振幅随耦合参数呈特定标度，模式混合使振幅比频率更敏感于新物理。</p>
+<h4>评价</h4><p>【创新点】把参数化QNM框架推广到多场耦合系统，并用矩阵连分式与Prony/最小二乘两条独立路径交叉验证，给出了振幅（而非仅频率）在弱耦合下的标度行为，这对ringdown检验很关键。
+【局限性】限于非旋转、参数化框架内的弱耦合；强耦合与旋转情形未覆盖，模式混合在频域连分式的收敛性依赖具体耦合结构。
+【对 Rao 的意义】现象学类，方法新意有限，但矩阵连分式与Prony提取振幅的技术可用于P3（非绝热扰动对视界熵的有限波长响应）中提取多模叠加的振幅信息；与宇称破缺引力中手征GW的ringdown信号分析同领域参考。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.05488" target="_blank" rel="noopener">arXiv:2611.05488</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-4">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R4 · arXiv:2611.05560 · 修正引力宇宙学一般项</div>
+    <div class="card-title">An obstruction to cosmic acceleration from shift-symmetric dark sector interactions</div>
+    <div class="card-title-cn">位移对称暗扇区相互作用对宇宙加速的阻碍</div>
+    <div class="card-authors">Jose Beltr\'{a}n Jim\'{e}nez, Luis J. Garay, Erik Jensko, Mar\'{i}a P\'{e}rez Garrote</div>
+    <div class="card-oneline">💡 用宇宙介质EFT证明完美流体与超流体的导数型暗扇区相互作用无法在无不稳定性下支持慢滚加速，且稳定性条件排除phantom到非phantom的穿越。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">5.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>暗扇区相互作用是解释宇宙加速的常用手段，但许多模型只做现象学参数化，未检查扰动稳定性；导数型相互作用尤其容易引入鬼或梯度不稳定性，而位移对称性本是控制这类相互作用的自然选择。
+作者在宇宙介质EFT框架下，把暗扇区写成完美流体与超流体的导数耦合，系统分析其背景与扰动方程。结果表明：在保持无鬼、无梯度不稳定性的前提下，这类导数相互作用不能支持慢滚膨胀；进一步把介质分解为有效暗物质与暗能量后，稳定性条件禁止phantom到非phantom的穿越。这给出构造可行暗扇区模型的明确筛选规则。</p>
+<h4>评价</h4><p>【创新点】不是拟合数据，而是给出位移对称导数耦合暗扇区的稳定性禁行结论，把“能否加速”与“是否稳定”绑定，比逐模型检查更普适。
+【局限性】限于完美流体+超流体的介质EFT描述与导数型相互作用，非导数耦合或含额外场的暗扇区不受此约束；结论是背景+线性扰动层面的，非线性结构形成未涉及。
+【对 Rao 的意义】现象学类，方法新意有限，但其“稳定性条件排除phantom穿越”的论证方式可迁移到P2中f(Q)宇宙学P-V临界点附近有效暗能量组分的稳定性判据；与修正引力暗能量EFT检验同领域参考。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.05560" target="_blank" rel="noopener">arXiv:2611.05560</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-5">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R5 · arXiv:2611.06902 · mimetic/标量-张量/修正引力宇宙学一般项</div>
+    <div class="card-title">Gravitational-Wave Constraints on $R^2$ Gravity</div>
+    <div class="card-title-cn">引力波对 $R^2$ 引力的限制</div>
+    <div class="card-authors">Pawan Kumar Gupta, Laura Sagunski</div>
+    <div class="card-oneline">💡 用双中子星事件GW170817与GW190425的贝叶斯分析给出 $f(R)=R+aR^2$ 中 $a\lesssim6.2\times10^6\,\mathrm{m}^2$（90%置信度），标量质量下界 $m_s\gtrsim3.2\times10^{-11}\,\mathrm{eV}$。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">5.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>双中子星并合的引力波是强场检验GR的独特窗口。二次 $f(R)=R+aR^2$ 引力是最简单的高曲率扩展之一，引入一个有限作用程的巨量标量自由度，会改变致密双星动力学与引力波辐射；此前对耦合参数 $a$ 的天体物理限制主要来自太阳系与宇宙学，强场限制尚缺。
+作者把该理论映射到巨量标量-张量引力的EFT波形，得到由单一参数 $a$ 控制的inspiral相位修正；对GW170817与GW190425做贝叶斯分析，联合给出 $a\lesssim6.2\times10^6\,\mathrm{m}^2$（90%可信度），对应 $m_s\gtrsim3.2\times10^{-11}\,\mathrm{eV}$，比此前最好限制改进约五倍。</p>
+<h4>评价</h4><p>【创新点】把 $R^2$ 引力精确映射到巨量标量-张量EFT波形，用两个双中子星事件给出单一参数 $a$ 的强场限制，比此前天体物理界限改进约五倍。
+【局限性】仅用inspiral相位、未含merger-ringdown与潮汐形变信息；映射依赖标量作用程远大于轨道尺度的近似，$a$ 较大时EFT波形截断误差未量化。
+【对 Rao 的意义】现象学类，方法新意有限，但“把高阶曲率理论映射为巨量标量-张量EFT再套波形”的流程可直接用于P2中f(Q)宇宙学参数空间的引力波限制估计；与修正引力引力波检验同领域参考。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.06902" target="_blank" rel="noopener">arXiv:2611.06902</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-6">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R6 · arXiv:2611.06330 · mimetic/标量-张量/修正引力宇宙学一般项</div>
+    <div class="card-title">Horndeski Gravity as an Effective Dark Energy Fluid in Cosmological N-body Simulations</div>
+    <div class="card-title-cn">将 Horndeski 引力作为有效暗能量流体用于宇宙学 N 体模拟</div>
+    <div class="card-authors">Vicente Pedreros Aballay</div>
+    <div class="card-oneline">💡 作者把 Horndeski 模型的线性暗能量扰动写成同步规范下的有效流体，接入 CONCEPT N 体代码，使非线性结构形成模拟能覆盖整个 Horndeski 家族。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">4.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>暗能量本质仍是宇宙学最大谜题之一，修正引力模型预言了与 ΛCDM 不同的结构增长，但非线性阶段的解析预言极难，因此需要 N 体模拟。现有模拟多针对特定模型（如 f(R)、DGP）逐一实现，缺少能统一覆盖 Horndeski 家族的通用框架，这正是本文的动机。
+作者将线性暗能量扰动 $\delta\rho_{\rm DE}$、$\delta P_{\rm DE}$、$\theta_{\rm DE}$、$\sigma_{\rm DE}$ 用同步规范下的度规扰动表示，从而把修正引力等效为一种具有给定状态方程与剪切黏滞的暗能量流体；再把 CONCEPT 所用的 CLASS 替换为包含 Horndeski 家族的补丁版 mochi_CLASS，由玻尔兹曼求解器提供背景与线性扰动，N 体代码据此演化有效流体并推进粒子。摘要未给出具体模拟参数、分辨率或与 ΛCDM 的定量对比结果，只说明该流程可行。</p>
+<h4>评价</h4><p>【创新点】把 Horndeski 家族整体映射为有效暗能量流体并接入现成 N 体代码，避免了逐模型改写引力求解器，工程上比单一模型实现更通用。
+【局限性】有效性完全依赖线性阶的流体映射，非线性暗能量扰动与屏蔽机制（如 Vainshtein、chameleon）未被自洽处理；摘要也未给出模拟分辨率与精度检验。
+【对 Rao 的意义】现象学类，方法新意有限，但“用同步规范度规扰动参数化有效流体”的写法与 Rao 在 f(Q)/标量—张量扰动中做规范—共形不变量分解的技术路线相通，可作为处理非标准暗能量扰动的工程参考。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.06330" target="_blank" rel="noopener">arXiv:2611.06330</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-7">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R7 · arXiv:2611.06647 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Quasi-equilibrium tidal folds of white dwarfs around rotating black holes in shift-symmetric Einstein--scalar--Gauss--Bonnet gravity</div>
+    <div class="card-title-cn">shift-symmetric Einstein–scalar–Gauss–Bonnet 引力中绕旋转黑洞的白矮星准平衡潮汐折叠</div>
+    <div class="card-authors">Shoupan Liu, Meilin Liu, Yu Wang, Yunqi Liu</div>
+    <div class="card-oneline">💡 作者用数值 EsGB 旋转黑洞背景加可压缩仿射模型计算白矮星潮汐折叠，发现折叠轨道频率相对 Kerr 有约 $10^{-3}$ 量级的正修正，且顺行/逆行折叠与 ISCO 的位置关系随自旋改变。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">4.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>在 Kerr 黑洞附近，白矮星会在潮汐力超过自引力时发生“潮汐折叠”，其临界轨道频率是检验强场引力的潜在观测量。shift-symmetric Einstein–scalar–Gauss–Bonnet（EsGB）引力因标量场与 Gauss–Bonnet 项耦合而改变旋转黑洞时空几何，但此前少有工作把这种修正几何与可压缩天体的潮汐响应结合起来，因此折叠频率在 EsGB 下如何移动尚不清楚。
+作者在平行传输标架中从数值 EsGB 背景提取相对论潮汐场，耦合到可压缩仿射模型描述白矮星。在与 Kerr 黑洞匹配相同 ADM 质量与角动量的条件下，潮汐折叠处的轨道频率出现正移；固定自旋时相对修正近似随 EsGB 耦合二次增长，与度规对标量场的领头响应一致，在采样背景上达到 $10^{-3}$ 量级。黑洞旋转还改变折叠与 ISCO 的关系：采样的顺行折叠保持在 ISCO 之外，而逆行折叠在高自旋时进入 ISCO 之内，即轨道方向决定潮汐平衡是否存在。</p>
+<h4>评价</h4><p>【创新点】首次把数值 EsGB 旋转背景的相对论潮汐场与可压缩仿射白矮星模型耦合，给出折叠频率修正的耦合二次标度律，并指出顺行/逆行折叠相对 ISCO 的位置反转。
+【局限性】只做了准平衡、无轨道演化的静态潮汐平衡分析，白矮星模型为仿射近似，且采样背景有限，$10^{-3}$ 量级的修正远低于当前观测精度。
+【对 Rao 的意义】同领域参考：EsGB 属标量—张量族，其“标量场对度规的领头二次响应”论证方式可迁移到 Rao 在 f(Q)/NYTG 中评估联络或标量修正量级的量纲估计，但与热力学、宇称破缺主线无直接接口。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.06647" target="_blank" rel="noopener">arXiv:2611.06647</a></p>
+</div>
+</details></div>
+
+
+<div class="archives"><div class="archives-inner"><h3>📚 最近 6 天（滚动保留 6 天）</h3><div class="arc-list"><span class="arc-item arc-current">11月5日（今天）<span class="arc-count">9 篇</span></span><a class="arc-item" href="2026-11-04.html">11月4日<span class="arc-count">16 篇</span></a><a class="arc-item" href="2026-11-03.html">11月3日<span class="arc-count">18 篇</span></a><a class="arc-item" href="2026-11-02.html">11月2日<span class="arc-count">8 篇</span></a><a class="arc-item" href="2026-10-30.html">10月30日<span class="arc-count">20 篇</span></a><a class="arc-item" href="2026-10-28.html">10月28日<span class="arc-count">15 篇</span></a></div></div></div>
+
+<div class="footer">
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年11月05日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+</body>
+</html>
