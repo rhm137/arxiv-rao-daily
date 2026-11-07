@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv 每日精选 — 2026-11-06</title>
+<style>
+:root {
+    --bg:#fafaf8; --card-bg:#ffffff; --text:#2c2c2c; --text-secondary:#666;
+    --accent:#2563eb; --accent-light:#eff6ff; --border:#e5e7eb;
+    --tag-bg:#f3f4f6; --tag-text:#4b5563;
+    --must:#dc2626; --s7:#d97706; --s6:#059669; --s5:#6b7280;
+    --shadow:0 1px 3px rgba(0,0,0,0.08); --radius:8px;
+    --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+    --font-mono:"SF Mono","Fira Code","Cascadia Code","Consolas",monospace;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font-sans); background:var(--bg); color:var(--text);
+       line-height:1.7; -webkit-font-smoothing:antialiased; }
+.cover { max-width:800px; margin:64px auto 48px; text-align:center; padding:0 24px; }
+.cover .badge { display:inline-block; background:var(--accent); color:#fff; font-size:13px;
+    font-weight:600; letter-spacing:.08em; padding:6px 20px; border-radius:100px; margin-bottom:24px; }
+.cover h1 { font-size:36px; font-weight:700; margin-bottom:8px; color:#111; }
+.cover .date { font-size:18px; color:var(--text-secondary); margin-bottom:32px; }
+.stats { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.stat-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 32px; min-width:140px; box-shadow:var(--shadow); }
+.stat-card .num { font-size:32px; font-weight:700; color:var(--accent); }
+.stat-card .label { font-size:13px; color:var(--text-secondary); margin-top:4px; }
+.cover .src { margin-top:20px; font-size:13px; color:var(--text-secondary); }
+.toc-section { max-width:800px; margin:0 auto 40px; padding:0 24px; }
+.toc-section h2 { font-size:20px; font-weight:700; color:#111; margin-bottom:8px;
+    padding-bottom:8px; border-bottom:2px solid var(--border); }
+.toc-group { font-size:13px; font-weight:600; color:var(--text-secondary); letter-spacing:.06em; margin:16px 0 10px; }
+.toc-group .en { font-weight:400; margin-left:6px; letter-spacing:.1em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list a { color:var(--accent); text-decoration:none; display:flex; align-items:baseline; gap:6px; }
+.toc-list a:hover { text-decoration:underline; }
+.toc-list .toc-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);
+    min-width:28px; flex-shrink:0; }
+.papers { max-width:800px; margin:0 auto 16px; padding:0 24px; }
+.sec-head { max-width:800px; margin:48px auto 16px; padding:0 24px; }
+.sec-head h2 { font-size:20px; font-weight:700; color:#111; padding-bottom:8px; border-bottom:2px solid var(--border); }
+.sec-head .sub { font-size:13px; color:var(--text-secondary); margin-top:6px; }
+.paper-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    margin-bottom:16px; box-shadow:var(--shadow); overflow:hidden; }
+.paper-card summary { padding:20px 24px; cursor:pointer; list-style:none; display:flex;
+    align-items:flex-start; gap:12px; user-select:none; }
+.paper-card summary::-webkit-details-marker { display:none; }
+.paper-card summary::before { content:"▶"; font-size:11px; color:var(--text-secondary);
+    flex-shrink:0; margin-top:5px; transition:transform .2s; display:inline-block; }
+.paper-card[open] summary::before { transform:rotate(90deg); }
+.paper-card .card-body { flex:1; min-width:0; }
+.paper-card .card-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-title { font-size:16px; font-weight:600; color:#111; margin-bottom:4px; line-height:1.5; }
+.paper-card .card-title-cn { font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; }
+.paper-card .card-authors { font-size:13px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-oneline { font-size:13px; color:var(--text-secondary); }
+.paper-card .c-side { display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex-shrink:0; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:100px;
+    padding:1px 10px; background:#fff; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px;
+    border:1px solid var(--accent); color:var(--accent); }
+.paper-card.collision { border-left:3px solid var(--must); }
+.paper-card .detail { padding:0 24px 24px; border-top:1px solid var(--border); }
+.paper-card .detail h4 { font-size:14px; font-weight:600; color:var(--accent); margin:20px 0 8px; }
+.paper-card .detail p { font-size:14px; color:var(--text); line-height:1.8; margin-bottom:12px; }
+.detail .action-box { background:#fef2f2; border:1px solid #fecaca; border-radius:var(--radius);
+    padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border); border-radius:var(--radius); padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--text-secondary); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details summary::before { content:""; }
+.abs-details p { font-size:13px; color:var(--text-secondary); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--text-secondary); }
+.src-link a { color:var(--accent); text-decoration:none; }
+.radar-note { max-width:800px; margin:0 auto 24px; padding:0 24px; font-size:13px; color:var(--text-secondary); }
+.archives { max-width:800px; margin:24px auto 0; padding:0 24px; }
+.archives-inner { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:20px 24px; text-align:center; }
+.archives h3 { font-size:15px; font-weight:600; color:#111; margin-bottom:14px; }
+.arc-list { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.arc-item { display:inline-block; font-size:14px; padding:8px 16px; border-radius:100px;
+    text-decoration:none; color:var(--accent); background:var(--accent-light); border:1px solid #dbeafe; }
+a.arc-item:hover { background:#dbeafe; }
+.arc-item.arc-current { color:#fff; background:var(--accent); border-color:var(--accent); font-weight:600; }
+.arc-count { font-size:12px; color:var(--text-secondary); margin-left:6px; font-weight:400; }
+.arc-item.arc-current .arc-count { color:#bfdbfe; }
+.footer { text-align:center; padding:40px 24px; font-size:13px; color:var(--text-secondary); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:600px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:8px; }
+    .stat-card { padding:14px 20px; min-width:100px; }
+    .stat-card .num { font-size:24px; }
+    .paper-card summary { padding:16px 18px; }
+    .paper-card .detail { padding:0 18px 18px; }
+}
+</style>
+
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
+  startup: { ready() {
+      MathJax.startup.defaultReady();
+      document.querySelectorAll('details.paper-card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
+        });
+      });
+  } }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+<header class="cover">
+  <div class="badge">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv 每日精选</h1>
+  <p class="date">2026年11月06日</p>
+  <div class="stats">
+    <div class="stat-card"><div class="num">4</div><div class="label">核心精读 · ⭐2 必读</div></div>
+    <div class="stat-card"><div class="num">5</div><div class="label">领域动态</div></div>
+    <div class="stat-card"><div class="num">1</div><div class="label">名词推荐</div></div>
+  </div>
+  <p class="src">来源：gr-qc 27 · hep-th 30 · astro-ph.CO 11　·　按 Rao 的研究画像匹配</p>
+</header>
+
+<section class="toc-section">
+  <h2>📋 目录</h2>
+  <p class="toc-group">核心精读<span class="en">CORE</span></p>
+  <ol class="toc-list"><li><a href="#paper-1"><span class="toc-num">01.</span>n_s 能否暗示引力的宇称奇扇区？</a></li><li><a href="#paper-2"><span class="toc-num">02.</span>重访宇称破坏标量—张量理论：d=4 完备基与 Hamiltonian 分析</a></li><li><a href="#paper-3"><span class="toc-num">03.</span>对称 teleparallel 引力及其扩展的动力学与宇宙学视角</a></li><li><a href="#paper-4"><span class="toc-num">04.</span>挠率只与自旋对话：用 CMB 温度检验 Einstein–Cartan 宇宙学中的能量交换</a></li></ol>
+  <p class="toc-group">领域动态<span class="en">FIELD RADAR</span></p><ol class="toc-list"><li><a href="#radar-1"><span class="toc-num">R1</span>双标量场温暴胀中的标量扰动</a></li><li><a href="#radar-2"><span class="toc-num">R2</span>用红移空间畸变打破 $k$-essence 模型中的暗简并</a></li><li><a href="#radar-3"><span class="toc-num">R3</span>面向 ISCO 的轨道曲率</a></li><li><a href="#radar-4"><span class="toc-num">R4</span>由幽灵标量场与非线性电动力学作为源的 Simpson-Visser 黑洞反弹时空的不稳定性</a></li><li><a href="#radar-5"><span class="toc-num">R5</span>成团 DBI 暗能量情形的多探针宇宙学限制</a></li></ol>
+  <p class="toc-group">名词推荐<span class="en">KEYWORD PICKS</span></p><ol class="toc-list"><li><a href="#kw-1"><span class="toc-num">K1</span>用弱引力透镜探测超大质量原初黑洞的种子效应</a></li></ol>
+</section>
+
+<div class="papers">
+<details class="paper-card" id="paper-1">
+<summary>
+  <div class="card-body">
+    <div class="card-num">#1 · arXiv:2611.07957 · gr-qc · astro-ph.CO · hep-ph</div>
+    <div class="card-title">Can $n_s$ hint at a parity-odd sector of gravity?</div>
+    <div class="card-title-cn">n_s 能否暗示引力的宇称奇扇区？</div>
+    <div class="card-authors">Christian Dioguardi</div>
+    <div class="card-oneline">💡 该文在 metric-affine 引力中证明三阶动能极点必须由宇称奇二次耦合支撑，并给出 n_s≈1−3/(2N_*) 的极点暴胀预言。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s8">8.0</span>
+    <span class="must">必读</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>慢滚暴胀的谱指数 n_s 与张标比 r 是检验引力理论紫外结构的主要窗口。metric-affine 引力中挠率与非度规在去掉动力学自由度后仍会改写标量动能项，但此前对这类修正的极点结构及其宇称属性缺乏系统分类，尤其是宇称奇耦合能否在可观测量上留下独立印记尚不清楚。
+作者取最一般的投影不变、distortion 至多二次、曲率线性的 metric-affine 理论，非最小耦合标量并限定 ξ-attractor 类（标量扇区由单一 f(φ) 决定）。积掉非动力学 distortion 后动能项 k(φ) 获得正比于 f′(φ)² 的修正，可在有限场值处出现极点；作者分类了极点阶数，给出 p=2 与 p=3（该设定允许的最高阶）的条件：二阶极点只复现宇称偶扇区已有的 α-attractor，而三阶极点要求宇称奇二次耦合非零——后者全为零时动能函数分裂为两个极点阶数至多 p=2 的独立项。对 f(φ)∝φ² 的数值确认给出 r∝N_*^{-3/2}（振幅可调）与 n_s≃1−3/(2N_*)，略大于 α-attractor 预言且正落在 ACT+SPT+DESI 联合数据的偏好区；远离极点时另有一个逆线性平台型普适吸引子，n_s≃1−4/(3N_*)、r∝N_*^{-4/3}，可由 BICEP/Keck 检验。</p>
+  <h4>评价</h4>
+  <p>【创新点】把动能极点的阶数与宇称奇/偶耦合的代数结构直接挂钩，给出“p=3 极点 ⇔ 宇称奇二次耦合非零”的判据，并由此得到 n_s≃1−3/(2N_*) 这一区别于 α-attractor 的可观测指纹，比单纯在作用量层面加宇称破缺项更硬。
+【局限性】结论依赖投影不变、distortion 至多二次、曲率线性且无传播挠率/非度规的窄子类，极点条件只是存在性判据而非完整稳定性分析；n_s 与数据的吻合是单参数 f∝φ² 的数值示例，未做全参数扫描，也未讨论极点附近扰动方程的奇异性与强耦合。
+【对 Rao 的意义】直接落在宇称破缺引力与暴胀扰动两条主线上：它示范了如何把联络（distortion）自由度积掉后留下的动能极点当作宇称奇扇区的探针，这一“极点—宇称”对应可迁移到 P1 的 NYTG 不规则联络标量—张量纠缠中，用于判断手征分配是否在标量谱上留痕。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可借用其“积掉非动力学联络 → 动能函数极点分类”的技术路线：极点阶数由 f(φ) 多项式的重根结构决定，p=3 需要宇称奇二次项提供交叉项，否则动能函数对角化为两个 p≤2 块。注意约定差异：文中 distortion 的二次项系数与 Rao 常用的 f(Q) 非度规张量 Q_αβγ 展开系数并非同一归一化，比较极点残差与 α 时必须先对齐 f(φ) 的定义与 Planck 单位。另需警惕：极点处场方程退化，背景解存在不等于扰动良定义，做 P1 时应先检查动能矩阵在极点邻域的行列式符号。</p>
+  <h4>💡 推荐课题</h4>
+  <p>课题一（接 P1）：在 NYTG 不规则联络 FRW 背景中，把联络扰动积掉后检查标量动能是否出现有限场值极点，并判断该极点是否只在宇称奇（Nieh–Yan 型）耦合非零时升到三阶；第一步计算是写出二次作用量中标量—联络混合项的代数解，代入后提取 k(φ) 的极点阶数。课题二（接 P3）：以本文三阶极点背景为对象，计算非绝热扰动（相对熵模）在极点附近的有限波长响应，检验极点是否放大熵模——第一步是先验证该背景的曲率扰动方程在极点邻域无奇异性。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2611.07957v1 Announce Type: new Abstract: We study slow-roll inflation in the context of metric-affine gravity. We consider the most general projectively invariant metric-affine theory at most quadratic in the distortion and linear in curvature with no propagating torsion and non-metricity and couple it non-minimally to a scalar field. We focus on the class of $\xi$-attractors, in which a single function $f(\phi)$ fixes the whole scalar sector. Integrating out the non-dynamical distortion generates a correction to the kinetic term $k(\phi)$ which is $f'(\phi)^2$ times a ratio of polynomials in $f(\phi)$. The new kinetic term can develop poles at finite field values, where the distortion field equations degenerate. We classify the poles and derive the conditions on the effective couplings for poles of order $p=2$ and $p=3$, the maximal order allowed in this setting. We then proceed to study inflation. Second-order poles realize $\alpha$-attractors with $\alpha$ fixed by the residue and are already available in the parity-even sector of the theory. Third-order poles instead require the parity-odd sector: whenever the parity-odd quadratic couplings vanish, the kinetic function splits into two independent terms with poles of order at most $p=2$. Third-order pole-inflation, as we confirm numerically for $f(\phi)\propto\phi^2$, yields $r\propto N_*^{-3/2}$ with a tunable amplitude and $n_s\simeq 1-\tfrac{3}{2N_*}$, a spectral index mildly larger than the $\alpha$-attractor prediction and well centered in the region preferred by the current combination of ACT, SPT and DESI data. Moreover, when inflation happens far away from the pole we also find a further universal attractor, an inverse-linear plateau, with $n_s \simeq 1-\frac{4}{3N_*}$ and $r\propto N_*^{-4/3}$, testable with the forthcoming BICEP/Keck observations.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.07957" target="_blank" rel="noopener">arXiv:2611.07957</a></p>
+</div>
+</details>
+<details class="paper-card" id="paper-2">
+<summary>
+  <div class="card-body">
+    <div class="card-num">#2 · arXiv:2611.08191 · gr-qc · hep-th</div>
+    <div class="card-title">Parity-violating scalar-tensor theory revisited: complete basis up to $d=4$ and Hamiltonian analysis</div>
+    <div class="card-title-cn">重访宇称破坏标量—张量理论：d=4 完备基与 Hamiltonian 分析</div>
+    <div class="card-authors">Yun-Chuan Zhang, Yu-Min Hu, Xian Gao</div>
+    <div class="card-oneline">💡 该文构造了宇称破坏 GST/SCG 至 d=4 的完备单项式基，并用 Hamiltonian 分析证明含 lapse 速度或外曲率速度的项分别传播 4 与 6 个自由度。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s8">8.0</span>
+    <span class="must">必读</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>宇称破坏标量—张量理论的作用量基此前多停留在 d=3 或只列部分 d=4 算符，缺少在积分分部意义下线性独立且与空间协变表述一一对应的完备清单，导致“三自由度”主张往往无法逐项核验。
+作者系统枚举了宇称破坏的一般协变标量—张量（GST）与空间协变引力（SCG）单项式至导数阶 d=4，含全部分割方式，每种描述给出 1 个 d=3 与 13 个 d=4 线性独立单项式；在 Lagrangian 层面找到 6 个积分分部关系，把多项式型 Lagrangian 约化为 1 个 d=3 加 7 个带一般系数函数的 d=4 单项式，并给出两套基的对应关系（保留一般系数与全导数）及其在积分分部下的独立性。7 个 d=4 SCG 单项式中 5 个不含 lapse 速度也不含外曲率的时间导数；对剩余 2 个，作者在标准 Einstein–Hilbert 动能项加 lapse 依赖势的设定下做 Hamiltonian 约束分析：在所考虑的正则分支上，lapse 速度项传播 4 个自由度，外曲率速度项无论单独出现还是与 lapse 速度项共存都传播 6 个自由度。最终宇称破坏 Lagrangian 由 6 个 GST 多项式（1 个 d=3、5 个 d=4）张成，可作为构造三自由度理论的完备出发点。</p>
+  <h4>评价</h4>
+  <p>【创新点】首次给出宇称破坏 GST 与 SCG 至 d=4 的完备、可逐项对应的基，并明确 6 个积分分部关系；更关键的是用 Hamiltonian 约束分析把“哪些 d=4 项会额外传播自由度”变成可查表的结果（4 DOF vs 6 DOF），补上了此前宇称破坏标量—张量理论自由度计数的空白。
+【局限性】约束分析只在标准 EH 动能项加 lapse 依赖势、且限于“正则分支”下进行，非正则/退化分支与一般动能项未覆盖；6 DOF 的结论是理论层面的，未讨论这些额外模是否可通过强耦合或截断尺度被压制，也未涉及宇宙学背景上的线性稳定性。
+【对 Rao 的意义】与 P1 的 SVT 分解、约束消元、动能矩阵工作直接同构：这套“基 + 积分分部 + Hamiltonian 计数”的流程可原样搬到 NYTG 宇称奇算符分类上，尤其可用于判断哪些手征算符会带入第六个自由度，从而筛掉不可行的手征分配方案。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可借用其积分分部关系的记账方式：把作用量写成 SCG 单项式后，先查是否含 lapse 速度 Ṅ 或外曲率速度 K̇_ij，再决定是否需要完整 Dirac 分析——这是判断“新算符是否安全”的快速筛选。注意约定差异：文中 SCG 的导数阶 d 按空间导数计，与 Rao 在 f(Q) 中按联络导数计阶的方式不同，跨文献比较算符维数时须换算；另外 4 DOF/6 DOF 的结论依赖正则分支假设，若 Rao 的 NYTG 背景落在退化分支，计数需重做。</p>
+  <h4>💡 推荐课题</h4>
+  <p>课题一（接 P1/Q1）：把本文的 GST/SCG 基构造流程移植到 Nieh–Yan 型宇称奇算符，列出 d≤4 的完备手征单项式并找出积分分部关系，第一步是写出 NY 项在 SVT 分解下的 SCG 对应并检查是否含 Ṅ 或 K̇_ij。课题二（接 P2）：对 f(Q) 宇宙学中出现的宇称奇 d=4 算符做同样的 Hamiltonian 计数，判断 P-V 临界点分析所用的作用量是否隐含额外自由度——第一步是在平 FRW 背景上取 lapse 依赖势并检查约束代数是否第一类。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2611.08191v1 Announce Type: new Abstract: We construct complete bases of parity-violating generally covariant scalar-tensor (GST) and spatially covariant gravity (SCG) monomials up to derivative grade $d=4$. Including all derivative partitions, each description contains one $d=3$ and thirteen $d=4$ linearly independent monomials. At the level of Lagrangians, we find six integration-by-parts relations that reduce polynomial-type Lagrangians to combinations of one $d=3$ and seven $d=4$ monomials with general coefficient functions. We derive the correspondence between the two bases, retaining general coefficients and total derivatives, and establish their independence under integrations by parts. Among the seven $d=4$ SCG monomials, five contain neither the lapse velocity nor the time derivative of the extrinsic curvature. For the two remaining monomials, we perform a Hamiltonian constraint analysis with a standard Einstein-Hilbert kinetic term and a lapse-dependent potential. On the regular branches considered, the lapse-velocity term propagates four degrees of freedom (DOFs), while the extrinsic-curvature-velocity term propagates six DOFs, whether present alone or together with the lapse-velocity term. These results provide a complete basis for constructing parity-violating scalar-tensor theories with three DOFs up to $d=4$ within this setting, with the parity-violating Lagrangian spanned by six GST polynomials: one $d=3$ and five $d=4$ polynomials.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.08191" target="_blank" rel="noopener">arXiv:2611.08191</a></p>
+</div>
+</details>
+<details class="paper-card" id="paper-3">
+<summary>
+  <div class="card-body">
+    <div class="card-num">#3 · arXiv:2611.07418 · gr-qc</div>
+    <div class="card-title">Dynamical and Cosmological Perspectives on Symmetric Teleparallel Gravity and its Extensions</div>
+    <div class="card-title-cn">对称 teleparallel 引力及其扩展的动力学与宇宙学视角</div>
+    <div class="card-authors">Pooja Vishwakarma</div>
+    <div class="card-oneline">💡 该博士论文用动力系统、Noether 对称与线性扰动系统考察 f(Q)、f(Q,B)、f(Q,φ) 的晚期加速及 BBN 约束。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>f(Q) 及其扩展作为晚期加速的替代解释已有大量背景层面的拟合，但临界点的存在性与稳定性、以及不同扩展形式在扰动层面是否自洽，仍缺少统一处理。
+论文以对称 teleparallel 引力为框架，覆盖 f(Q)、f(Q,B)（B 为边界项）与 f(Q,φ) 三类扩展，用动力系统分析确定宇宙学临界点的存在性与稳定性，结合背景演化与线性宇宙学扰动刻画各演化阶段；同时用 Noether 对称方法系统筛选可行的函数形式并导出精确解，并以观测约束和原初核合成（BBN）检验模型可行性。整体上给出这些模型作为加速膨胀替代框架的理论与宇宙学可行性评估。</p>
+  <h4>评价</h4>
+  <p>【创新点】把动力系统、Noether 对称与线性扰动三条线并置在同一框架下处理 f(Q)、f(Q,B)、f(Q,φ)，Noether 对称用于反推函数形式而非事后拟合，比单一模型的相空间分析更有系统性。
+【局限性】属综述型博士论文，各模型的扰动分析深度不一，摘要未给出具体临界点数目、稳定性判据或 BBN 对参数空间的定量排除线；f(Q) 联络分支（规则/不规则）的选择对结果的影响未在摘要中体现，而这恰是该理论最敏感之处。
+【对 Rao 的意义】与 P2（f(Q) 宇宙学 P-V 临界点的物理允许性）同一模型族，其 Noether 对称筛选函数形式与 BBN 约束的做法可作为 P2 选择允许变分时的参照；但需注意它走的是背景+线性扰动路线，与 P-V 临界点的热力学判据是两套独立约束。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可学到 Noether 对称如何把 f(Q) 的任意函数约束成幂律/指数等有限形式，这是 P2 中缩小“物理允许变分”范围的可借工具；同时应警惕：动力系统临界点的稳定性是背景层面的，与热力学 P-V 临界点的稳定性不是一回事，不能互相替代。另注意 f(Q,B) 中边界项 B 的引入会改变联络方程的结构，比较不同文献的 f(Q) 结果时须先确认是否含 B 项及联络分支约定。</p>
+  <h4>💡 推荐课题</h4>
+  <p>课题（接 P2）：用本文的 Noether 对称筛选结果限定 f(Q) 的可行函数形式，再在这些形式上重做 P-V 临界点分析，检验热力学临界点是否落在 Noether 对称允许的子空间内；第一步是列出 Noether 对称给出的 f(Q) 形式并与 P-V 临界点存在条件求交。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2611.07418v1 Announce Type: new Abstract: This thesis investigates the late-time accelerated expansion of the Universe within modified gravity theories, with particular emphasis on symmetric teleparallel gravity and its extensions, including $f(Q)$, $f(Q, B)$, and $f(Q, \phi)$ gravity. It explores the cosmological dynamics of these theories using dynamical systems analysis, stability techniques, and the Noether symmetry approach. The study examines the existence and stability of cosmological critical points, background evolution, and linear cosmological perturbations to understand the different phases of cosmic evolution. It also investigates the role of observational constraints and Big Bang nucleosynthesis in assessing the viability of modified gravity models. Furthermore, the application of Noether symmetries provides a systematic approach to identifying viable functional forms and deriving exact cosmological solutions. Overall, this thesis examines the theoretical and cosmological viability of modified teleparallel gravity as an alternative framework for describing the observed accelerated expansion of the Universe.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.07418" target="_blank" rel="noopener">arXiv:2611.07418</a></p>
+</div>
+</details>
+<details class="paper-card" id="paper-4">
+<summary>
+  <div class="card-body">
+    <div class="card-num">#4 · arXiv:2611.08422 · gr-qc · astro-ph.CO</div>
+    <div class="card-title">Torsion talks only to spin: the CMB temperature as a test of energy exchange in Einstein-Cartan cosmology</div>
+    <div class="card-title-cn">挠率只与自旋对话：用 CMB 温度检验 Einstein–Cartan 宇宙学中的能量交换</div>
+    <div class="card-authors">Fernando Izaurieta, Samuel Lepe, Cristian Quinzacara</div>
+    <div class="card-oneline">💡 该文指出 Einstein–Cartan 中无自旋光子不参与几何能量交换，据此用 z=0.886 与 z≳3 的 CMB 温度数据排除“普适交换”的 metric-affine 拟合。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>含挠率的宇宙学中，几何与物质之间的能量交换由各扇区的 Noether 恒等式决定，但“交换给谁”这一问题在拟合 DESI DR2 的 metric-affine 模型中常被假设为对所有流体普适，包括辐射。若该假设成立，光子会获得近三分之一能量，从而改变 CMB 温度的红移标度，这为用已有高温测量做无参数检验提供了机会。
+作者指出在 Einstein–Cartan 理论中，一个扇区的能量—动量不守恒正比于其自身自旋，因此最小耦合的无自旋光子无论挠率如何都守恒。对把交换“普适”分配给所有流体（含辐射）的 metric-affine 拟合，若光子保持黑体（FIRAS 要求任何由局域条件设定的源如此），模型预言背景在 z≃0.9 比 T_0(1+z) 低 7%、在 z≳3 低 8.5%，且无自由参数。PKS 1830−211 给出 5.08±0.10 K，对应预言 4.78 K；与 CO 吸收体联合以 Δχ²=13 偏向标准标度，18 个 Planck 团簇 bin 给出 χ²=50.8 对 15.5；同样解读下原初各向异性的谱形改变也被 Planck 排除。若改由暗物质携带自旋，则在拟合参数下 z&lt;3 的 H(z) 变化小于 10⁻⁴，T(z) 恢复标准。</p>
+  <h4>评价</h4>
+  <p>【创新点】把“能量交换分配给谁”从模型假设变成由 Noether 恒等式（不守恒 ∝ 自身自旋）决定的硬约束，并据此给出无自由参数的 CMB 温度预言，用 PKS 1830−211 与 Planck 团簇数据以 Δχ²=13、χ²=50.8 vs 15.5 定量排除普适交换方案。
+【局限性】结论依赖“光子保持黑体”这一假设（虽由 FIRAS 支持），且检验的是特定 metric-affine 拟合的具体参数点；对 Einstein–Cartan 本身只给出定性结论，未系统扫描自旋分配比例介于“普适”与“仅暗物质”之间的中间情形。
+【对 Rao 的意义】与 P5（动态热流与协变荷通量）直接相关：它示范了如何用各扇区 Noether 恒等式确定能量通量的归属，这一逻辑可迁移到视界热力学中判断 GSL 里哪部分物质能量参与跨视界通量；同时为宇称破缺/挠率宇宙学提供了观测排除的先例。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可借用其核心恒等式：在 Einstein–Cartan 中 ∇_μ T^{μν}_A ∝ 该扇区自旋张量，无自旋场严格守恒——这是判断“某物质分量能否与几何交换能量”的快速判据，可直接用于 P5 中区分辐射与暗物质的跨视界通量。注意约定差异：文中 T(z) 偏离以 T_0(1+z) 为基准，与视界热力学中定义的温度红移关系需对齐；另外“光子保持黑体”是额外假设，若允许谱畸变，约束会放松。</p>
+  <h4>💡 推荐课题</h4>
+  <p>课题（接 P5）：把“不守恒 ∝ 自身自旋”的判据搬到 FRW 表观视界热力学，检验统一第一定律中物质能量通量项是否应只计入有自旋分量，进而判断 GSL 的成立条件是否依赖自旋分配；第一步是写出各扇区在表观视界上的能量通量并与 Misner–Sharp 能量变化率比较。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2611.08422v1 Announce Type: new Abstract: The cosmic microwave background temperature at $z=0.886$ is known to $2\%$ from molecular absorption towards PKS~1830$-$211; CO absorbers and Sunyaev-Zel'dovich clusters extend the measurement to $z\simeq3$. We use them on a question that cosmologies with torsion leave open. When the geometry exchanges energy with several matter components, which of them receives it? In Einstein-Cartan theory the Noether identities of each sector fix the answer. A sector's energy-momentum fails to be conserved only in proportion to its own spin, so minimally coupled light, which has none, is conserved whatever the torsion does. A metric-affine cosmology fitted to DESI DR2 distributes the exchange ``universally'' among all fluids, radiation included; the photons then gain almost a third of their energy. If the photons stay a blackbody, as FIRAS requires of any source set by local conditions, the model predicts a background colder than $T_{0}(1+z)$ by $7\%$ at $z\simeq0.9$ and by $8.5\%$ at $z\gtrsim3$, with no free parameter. PKS~1830$-$211 gives $5.08\pm0.10\,\mathrm{K}$ against a predicted $4.78\,\mathrm{K}$; with the CO absorbers it favours the standard scaling by $\Delta\chi^{2}=13$, and 18 Planck cluster bins give $\chi^{2}=50.8$ versus $15.5$. Under the same reading the primary anisotropies would change their spectral shape by amounts Planck excludes. If dark matter carries the spin instead, $H(z)$ moves by less than $10^{-4}$ below $z=3$ at the fitted parameters and $T(z)$ is standard again.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.08422" target="_blank" rel="noopener">arXiv:2611.08422</a></p>
+</div>
+</details></div>
+
+<div class="sec-head"><h2>📡 领域动态 · 修正引力宇宙学</h2></div><div class="papers">
+<details class="paper-card " id="radar-1">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R1 · arXiv:2611.07193 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Scalar perturbations in two-scalar-field warm inflation</div>
+    <div class="card-title-cn">双标量场温暴胀中的标量扰动</div>
+    <div class="card-authors">Orlando Luongo, Tommaso Mengoni, Paulo M. S\'a</div>
+    <div class="card-oneline">💡 该文在统一温暴胀、暗物质与暗能量的双标量场模型中推导规范就绪的线性标量扰动方程，并用 Fokker–Planck 数值求解，发现仅耗散系数按 $T^{-1}$ 标度时与 CMB 观测相容。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">5.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>温暴胀让暴胀子与辐射浴耦合，从而无需单独的再加热阶段，但单场温暴胀的预测区间已被 CMB 压缩得很窄；同时把暴胀、暗物质与暗能量放进同一标量场框架的尝试，其扰动理论此前多停留在背景或单场近似，缺少包含热噪声与能量转移随机性的完整线性扰动处理。该文构建暴胀子非正则耦合第二标量场（晚期扮演暗能量）的模型，在忽略耗散与暗能量场扰动的假设下，给出规范就绪的线性标量扰动方程，显式包含暴胀子扇区的量子与热噪声以及向辐射能量转移的随机涨落。作者用 Fokker–Planck 形式数值求解耦合扰动系统，对耗散系数按 $T^p$（$p=-1,1,3$）标度分别计算标量谱指数 $n_s$ 与张标比 $r$：$p=-1$ 在弱耗散与强耗散两种 regime 下均落在当前 CMB 观测允许区，而 $p=1$ 与 $p=3$ 的情形被排除；与标准单场温暴胀相比，双场模型给出系统性的预测偏移。</p>
+<h4>评价</h4><p>【创新点】把热噪声、量子噪声与能量转移随机涨落统一写进双标量场温暴胀的规范就绪扰动方程，并用 Fokker–Planck 数值求解给出 $p=-1$ 时弱、强耗散两 regime 均可行的结论，比单场温暴胀的预测空间更有区分度。【局限性】关键假设是忽略耗散与暗能量场扰动，这恰恰丢掉了双场模型最可能产生熵扰动与非绝热模的通道；扰动方程虽称 gauge-ready，但数值只在特定 $T^p$ 标度上扫描，未做完整参数空间与贝叶斯拟合。【对 Rao 的意义】现象学类，方法新意有限；其规范就绪扰动分解与噪声源项写法可作为 P3（非绝热扰动/相对熵模对视界熵响应）中多场扰动记账方式的参考，但未涉及视界热力学或协变荷。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.07193" target="_blank" rel="noopener">arXiv:2611.07193</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-2">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R2 · arXiv:2611.07033 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Breaking dark degeneracies in $k$-essence models with redshift-space distortions</div>
+    <div class="card-title-cn">用红移空间畸变打破 $k$-essence 模型中的暗简并</div>
+    <div class="card-authors">Rebecca Briffa, Lehel Csillag, Erik Jensko</div>
+    <div class="card-oneline">💡 结合 Pantheon$^+$、DESI DR2 BAO 与 RSD 增长率数据，在排除鬼与梯度不稳定的前提下打破 ghost 与 dilatonic ghost condensate $k$-essence 模型中暗能量参数与物质密度的简并。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">4.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>动力学暗能量模型仅用背景观测量（超新星、BAO）约束时，参数简并严重；当暗能量经历一段等效无压物质演化时，其参数与物质密度参数 $\Omega_m$ 几乎无法区分，这是 $k$-essence 类模型长期存在的观测困难。要判断这类模型是否真被数据排除，必须引入能探测扰动增长的观测量，并同时保证所取参数点物理上允许（无鬼、无梯度不稳定）。
+
+本文在 ghost condensate 与 dilatonic ghost condensate 两类 $k$-essence 模型上，联合 Pantheon$^+$ 超新星、DESI DR2 BAO 与红移空间畸变（RSD）增长率数据做拟合，并在参数扫描中显式施加无鬼条件与梯度稳定性条件（标量声速平方非负），只保留物理允许解。由于这些模型中标量声速很小，作者还专门检验了增长分析所用准静态近似（quasi-static approximation）的适用性。结果显示，把增长率数据与稳定性要求、背景观测联合后，可快速有效地打破暗简并，对模型参数给出更紧的限制。</p>
+<h4>评价</h4><p>【创新点】把稳定性判据作为硬性先验嵌入 MCMC 参数扫描，而非事后检验，并针对小声速情形显式验证准静态近似的有效性，这使 ghost condensate 类模型的约束结果比纯背景分析更可信。
+
+【局限性】结论依赖准静态近似与线性增长方程，未涉及非线性尺度或引力波速度等独立约束；DESI DR2 与 Pantheon$^+$ 的系统误差处理细节摘要未给出，简并打破的程度对数据集组合敏感。
+
+【对 Rao 的意义】现象学类，方法新意有限，但“稳定性条件作为先验 + 增长率数据破简并”的流程可直接搬到 P2 的 f(Q) P-V 临界点允许性分析中，用于筛除不物理的参数区域；与 P1 的标量—张量扰动无直接交集。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.07033" target="_blank" rel="noopener">arXiv:2611.07033</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-3">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R3 · arXiv:2611.07875 · 修正引力宇宙学一般项</div>
+    <div class="card-title">An Orbital Curvature for ISCOs</div>
+    <div class="card-title-cn">面向 ISCO 的轨道曲率</div>
+    <div class="card-authors">Poulami Mukherjee, Chandrasekhar Bhamidipati, Sudipta Mukherji</div>
+    <div class="card-oneline">💡 作者把轨道能量、角动量与角速度当作状态变量，构造出轨道热力学几何，其标量曲率在 ISCO 处发散，可用来诊断圆轨道族的稳定性。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">4.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>黑洞时空中的圆轨道是测地线方程相图的固定点，这一事实早已为人所知，但如何用统一的几何语言刻画圆轨道族的稳定性结构（尤其是稳定支与不稳定支之间的转变）仍缺少系统框架。ISCO 作为稳定圆轨道的边界，通常靠有效势的二阶导数判据确定，缺乏与热力学几何类似的整体诊断量。
+作者以轨道能量、角动量和角速度作为状态空间变量，引入描述圆轨道对黑洞背景与角运动变化的响应函数，仿照热力学几何构造出轨道度规及其标量曲率。结果显示：该曲率在 ISCO 处奇异；跨越 ISCO 时，相关响应函数变号，并在边际稳定处趋于零。作者在四维渐近平直 Schwarzschild 与五维 Schwarzschild-AdS 上做了演示，摘要末尾关于四维情形的具体结论被截断。</p>
+<h4>评价</h4><p>【创新点】把热力学几何的“响应函数—曲率奇异”范式搬到测地圆轨道族上，给出 ISCO 的几何判据，而不只是有效势的二阶导数判据；响应函数在边际稳定处变号、归零这一点，与热力学临界现象的形式对应相当整齐。
+【局限性】目前只在 Schwarzschild 与 Schwarzschild-AdS 两个高对称背景上验证，尚未处理转动、带电或修正引力度规；曲率奇异与 ISCO 的等价性是否普遍成立，摘要未给出一般性证明，更像构造性演示。
+【对 Rao 的意义】现象学类，方法新意有限，但“响应函数在临界点变号/发散”的结构与 Rao 在 P2 中关心的 f(Q) 宇宙学 P-V 临界点稳定性判据形式同源，可作为热力学几何诊断的类比参考，而非直接工具。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.07875" target="_blank" rel="noopener">arXiv:2611.07875</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-4">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R4 · arXiv:2611.08322 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Instabilities of Simpson-Visser black bounces sourced by a phantom scalar and nonlinear electrodynamics</div>
+    <div class="card-title-cn">由幽灵标量场与非线性电动力学作为源的 Simpson-Visser 黑洞反弹时空的不稳定性</div>
+    <div class="card-authors">Kirill A. Bronnikov, Rustam Ibadov, Jutta Kunz</div>
+    <div class="card-oneline">💡 作者用单极扰动对幽灵标量场与非线性电动力学（NED）共同作为源的 Simpson-Visser 黑洞反弹时空做线性稳定性分析，发现所有时空都不稳定，并算出指数增长率。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">4.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>Simpson-Visser 度规用一个反弹参数 $a$ 把正则黑洞（$a\le 2M$）与虫洞（$a>2M$）统一在同一族解中，是研究“黑洞—虫洞过渡”的常用玩具模型；但此前对其线性稳定性的讨论多集中在真空或特定源上，缺少对幽灵标量场加 NED 这类物理上更完整的源的系统检验。本文正是要补上这一环：在球对称单极扰动下，这类时空究竟稳定还是不稳定。
+作者把扰动约化为带有效势的类薛定谔方程边值问题，对黑洞情形直接求得所有时空均不稳定，并给出相应的指数增长率；对虫洞喉部，有效势存在 $\approx 2/z^2$ 的壁状项（$z$ 为乌龟坐标），作者用 Darboux 变换消去该项，却发现变换会引入非物理极点，说明虫洞稳定性问题存在此前未被注意的技术困难。结论是：该源组合下整族 Simpson-Visser 时空线性不稳定。</p>
+<h4>评价</h4><p>【创新点】首次系统检验幽灵标量场加 NED 作为源的 Simpson-Visser 族线性稳定性，给出“全族不稳定”的明确结论与增长率，并指出虫洞喉部 Darboux 变换消去 $2/z^2$ 壁时产生非物理极点这一此前被忽略的技术陷阱。
+【局限性】只做球对称单极（$\ell=0$）扰动，未涉及更高阶多极与轴向/极向分解；虫洞部分因 Darboux 变换的技术困难，稳定性结论的可靠性弱于黑洞部分，摘要未给出虫洞增长率的完整数值。
+【对 Rao 的意义】现象学类，方法新意有限，但“有效势壁项 + Darboux 变换引入伪极点”的教训对 Rao 在 f(Q)/NYTG 联络分支中做扰动约化、消去类乌龟坐标奇性时有直接警示价值；与 P2 的稳定性审计思路可对照。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.08322" target="_blank" rel="noopener">arXiv:2611.08322</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-5">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R5 · arXiv:2611.08008 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Multi-Probe Cosmological Constraints on Clustering DBI Dark Energy Scenario</div>
+    <div class="card-title-cn">成团 DBI 暗能量情形的多探针宇宙学限制</div>
+    <div class="card-authors">Samit Ganguly, Surhud More, Goutam Manna, Kazuharu Bamba, Eduardo Guendelman, Abhijit Bhattacharyya</div>
+    <div class="card-oneline">💡 用 CMB、BAO、宇宙钟、fσ8 与三套 Ia 型超新星数据拟合成团 DBI 暗能量模型，贝叶斯证据在 Pantheon+ 上以 ΔlnZ≈3.4 中等偏好该模型。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">4.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>标准 ΛCDM 之外，暗能量是否成团是区分动力学暗能量与宇宙学常数的关键判据之一。非正则动能项可给出亚光速声速，使暗能量扰动在亚视界尺度增长，从而在低红移结构增长与距离测量上留下可检验印记；但这类模型此前缺少统一的多探针、含扰动的联合限制。
+作者在跟踪背景膨胀与线性扰动的多流体框架下，用嵌套采样联合 Planck 2018 压缩 CMB 距离先验、DESI DR2 BAO、宇宙钟、$f\sigma_8$ 增长数据以及 Pantheon+、DES-SN5YR、Union3 三套 Ia 型超新星数据。标准宇宙学参数在 $2\sigma$ 内与 ΛCDM 一致，DBI 偏好略低的 $H_0$ 与略高的 $\Omega_{m0}$，最大偏移为 Pantheon+ 下 $H_0$ 的 $\simeq1.8\sigma$；贝叶斯证据在每套超新星数据下都偏向 DBI，Pantheon+ 为中等偏好（$\Delta\ln\mathcal{Z}\simeq3.4$），DES-SN5YR 与 Union3 为不确定（$\Delta\ln\mathcal{Z}\simeq0.6$–$0.7$）。场自然解冻，暗能量扰动在亚视界尺度增长。</p>
+<h4>评价</h4><p>【创新点】把成团 DBI 暗能量的背景与线性扰动放在同一多流体框架里，用五类探针加三套超新星编译做嵌套采样，并给出贝叶斯证据而非仅报参数置信区间，这比多数只拟合背景膨胀的暗能量分析更完整。
+【局限性】证据强度高度依赖超新星数据集：Pantheon+ 给中等偏好而 DES-SN5YR、Union3 仅不确定，说明结论尚未稳健；摘要未说明声速是否作为自由参数扫描、扰动是否在非线性尺度被截断，也未讨论与 $\sigma_8$ 张力的定量关系。
+【对 Rao 的意义】现象学类，方法新意有限，但“成团暗能量扰动 + 多探针证据比较”的流程可作为修正引力宇宙学拟合的对照基线；与 P2（f(Q) 宇宙学 P-V 临界点）无直接模型重叠，仅作领域动态跟踪。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.08008" target="_blank" rel="noopener">arXiv:2611.08008</a></p>
+</div>
+</details></div>
+<div class="sec-head"><h2>🔑 名词推荐</h2><p class="sub">暗能量</p></div><div class="papers">
+<details class="paper-card" id="kw-1">
+<summary>
+  <div class="card-body">
+    <div class="card-num">K1 · arXiv:2611.07574 · astro-ph.CO · astro-ph.HE · hep-ph</div>
+    <div class="card-title">Probing the Seed Effect of Supermassive Primordial Black Holes with Weak Gravitational Lensing</div>
+    <div class="card-title-cn">用弱引力透镜探测超大质量原初黑洞的种子效应</div>
+    <div class="card-authors">Lei Zu, Kazunori Kohri</div>
+    <div class="card-oneline">💡 该文在晕模型下计算原初黑洞吸积暗物质形成"穿衣"结构对物质功率谱的增强，并用 DES Y3 弱透镜数据给出原初黑洞丰度上限。</div>
+  </div>
+  <div class="c-side">
+    <span class="kw">关键词：暗能量</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>原初黑洞（PBH）作为暗物质候选者，其离散分布会产生泊松效应，从而在小尺度上增强物质功率谱；但若 PBH 质量足够大，它还会充当早期引力种子，吸积周围暗物质形成致密暗物质尖峰（即"穿衣"PBH），这种种子效应此前在弱透镜约束中很少被系统处理。弱透镜直接测量物质功率谱的积分，因此是检验小尺度功率增强的天然探针，值得把种子效应纳入约束流程。
+
+作者在晕模型框架下把穿衣 PBH 的贡献写进单晕项，并设置两种暗物质吸积方案：乐观情形（Case 1）与保守情形（Case 2），二者对单晕项的修改幅度不同。随后用暗能量巡天第三年（DES Y3）的弱透镜测量做马尔可夫链蒙特卡洛分析，得到 PBH 分数 $f_{\rm PBH}$ 作为 PBH 质量 $M_{\rm PBH}$ 函数的上限。结果显示弱透镜能给出有竞争力的约束（摘要在此处截断，未给出具体数值区间与置信度）。</p>
+<h4>评价</h4><p>【创新点】把 PBH 的种子效应（暗物质尖峰/穿衣结构）而非仅泊松效应纳入弱透镜约束，并用两种吸积方案给出约束带，量化了吸积模型不确定性对 $f_{\rm PBH}$ 上限的影响。
+【局限性】结果依赖晕模型单晕项的具体建模与尖峰轮廓假设，两种情形之间的差异本身就是理论不确定度；摘要未给出具体上限数值与置信水平，约束强度难以直接与已有 PBH 限制对比。
+【对 Rao 的意义】属原初黑洞暗物质与宇宙学观测约束方向，与 Rao 的引力热力学、修正引力主线无直接接口，仅可作 PBH 丰度约束现状的背景参考；现象学拟合类，方法新意有限。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.07574" target="_blank" rel="noopener">arXiv:2611.07574</a></p>
+</div>
+</details></div>
+
+<div class="archives"><div class="archives-inner"><h3>📚 最近 6 天（滚动保留 6 天）</h3><div class="arc-list"><span class="arc-item arc-current">11月6日（今天）<span class="arc-count">10 篇</span></span><a class="arc-item" href="2026-11-05.html">11月5日<span class="arc-count">9 篇</span></a><a class="arc-item" href="2026-11-04.html">11月4日<span class="arc-count">16 篇</span></a><a class="arc-item" href="2026-11-03.html">11月3日<span class="arc-count">18 篇</span></a><a class="arc-item" href="2026-11-02.html">11月2日<span class="arc-count">8 篇</span></a><a class="arc-item" href="2026-10-30.html">10月30日<span class="arc-count">20 篇</span></a></div></div></div>
+
+<div class="footer">
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年11月06日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+</body>
+</html>
