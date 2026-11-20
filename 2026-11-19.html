@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>arXiv 每日精选 — 2026-11-19</title>
+<style>
+:root {
+    --bg:#fafaf8; --card-bg:#ffffff; --text:#2c2c2c; --text-secondary:#666;
+    --accent:#2563eb; --accent-light:#eff6ff; --border:#e5e7eb;
+    --tag-bg:#f3f4f6; --tag-text:#4b5563;
+    --must:#dc2626; --s7:#d97706; --s6:#059669; --s5:#6b7280;
+    --shadow:0 1px 3px rgba(0,0,0,0.08); --radius:8px;
+    --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+    --font-mono:"SF Mono","Fira Code","Cascadia Code","Consolas",monospace;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:var(--font-sans); background:var(--bg); color:var(--text);
+       line-height:1.7; -webkit-font-smoothing:antialiased; }
+.cover { max-width:800px; margin:64px auto 48px; text-align:center; padding:0 24px; }
+.cover .badge { display:inline-block; background:var(--accent); color:#fff; font-size:13px;
+    font-weight:600; letter-spacing:.08em; padding:6px 20px; border-radius:100px; margin-bottom:24px; }
+.cover h1 { font-size:36px; font-weight:700; margin-bottom:8px; color:#111; }
+.cover .date { font-size:18px; color:var(--text-secondary); margin-bottom:32px; }
+.stats { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+.stat-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    padding:20px 32px; min-width:140px; box-shadow:var(--shadow); }
+.stat-card .num { font-size:32px; font-weight:700; color:var(--accent); }
+.stat-card .label { font-size:13px; color:var(--text-secondary); margin-top:4px; }
+.cover .src { margin-top:20px; font-size:13px; color:var(--text-secondary); }
+.toc-section { max-width:800px; margin:0 auto 40px; padding:0 24px; }
+.toc-section h2 { font-size:20px; font-weight:700; color:#111; margin-bottom:8px;
+    padding-bottom:8px; border-bottom:2px solid var(--border); }
+.toc-group { font-size:13px; font-weight:600; color:var(--text-secondary); letter-spacing:.06em; margin:16px 0 10px; }
+.toc-group .en { font-weight:400; margin-left:6px; letter-spacing:.1em; }
+.toc-list { display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; list-style:none; }
+.toc-list li { font-size:14px; line-height:1.6; }
+.toc-list a { color:var(--accent); text-decoration:none; display:flex; align-items:baseline; gap:6px; }
+.toc-list a:hover { text-decoration:underline; }
+.toc-list .toc-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary);
+    min-width:28px; flex-shrink:0; }
+.papers { max-width:800px; margin:0 auto 16px; padding:0 24px; }
+.sec-head { max-width:800px; margin:48px auto 16px; padding:0 24px; }
+.sec-head h2 { font-size:20px; font-weight:700; color:#111; padding-bottom:8px; border-bottom:2px solid var(--border); }
+.sec-head .sub { font-size:13px; color:var(--text-secondary); margin-top:6px; }
+.paper-card { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    margin-bottom:16px; box-shadow:var(--shadow); overflow:hidden; }
+.paper-card summary { padding:20px 24px; cursor:pointer; list-style:none; display:flex;
+    align-items:flex-start; gap:12px; user-select:none; }
+.paper-card summary::-webkit-details-marker { display:none; }
+.paper-card summary::before { content:"▶"; font-size:11px; color:var(--text-secondary);
+    flex-shrink:0; margin-top:5px; transition:transform .2s; display:inline-block; }
+.paper-card[open] summary::before { transform:rotate(90deg); }
+.paper-card .card-body { flex:1; min-width:0; }
+.paper-card .card-num { font-family:var(--font-mono); font-size:12px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-title { font-size:16px; font-weight:600; color:#111; margin-bottom:4px; line-height:1.5; }
+.paper-card .card-title-cn { font-size:14px; font-weight:500; color:var(--text); margin-bottom:4px; }
+.paper-card .card-authors { font-size:13px; color:var(--text-secondary); margin-bottom:4px; }
+.paper-card .card-oneline { font-size:13px; color:var(--text-secondary); }
+.paper-card .c-side { display:flex; flex-direction:column; align-items:flex-end; gap:6px; flex-shrink:0; padding-top:2px; }
+.score { font-size:12px; font-weight:700; border:1px solid currentColor; border-radius:100px;
+    padding:1px 10px; background:#fff; }
+.s8 { color:var(--must); } .s7 { color:var(--s7); } .s6 { color:var(--s6); } .s5 { color:var(--s5); }
+.must { background:var(--must); color:#fff; font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; }
+.rel { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px; border:1px solid currentColor; }
+.rel-collision { color:var(--must); } .rel-neighbor { color:var(--s7); } .rel-field { color:var(--s5); }
+.kw { font-size:11px; font-weight:700; border-radius:4px; padding:1px 8px;
+    border:1px solid var(--accent); color:var(--accent); }
+.paper-card.collision { border-left:3px solid var(--must); }
+.paper-card .detail { padding:0 24px 24px; border-top:1px solid var(--border); }
+.paper-card .detail h4 { font-size:14px; font-weight:600; color:var(--accent); margin:20px 0 8px; }
+.paper-card .detail p { font-size:14px; color:var(--text); line-height:1.8; margin-bottom:12px; }
+.detail .action-box { background:#fef2f2; border:1px solid #fecaca; border-radius:var(--radius);
+    padding:10px 14px; margin:12px 0; font-size:13.5px; }
+.abs-details { margin:14px 0 4px; border:1px dashed var(--border); border-radius:var(--radius); padding:8px 14px; }
+.abs-details summary { font-size:12.5px; color:var(--text-secondary); cursor:pointer; padding:0; display:block; border:none; }
+.abs-details summary::before { content:""; }
+.abs-details p { font-size:13px; color:var(--text-secondary); margin-top:8px; }
+.src-link { margin-top:16px; font-size:13px; color:var(--text-secondary); }
+.src-link a { color:var(--accent); text-decoration:none; }
+.radar-note { max-width:800px; margin:0 auto 24px; padding:0 24px; font-size:13px; color:var(--text-secondary); }
+.archives { max-width:800px; margin:24px auto 0; padding:0 24px; }
+.archives-inner { background:var(--card-bg); border:1px solid var(--border); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:20px 24px; text-align:center; }
+.archives h3 { font-size:15px; font-weight:600; color:#111; margin-bottom:14px; }
+.arc-list { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.arc-item { display:inline-block; font-size:14px; padding:8px 16px; border-radius:100px;
+    text-decoration:none; color:var(--accent); background:var(--accent-light); border:1px solid #dbeafe; }
+a.arc-item:hover { background:#dbeafe; }
+.arc-item.arc-current { color:#fff; background:var(--accent); border-color:var(--accent); font-weight:600; }
+.arc-count { font-size:12px; color:var(--text-secondary); margin-left:6px; font-weight:400; }
+.arc-item.arc-current .arc-count { color:#bfdbfe; }
+.footer { text-align:center; padding:40px 24px; font-size:13px; color:var(--text-secondary); }
+.footer a { color:var(--accent); text-decoration:none; }
+@media (max-width:600px) {
+    .toc-list { grid-template-columns:1fr; }
+    .cover h1 { font-size:26px; }
+    .stats { gap:8px; }
+    .stat-card { padding:14px 20px; min-width:100px; }
+    .stat-card .num { font-size:24px; }
+    .paper-card summary { padding:16px 18px; }
+    .paper-card .detail { padding:0 18px 18px; }
+}
+</style>
+
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'summary', 'details'] },
+  startup: { ready() {
+      MathJax.startup.defaultReady();
+      document.querySelectorAll('details.paper-card').forEach(function(el) {
+        el.addEventListener('toggle', function() {
+          if (el.open) { MathJax.typesetPromise([el.querySelector('.detail')]); }
+        });
+      });
+  } }
+};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+<body>
+
+<header class="cover">
+  <div class="badge">GR-QC · HEP-TH · ASTRO-PH.CO</div>
+  <h1>arXiv 每日精选</h1>
+  <p class="date">2026年11月19日</p>
+  <div class="stats">
+    <div class="stat-card"><div class="num">2</div><div class="label">核心精读</div></div>
+    <div class="stat-card"><div class="num">4</div><div class="label">领域动态</div></div>
+    <div class="stat-card"><div class="num">1</div><div class="label">名词推荐</div></div>
+  </div>
+  <p class="src">来源：gr-qc 26 · hep-th 24 · astro-ph.CO 11　·　按 Rao 的研究画像匹配</p>
+</header>
+
+<section class="toc-section">
+  <h2>📋 目录</h2>
+  <p class="toc-group">核心精读<span class="en">CORE</span></p>
+  <ol class="toc-list"><li><a href="#paper-1"><span class="toc-num">01.</span>视界运动学与有限能量 Hawking 辐射诱导的精细结构</a></li><li><a href="#paper-2"><span class="toc-num">02.</span>Ricci 平坦时空中电磁波与引力波后程函相位的螺旋度平方标度</a></li></ol>
+  <p class="toc-group">领域动态<span class="en">FIELD RADAR</span></p><ol class="toc-list"><li><a href="#radar-1"><span class="toc-num">R1</span>独立外部电场与磁场中旋转 Kaluza-Klein 黑洞的热力学简并与不同视界几何</a></li><li><a href="#radar-2"><span class="toc-num">R2</span>带正则化的动力学 Chern-Simons 引力中双黑洞并合</a></li><li><a href="#radar-3"><span class="toc-num">R3</span>DESI 动机的 phantom-divide 转变下双场势的逆重构</a></li><li><a href="#radar-4"><span class="toc-num">R4</span>声学涡旋的 Lorentz 与 Poincaré 和乐：能层转变、Sagnac 时间与超越 Aharonov-Bohm 的声子散射</a></li></ol>
+  <p class="toc-group">名词推荐<span class="en">KEYWORD PICKS</span></p><ol class="toc-list"><li><a href="#kw-1"><span class="toc-num">K1</span>广义类轴子暗能量的新观测检验</a></li></ol>
+</section>
+
+<div class="papers">
+<details class="paper-card" id="paper-1">
+<summary>
+  <div class="card-body">
+    <div class="card-num">#1 · arXiv:2611.23376 · hep-th · gr-qc</div>
+    <div class="card-title">Horizon kinematics and the fine structure induced by finite-energy Hawking radiation</div>
+    <div class="card-title-cn">视界运动学与有限能量 Hawking 辐射诱导的精细结构</div>
+    <div class="card-authors">M. A. Aguirre Cort\'es, Mois\'es Bravo-Gaete, Julio A. M\'endez-Zavaleta, Efra\'in Rojas Marcial</div>
+    <div class="card-oneline">💡 该文用视界条件反演追踪有限能量隧穿发射下黑洞视界根的位移，在非线性带电 BTZ 中发现内视界分裂成精细结构并给出趋近极值态的绝热性限制。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s7">7.0</span>
+    
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>黑洞 Hawking 辐射会通过质量与全局荷的损失改变视界结构，但通常的隧穿计算只给出发射率，不追踪视界半径在发射序列中如何移动；当视界半径没有解析表达式（非线性电动力学、多重根）时，这一缺口尤其明显。本文提出一套系统策略：把视界条件视为关于半径的方程，沿静态几何序列反演其根，从而在半径未知时也能重构视界位移。具体模型取 BTZ 的非线性带电推广，初态为双内视界与单事件视界共存。结果显示：中性发射必然把内重根劈成两个单根，形成视界精细结构；带电发射时，提取电荷对发射能量的依赖决定分离律，并可保持或稍后恢复简并，作者构造了初末态相同但内部历史不同、共享同一半经典前因子的通道。继续发射时，新分离出的较大内视界可与事件视界并合，把序列推向温度为零但隧穿概率有限的极值态；在均匀绝热界成立时，零温不能在有限边界时间内达到，并给出几何展开与正则热近似仍受控的区间。最后在再现量子反作用 BTZ 几何的扇区中，领头半经典修正相对经典 BTZ 提高温度并增强中性探针的视界发射因子。</p>
+  <h4>评价</h4>
+  <p>【创新点】把“视界根随发射序列的位移”作为独立对象，用视界条件反演代替显式半径求解，从而在非线性带电 BTZ 中首次追踪双内视界→分裂→并合→趋近极值的完整序列，并给出简并保持/恢复的通道构造。
+【局限性】全部结论依赖静态几何序列与均匀绝热界，未做真正的动态时空演化；模型限于 2+1 维非线性带电 BTZ 这一高对称族，极值端点处“零温不可有限时间达到”是绝热近似下的结论而非严格定理。
+【对 Rao 的意义】直接落在引力热力学主线：视界根的分裂/并合与温度、隧穿概率、绝热性的联动，是黑洞热力学相结构与 P-V 临界分析的近邻工具；其“根位移追踪”思路可迁移到 f(Q)/NYTG 静态球对称分支的视界结构审计（Q1）。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可借用“视界条件反演 + 根序列追踪”这一代数工具：不必解出 r_h 的显式表达式，只需对给定几何族把视界方程看作多项式/超越方程并跟踪其根随参数（质量、电荷）的连续变形，这对 NYTG 不规则联络分支中多重视界的情形很实用。需警惕的约定差异：文中“有限隧穿概率对应零温极值态”与标准 Parikh–Wilczek 图像中温度→0 时发射率的行为并不等价，比较时须区分隧穿概率与 Boltzmann 因子；另外 2+1 维 BTZ 的视界简并结构与 3+1 维 Reissner–Nordström 的双视界不能直接类比。</p>
+  <h4>💡 推荐课题</h4>
+  <p>课题 1（接 Q1）：把根位移追踪用于 NYTG 静态球对称分支，检查不同联络分支下视界根的重数与无毛条件，第一步是对该分支写出视界条件并做根的判别式分析，判断是否存在类似“双内视界”的简并结构。课题 2（接 P2）：在 f(Q) 宇宙学 P-V 临界点附近，用同样的“沿参数序列追踪根”的方法考察临界点处视界根合并与温度行为，第一步是写出 f(Q) 静态解的视界方程并对临界参数做根的重数判定。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2611.23376v1 Announce Type: new Abstract: Hawking radiation can modify the horizon structure of a black hole through the loss of mass and global charges. Investigating this process through quantum tunneling, we develop a systematic strategy to reconstruct horizon displacements under finite-energy emission, even when their radii are not explicitly known. Inversion of the horizon condition allows to follow roots's displacements along sequences of static geometries. As a concrete realization, we consider a nonlinearly charged extension of the Ba\~nados--Teitelboim--Zanelli (BTZ) family, whose horizon structure offers an ideal setup to explore this process. Of particular interest is an initial configuration with a double inner horizon coexisting with a simple event horizon. We show that neutral emission necessarily splits the inner root into two simple ones, revealing a horizon fine structure. For charged emission, the dependence of extracted charge on emitted energy determines the separation law and allows that preservation or later restore the degeneracy. We construct such channels connecting the same initial and final states through distinct internal histories sharing the same leading semiclassical factor. As emission continues, the larger of the newly separated inner horizons can coalesce with the event horizon, driving the sequence towards extremality with a vanishing temperature but finite tunneling probability. We find that zero temperature cannot be attained in finite boundary time while uniform adiabaticity bounds hold. We also establish a regime where the geometric expansion and the canonical thermal approximation remain controlled near this endpoint. Finally, applying this analysis to the sector reproducing a quantum-backreacted BTZ geometry reveals how the leading semiclassical corrections raise the temperature and enhance the neutral-probe horizon emission factor relative to classical BTZ.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.23376" target="_blank" rel="noopener">arXiv:2611.23376</a></p>
+</div>
+</details>
+<details class="paper-card" id="paper-2">
+<summary>
+  <div class="card-body">
+    <div class="card-num">#2 · arXiv:2611.23706 · gr-qc</div>
+    <div class="card-title">Helicity-squared scaling of post-eikonal phases for electromagnetic and gravitational waves in Ricci-flat spacetimes</div>
+    <div class="card-title-cn">Ricci 平坦时空中电磁波与引力波后程函相位的螺旋度平方标度</div>
+    <div class="card-authors">C. A. S. Almeida</div>
+    <div class="card-oneline">💡 该文证明 Ricci 平坦背景上自旋-s 波相对标量波的后程函相位满足螺旋度平方律 Δ₂=4Δ₁，并在 Schwarzschild 弱偏折下得到 Δ_s=−3πs²/(8Mωρ³)。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s6">6.0</span>
+    
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4>
+  <p>自旋光学方法此前主要刻画后程函修正中与螺旋度奇（helicity-odd）有关的部分，即引力波双折射与圆偏振的传播差异；与之互补的螺旋度偶（helicity-even）部分长期缺少统一的自旋依赖规律，而这部分决定不同自旋波在弯曲背景中的共同相位移动。本文在平行传播零标架中研究标量、电磁与线性化引力波的一阶后程函修正的螺旋度偶部分。关键机制是引力场的 Weyl 直接耦合在圆偏振横向无迹态上投影为恒等的倍数 2C_{m̄mm̄m}，再用自旋系数 μ 的 Ricci 恒等式把该投影改写为全导数加光学项，从而得到自旋-s 波相对标量波的螺旋度偶相位满足 Δ₂=4Δ₁（至端点项），即螺旋度平方律，Weyl 耦合正是补全引力情形 h² 标度的要素。对 Schwarzschild 黑洞弱偏折散射，沿射线计算积分得 Δ_s=−3πs²/(8Mωρ³)，ρ=b/M；同一系数可由 Regge–Wheeler 相移结合旋转函数 d^l_{ss} 的渐近行为独立且不依赖标架/规范地得到，径向方程直接数值积分予以确认。在 M 的一阶，螺旋度偶相位差消失，与 Born 振幅的要求一致。</p>
+  <h4>评价</h4>
+  <p>【创新点】把后程函修正按螺旋度奇/偶分层，并给出偶扇区的螺旋度平方律 Δ₂=4Δ₁ 及显式 Schwarzschild 系数 −3πs²/(8Mωρ³)，且用 Regge–Wheeler 相移与数值积分三重验证，比此前只处理奇扇区的自旋光学结果更完整。
+【局限性】只处理 Ricci 平坦背景与一阶后程函（弱偏折、大 b）展开，未涉及非 Ricci 平坦（如 f(Q)/f(T) 背景）或强偏折；螺旋度偶相位差在 M 一阶消失意味着该效应是更高阶，实际可观测性受限。
+【对 Rao 的意义】与 Rao 的引力波双折射/圆偏振主线直接相邻：奇扇区对应螺旋度一次、偶扇区对应二次的分解方式，可用于组织 NYTG 宇称破缺模型中 GW 传播相位的螺旋度结构，判断哪些修正进入一次项、哪些只进入二次项。</p>
+  <h4>🎓 Rao 可以学到什么</h4>
+  <p>可借用“螺旋度奇 ↔ 一次、螺旋度偶 ↔ 二次”的幂次组织原则，以及用 Regge–Wheeler 相移 + 旋转函数 d^l_{ss} 渐近来交叉检验相位系数的做法；这对在 NYTG 中分离宇称破缺（奇）与宇称保持（偶）对 GW 相位的贡献很有用。需警惕的约定差异：文中“相对标量波”定义相位差，与通常按偏振模直接比较传播速度的约定不同；Δ₂=4Δ₁ 是自旋平方标度而非频率标度，勿与双折射中 Δv/c ∝ 频率的色散关系混淆。</p>
+  <h4>💡 推荐课题</h4>
+  <p>课题（接宇称破缺引力主线，非直接对应 P1–P5）：在 NYTG 的宇称破缺背景上，用同样的平行传播零标架分解把 GW 后程函相位拆成螺旋度奇/偶两部分，第一步是写出 NYTG 下 Weyl 张量在圆偏振 TT 态上的投影，检查是否仍出现恒等倍数结构、以及 Nieh–Yan 项是否只进入奇扇区。</p>
+  <details class="abs-details"><summary>英文摘要原文</summary><p>arXiv:2611.23706v1 Announce Type: new Abstract: Spin-optical descriptions of electromagnetic and gravitational waves isolate finite-frequency corrections that are odd in the helicity. We study the complementary, helicity-even part of the first post-eikonal correction for scalar, electromagnetic, and linearized gravitational waves on Ricci-flat backgrounds. In a parallel-propagated null tetrad, the direct Weyl coupling of the gravitational field projects onto the circular transverse-traceless states as the multiple $2C_{\bar m m\bar m m}$ of the identity. The Ricci identity for the spin coefficient $\mu$ then rewrites this projection as a total derivative plus optical terms. The helicity-even phase of a spin-$s$ wave, measured relative to the scalar wave, then obeys a helicity-squared law, $\Delta_2=4\Delta_1$, up to endpoint terms. The Weyl coupling is what completes the $h^2$ scaling in the gravitational case. For weak-deflection scattering by a Schwarzschild black hole we evaluate the relevant integrals along the ray and obtain $\Delta_s=-3\pi s^2/(8M\omega\rho^3)$, with $\rho=b/M$. The same coefficient follows independently, and without reference to any frame or gauge, from the Regge--Wheeler phase shifts combined with the asymptotics of the rotation functions $d^l_{ss}$. Direct numerical integration of the radial equations confirms it. At first order in $M$ the helicity-even phase difference vanishes, as required by the Born amplitudes. The helicity-odd spin-optical sector and the helicity-even post-eikonal sector are therefore organized by the first and second powers of the helicity, respectively.</p></details>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.23706" target="_blank" rel="noopener">arXiv:2611.23706</a></p>
+</div>
+</details></div>
+
+<div class="sec-head"><h2>📡 领域动态 · 修正引力宇宙学</h2></div><div class="papers">
+<details class="paper-card " id="radar-1">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R1 · arXiv:2611.23425 · 高维统一</div>
+    <div class="card-title">Thermodynamic Degeneracy and Distinct Horizon Geometries of Rotating Kaluza-Klein Black Holes in Independent External Electric and Magnetic Fields</div>
+    <div class="card-title-cn">独立外部电场与磁场中旋转 Kaluza-Klein 黑洞的热力学简并与不同视界几何</div>
+    <div class="card-authors">Hai Huang, Juhua Chen</div>
+    <div class="card-oneline">💡 构造 Kaluza-Klein 耦合下嵌入独立外电磁场的旋转 Einstein-Maxwell-dilaton 精确解，发现两支黑洞热力学读数完全相同但视界内禀几何不同。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s6">6.0</span>
+    <span class="rel rel-neighbor">近邻</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>黑洞热力学通常假定视界几何与热力学量（温度、熵、角速度、化学势）一一对应，Wald 熵与 Iyer-Wald 荷的形式体系也把熵写成视界几何量的泛函。但这一对应是否唯一——即相同热力学读数能否对应不同内禀视界几何——在含外场、带标量毛的精确解中很少被系统检验。Kaluza-Klein 约化恰好提供 dilaton 与电磁场耦合的受控环境，是检验该问题的自然场所。
+作者在四维 Einstein-Maxwell-dilaton 理论、Kaluza-Klein 耦合下构造了有限转速并浸没于独立外部电场与磁场中的精确解。通过精确代数平衡恒等式，他们发现两支正则非极端分支具有相同的视界面积、准局域角动量与电磁通量；在明确指定的轴向时钟、旋转标架与电磁势参考约定下，两支的能量、温度、角速度、电/磁势也完全相同。然而两支的视界内禀几何并不等距，所有正轴对易标量-Laplace 本征值在两支间严格有序。作者进一步证明外部时空可渐近匹配到两种不同的精确旋转柱状背景。</p>
+<h4>评价</h4><p>【创新点】首次在含独立外电磁场的精确旋转 Kaluza-Klein 解中给出“热力学读数相同、视界内禀几何不同”的显式反例，并用标量-Laplace 谱的严格排序把几何差异量化，比此前仅靠数值或微扰的讨论更硬。
+【局限性】结论依赖作者自选的轴向时钟、旋转标架与电磁势参考约定；换参考约定后“热力学读数相同”是否仍成立未讨论。外场为精确柱状背景，渐近结构非通常渐近平直/AdS，物理可实现性受限。
+【对 Rao 的意义】直接触及引力热力学中“熵/温度是否唯一编码视界几何”的定义辨析，与 Wald 熵、协变荷的边界歧义研究线相关；其“热力学简并”现象可作为检验 P5（动态热流与协变荷通量）中荷定义是否依赖几何的现成反例。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.23425" target="_blank" rel="noopener">arXiv:2611.23425</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-2">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R2 · arXiv:2611.24420 · 宇称破缺引力</div>
+    <div class="card-title">Black hole binary mergers in dynamical Chern-Simons gravity with regularisation</div>
+    <div class="card-title-cn">带正则化的动力学 Chern-Simons 引力中双黑洞并合</div>
+    <div class="card-authors">Llibert Arest\'e Sal\'o, Maxence Corman, Pau Figueras, \'Aron D. Kov\'acs, Shunhui Yao</div>
+    <div class="card-oneline">💡 首次用数值相对论模拟动力学 Chern-Simons 引力的非线性演化，完成正碰与双黑洞并合并提取标量波与引力波。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">4.0</span>
+    <span class="rel rel-neighbor">近邻</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>动力学 Chern-Simons 引力是宇称破缺引力的代表模型，其引力波具有振幅双折射（左右手圆偏振传播不同），是检验宇称破缺的重要窗口。但该理论方程高于二阶，初值问题在常用数值相对论规范下并不良定，此前只有微扰或后牛顿层面的结果，强场并合阶段的非线性演化一直缺失，而这恰是 LIGO/Virgo 手征信号最敏感的区间。
+作者采用正则化方案，在数值相对论常用规范下获得良定的初值表述，首次对动力学 Chern-Simons 引力做完整非线性数值模拟。他们模拟了正碰与双黑洞并合，在 EFT 适用范围内演化，并提取相应的标量辐射与引力波。结果显示该框架可处理含高于二阶运动方程的有效引力理论，为用引力波检验此类 EFT 打开通道。</p>
+<h4>评价</h4><p>【创新点】首个动力学 Chern-Simons 引力的非线性数值相对论模拟，把此前限于微扰/PN 的宇称破缺引力波预言推进到并合强场区，正则化使初值问题在常用规范下良定是可复用的技术结果。
+【局限性】限于 EFT 适用范围（尺度远大于理论 cutoff），无法探测强曲率下高阶算符主导的区域；正碰与并合的具体参数、标量辐射幅度摘要未给，定量约束力尚不明确。
+【对 Rao 的意义】与宇称破缺引力、引力波双折射研究线直接相关：其标量辐射与手征 GW 提取方法可对照 Rao 关注的 helicity 分解与 WKB 相位分析；若 Rao 后续考虑 Chern-Simons 类模型的手征信号，这是强场端的基准结果。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.24420" target="_blank" rel="noopener">arXiv:2611.24420</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-3">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R3 · arXiv:2611.23906 · 修正引力宇宙学一般项</div>
+    <div class="card-title">Inverse Reconstruction of Two-Field Potentials for a DESI-Motivated Phantom-Divide Transition</div>
+    <div class="card-title-cn">DESI 动机的 phantom-divide 转变下双场势的逆重构</div>
+    <div class="card-authors">Tonghua Liu, Xiaolei Li, Marek Biesiada, Tian-Nuo Li, Jun-Qian Jiang, Arman Shafieloo, Xin Zhang</div>
+    <div class="card-oneline">💡 针对 DESI 等数据偏好的 phantom-divide 转变，逆重构出正则-phantom 标量对的局域势，并识别保持背景与线性扰动的势形变。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">4.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>近期 CMB、DESI BAO 与 Ia 型超新星数据偏好暗能量在低红移穿越 phantom divide（$w=-1$）的行为，Metastable Emergent Dark Energy 是其中一类具体实现。但观测只给出膨胀历史，对应哪些场势、哪些势特征是观测唯一固定的，是一个逆问题，此前少有系统处理，尤其缺乏对穿越处扰动正则性的检验。
+作者对正则-phantom 标量对加标准物质与辐射，逆重构局域势，目标是 CMB+DESI BAO+SNe 约束的 MEDE 历史。耦合场 Friedmann 演化在数值精度内重现目标背景，扰动穿越 phantom divide 保持正则。他们发现穿越处斜率设定一个无量纲势能释放率，且该率不敏感于动能分配；并识别出同时保持背景膨胀与线性动力学的局域势形变，从而把观测固定的能量平衡与需要额外理论输入的相互作用项分开。</p>
+<h4>评价</h4><p>【创新点】把 phantom-divide 穿越当作逆问题处理，给出保持背景与线性扰动的势形变自由度，并指出势能释放率对动能分配不敏感这一可检验的普适特征，比单纯拟合 $w(z)$ 更有结构信息。
+【局限性】现象学类，方法新意有限：仍是双标量场加标准物质的参数化重构，未涉及具体紫外理论或量子修正；结论依赖 MEDE 目标历史与数据集组合。
+【对 Rao 的意义】同领域参考。与 Rao 的 f(Q)/标量-张量宇宙学扰动线有方法交集（多场扰动穿越处的正则性处理），但其逆重构框架与 P1–P5 无直接接口。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.23906" target="_blank" rel="noopener">arXiv:2611.23906</a></p>
+</div>
+</details>
+<details class="paper-card " id="radar-4">
+<summary>
+  <div class="card-body">
+    <div class="card-num">R4 · arXiv:2611.24298 · teleparallel/f(T)</div>
+    <div class="card-title">Lorentz and Poincar\'e holonomies of an acoustic vortex:ergoregion transition, Sagnac time, and beyond-Aharonov--Bohm phonon scattering</div>
+    <div class="card-title-cn">声学涡旋的 Lorentz 与 Poincaré 和乐：能层转变、Sagnac 时间与超越 Aharonov-Bohm 的声子散射</div>
+    <div class="card-authors">Claudio Furtado, A. M. de M. Carvalho, L. C. Garcia de Andrade, Fernando Moraes</div>
+    <div class="card-oneline">💡 计算无旋涡旋精确声学几何的 Lorentz 与 Poincaré 和乐闭式，发现 Lorentz 和乐在能层处改变共轭类，并给出与 Sagnac 延迟对应的平移分量。</div>
+  </div>
+  <div class="c-side">
+    <span class="score s5">4.0</span>
+    <span class="rel rel-field">风向</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>超流涡旋在远场声学上等价于无质量旋转宇宙弦，声子散射化为 Aharonov-Bohm 问题，这是类比引力的经典结果。但这一等价只在远场成立，涡旋核心附近及能层（ergoregion）内的精确声学几何中，和乐的行为、以及它与 Sagnac 效应的关系此前没有闭式结果，而这正是类比引力中转动参考系效应的核心。
+作者用 Painlevé-Gullstrand 标架（在能层内正则）计算无旋涡旋精确声学几何沿任意半径圆环的 Lorentz 与 Poincaré 和乐闭式。Lorentz 和乐在能层 $r=r_e=\Gamma/2\pi c$ 处改变共轭类：外部为转角 $2\pi\sqrt{1-r_e^2/r^2}$ 的旋转，能层上为类光旋转，内部为快度 $2\pi\sqrt{r_e^2/r^2-1}$ 的 boost。Poincaré 和乐的平移不变量为时间平移 $\tau(r)=(\Gamma/c^2)(1-v_s^2/c^2)^{-1/2}$，等于静态观测者固有时中声学 Sagnac 延迟的一半，$r\to\infty$ 时回到旋转弦值 $\Gamma/c^2$。</p>
+<h4>评价</h4><p>【创新点】给出精确声学涡旋几何中和乐的完整闭式，并指出 Lorentz 和乐在能层处从旋转变为 boost 的共轭类跃迁，把 Sagnac 延迟与 Poincaré 和乐平移分量定量对应，比远场宇宙弦类比更完整。
+【局限性】纯类比系统（超流涡旋声学度规），非真实引力；结论限于无旋涡旋与圆形回路，未讨论量子声子修正与非线性声学效应。
+【对 Rao 的意义】同领域参考。其和乐/共轭类分析与 Rao 关注的协变相空间、平行输运与参考系约定问题在概念上相通，可作为理解转动参考系中 holonomy 与热力学量关系的类比练习，但与 P1–P5 无直接接口。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.24298" target="_blank" rel="noopener">arXiv:2611.24298</a></p>
+</div>
+</details></div>
+<div class="sec-head"><h2>🔑 名词推荐</h2><p class="sub">暗能量</p></div><div class="papers">
+<details class="paper-card" id="kw-1">
+<summary>
+  <div class="card-body">
+    <div class="card-num">K1 · arXiv:2611.24900 · astro-ph.CO</div>
+    <div class="card-title">New Observational Insights into Generalised Axion-Like Dark Energy</div>
+    <div class="card-title-cn">广义类轴子暗能量的新观测检验</div>
+    <div class="card-authors">Mariam Bouhmadi-L\'opez, Hsu-Wen Chiang, Carlos G. Boiza, Thomas J. Broadhust</div>
+    <div class="card-oneline">💡 用 CMB 距离先验、BAO、SNe Ia、SH0ES、宇宙钟与伽马暴联合拟合广义类轴子精质模型，评估其相对 ΛCDM 的统计表现。</div>
+  </div>
+  <div class="c-side">
+    <span class="kw">关键词：暗能量</span>
+  </div>
+</summary>
+<div class="detail">
+  <h4>速览</h4><p>精质（quintessence）类模型长期面临两个难题：初始条件需要精细调节，以及为什么暗能量恰好在此时主导（巧合问题）。广义类轴子势最初作为唯象框架提出，正是为了用跟踪（tracking）行为缓解巧合问题，并让晚期加速由有效宇宙学常数自然实现，而无需调节标量场初值。但该模型此前缺乏对当前多源观测的系统检验，其与 ΛCDM 的统计可比性尚不清楚。
+
+本文对模型的背景宇宙学演化做参数推断，联合使用 CMB 距离先验、BAO 测量、Ia 型超新星、SH0ES 距离阶梯、宇宙钟（cosmic chronometers）和伽马暴六类数据。摘要未给出具体的最佳拟合参数值、Δχ² 或信息准则数值，只说明分析目标是评估模型的观测可行性、它调和不同数据集（尤其是 H0 张力相关数据）的能力，以及相对 ΛCDM 的统计表现。方法上属于标准的背景层 MCMC 参数约束，未涉及扰动层或引力波扇区。</p>
+<h4>评价</h4><p>【创新点】把原本只作唯象引入的广义类轴子势首次放到六类低红移与高红移背景数据的联合约束下，并同时纳入 SH0ES 距离阶梯与伽马暴这两类在 H0 和张力争端中敏感的数据，检验其跟踪机制能否在不调节初值的条件下仍与数据相容。
+【局限性】纯背景层分析，未处理标量扰动、有效引力常数变化或结构增长，因而无法排除在扰动扇区与数据冲突的可能；摘要未给出具体 Δχ²/IC 数值，相对 ΛCDM 的优劣只能等正文；伽马暴作为标准烛光的系统误差仍是争议点。
+【对 Rao 的意义】现象学类，方法新意有限，属修正引力宇宙学一般项的拟合工作。对 Rao 的价值主要在雷达层：可作为暗能量模型与多数据集联合约束的方法参照，与 P2（f(Q) 宇宙学 P-V 临界点）无直接模型重叠，不涉及视界热力学。</p>
+  <p class="src-link">原文链接：<a href="https://arxiv.org/abs/2611.24900" target="_blank" rel="noopener">arXiv:2611.24900</a></p>
+</div>
+</details></div>
+
+<div class="archives"><div class="archives-inner"><h3>📚 最近 6 天（滚动保留 6 天）</h3><div class="arc-list"><span class="arc-item arc-current">11月19日（今天）<span class="arc-count">7 篇</span></span><a class="arc-item" href="2026-11-18.html">11月18日<span class="arc-count">12 篇</span></a><a class="arc-item" href="2026-11-17.html">11月17日<span class="arc-count">11 篇</span></a><a class="arc-item" href="2026-11-13.html">11月13日<span class="arc-count">16 篇</span></a><a class="arc-item" href="2026-11-11.html">11月11日<span class="arc-count">13 篇</span></a><a class="arc-item" href="2026-11-10.html">11月10日<span class="arc-count">18 篇</span></a></div></div></div>
+
+<div class="footer">
+  由 Kimi 生成 · <a href="index.html">存档索引</a> · 2026年11月19日 · 数据来自 <a href="https://arxiv.org" target="_blank" rel="noopener">arxiv.org</a>
+</div>
+
+</body>
+</html>
